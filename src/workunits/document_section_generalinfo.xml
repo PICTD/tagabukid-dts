@@ -1,0 +1,101 @@
+<workunit>
+    <invokers>
+        <invoker type="document:section" caption="General Info" index="-100" />
+    </invokers>
+    
+    <code>
+        <![CDATA[    
+        import com.rameses.rcp.annotations.*
+        import com.rameses.rcp.common.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+        import java.rmi.server.*
+        import com.rameses.gov.etracs.bpls.business.*;
+        
+        class  BusinessGeneralInfoController  {
+        
+            @Binding
+            def binding;
+
+            @Service("BusinessMasterService")
+            def svc;
+            
+            @Service("BusinessPermitService")
+            def permitSvc;
+            
+            @Service("BusinessLobService")
+            def lobSvc;
+            
+            @Service("EntityService")
+            def entitySvc;
+        
+            
+            String title = "General Info";
+            String entityName = "businessinfo:generalinfo";
+            
+            def entity;
+            
+            def lobModel = [
+                fetchList: { o->
+                    if( !entity.lobs) {
+                        entity.lobs = lobSvc.getActiveLobs( [businessid:entity.objid] );
+                    }    
+                    return entity.lobs;
+                }
+            ] as BasicListModel;
+            
+            
+            def issuePermit() {
+                if( entity.permit ) {
+                    throw new Exception("Permit already exists!");
+                }
+                else {
+                    def h = { o->
+                        entity.permit = o;
+                        def op = InvokerUtil.lookupOpener( "businesspermit:print" , [entity:o] );
+                        op.target = 'self';
+                        binding.fireNavigation( op );
+                    }
+                    def p = [businessid: entity.objid];
+                    return Inv.lookupOpener("business:issuepermit", [handler:h, entity: p  ]);
+                }
+            }
+            
+            def printPermit() {
+                return InvokerUtil.lookupOpener( "businesspermit:print" , [entity:entity.permit] );
+            }
+            
+            def rebuildPermit() {
+                if( MsgBox.confirm("This will replace existing data with the latest business information. Proceed?")) {
+                    permitSvc.rebuildPermit( entity.permit );
+                    MsgBox.alert("Rebuild successful");
+                }
+            }
+            
+            def reissuePermit() {
+                if( MsgBox.confirm("You are about to supersede existing permit. Proceed?")) {
+                    def m = [businessid: entity.objid];
+                    m.permittype = entity.permit.permittype;
+                    def p = permitSvc.reissuePermit( m );
+                    binding.refresh();
+                    return InvokerUtil.lookupOpener( "businesspermit:print" , [entity:p] );
+                }
+            }
+            
+            void reloadOwner() {
+                if(!entity.owner.objid) 
+                    throw new Exception("No owner assigned");
+                def owner = entitySvc.open([objid:entity.owner.objid]);
+                entity.owner = owner;
+            }
+            
+        }
+        ]]>
+    </code>
+
+    
+    <pages>
+        <page  template="com.rameses.gov.etracs.bpls.business.BusinessGeneralInfo"/>
+    </pages>
+    
+</workunit>
