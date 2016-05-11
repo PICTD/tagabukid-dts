@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workunit>
+    <invokers>
+        <invoker type="din:create" action="init" caption="DIN Inventory" />
+        <invoker type="din:open" action="open" caption="DIN Invnetory" />
+    </invokers>
+        
+    <code lang="groovy">
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import com.rameses.osiris2.common.*;
+        
+        public class DINInventoryController extends CRUDController
+        {
+            String serviceName = 'TagabukidDINInventoryService'
+            String entityName  = 'din'
+            String prefixId    = 'OC'
+            
+        }
+    </code>
+    
+    <pages>
+        <page template="tagabukid.dts.master.DINInventoryPage" />
+    </pages>
+</workunit>

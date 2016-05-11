@@ -1,0 +1,16 @@
+<workunit>
+    <invokers>
+        <invoker type="home.action" caption="DTS" action="init" target="window"  index="1" />
+        <invoker type="formActions" caption="Submit to Outgoing"   action="outgoing" visibleWhen="#{mode=='INIT'}" name="outgoing" index="2001"/>
+        <invoker type="formActions" caption="Send Document"   action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002"/>
+        <invoker type="formActions" caption="Receive Document"   action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003"/>
+        <invoker type="formActions" caption="Archive Document"   action="archive" visibleWhen="#{mode=='INIT'}" name="archive" index="2004"/>
+        <invoker type="formActions" caption="Save" action="save" visibleWhen="#{mode!='INIT' }" name="save" index="2004"/>
+        <invoker type="formActions" caption="Reset" action="init" visibleWhen="#{mode!='INIT'}" index="2005" />
+    </invokers>
+    <code class="tagabukid.dts.DTSController"/>
+    <pages>
+        <page template="tagabukid.dts.DTSProcessingPage"/>
+    </pages>
+    
+</workunit>

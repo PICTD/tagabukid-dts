@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workunit>
+    <invokers>
+        <invoker type="documenttype:create" action="init" caption="Document Type" />
+        <invoker type="documenttype:open" action="open" caption="Document Type" />
+    </invokers>
+        
+    <code lang="groovy">
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import com.rameses.osiris2.common.*;
+        
+        public class DocumentTypeController extends CRUDController
+        {
+            String serviceName = 'TagabukidDocumentTypeService'
+            String entityName  = 'documenttype'
+            String prefixId    = 'DT'
+        
+            Map createEntity(){
+                return [haschild:0,issendtomany:0]
+            }
+            
+        }
+    </code>
+    
+    <pages>
+        <page template="tagabukid.dts.master.DocumentTypePage" />
+    </pages>
+</workunit>

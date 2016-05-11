@@ -5,14 +5,16 @@
  */
 package tagabukid.dts.view;
 
-import com.rameses.osiris2.common.ui.TaskFormPage;
+import com.rameses.osiris2.themes.FormPage;
+import com.rameses.rcp.ui.annotations.StyleSheet;
 import com.rameses.rcp.ui.annotations.Template;
 
 /**
  *
  * @author rufino
  */
-@Template({TaskFormPage.class})
+@Template({FormPage.class})
+@StyleSheet
 public class DocumentInformationTemplate extends javax.swing.JPanel {
 
     /**
@@ -41,15 +43,23 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
         xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
+        xLabel6 = new com.rameses.rcp.control.XLabel();
         xLabel4 = new com.rameses.rcp.control.XLabel();
+        xLabel7 = new com.rameses.rcp.control.XLabel();
         xLabel3 = new com.rameses.rcp.control.XLabel();
+
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setLayout(new java.awt.BorderLayout());
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder1.setTitle("Document Information");
         xHorizontalPanel1.setBorder(xTitledBorder1);
+        xHorizontalPanel1.setBorderSeparator(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 215));
 
         xFormPanel1.setCaptionWidth(120);
-        xFormPanel1.setPreferredSize(new java.awt.Dimension(380, 100));
+        xFormPanel1.setName(""); // NOI18N
+        xFormPanel1.setPreferredSize(new java.awt.Dimension(500, 100));
 
         xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel1.setCaption("DIN");
@@ -60,14 +70,14 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
 
         xLabel2.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel2.setCaption("Document Title");
-        xLabel2.setExpression("#{enitty.title}");
+        xLabel2.setExpression("#{entity.title}");
         xLabel2.setOpaque(true);
         xLabel2.setPreferredSize(new java.awt.Dimension(0, 16));
         xFormPanel1.add(xLabel2);
 
         xLabel5.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel5.setCaption("Author");
-        xLabel5.setExpression("#{enitty.author}");
+        xLabel5.setExpression("#{entity.author}");
         xLabel5.setPreferredSize(new java.awt.Dimension(0, 18));
         xFormPanel1.add(xLabel5);
 
@@ -80,7 +90,7 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
 
         xFormPanel1.add(jScrollPane1);
 
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(300, 63));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 63));
 
         xTextArea2.setEditable(false);
         xTextArea2.setCaption("Document Tags");
@@ -92,41 +102,44 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
         xHorizontalPanel1.add(xFormPanel1);
 
         xFormPanel2.setCaptionWidth(120);
-        xFormPanel2.setPreferredSize(new java.awt.Dimension(350, 100));
+        xFormPanel2.setPreferredSize(new java.awt.Dimension(500, 100));
+
+        xLabel6.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel6.setCaption("Document Type");
+        xLabel6.setExpression("#{entity.documenttype.name}");
+        xLabel6.setOpaque(true);
+        xLabel6.setPreferredSize(new java.awt.Dimension(300, 16));
+        xFormPanel2.add(xLabel6);
 
         xLabel4.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel4.setCaption("Date Created");
-        xLabel4.setExpression("#{entity.datecreated}");
+        xLabel4.setExpression("#{entity.recordlog.datecreated}");
         xLabel4.setFor("");
         xLabel4.setOpaque(true);
         xLabel4.setPreferredSize(new java.awt.Dimension(300, 16));
         xFormPanel2.add(xLabel4);
 
-        xLabel3.setBorder(new com.rameses.rcp.control.border.XLineBorder());
-        xLabel3.setCaption("Created By");
-        xLabel3.setExpression("#{entity.createdby}");
+        xLabel7.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel7.setCaption("Date Created");
+        xLabel7.setExpression("#{entity.recordlog.createdbyuser}");
+        xLabel7.setFor("");
+        xLabel7.setName(""); // NOI18N
+        xLabel7.setOpaque(true);
+        xLabel7.setPreferredSize(new java.awt.Dimension(300, 16));
+        xFormPanel2.add(xLabel7);
+
+        xLabel3.setCaption("");
+        xLabel3.setExpression("#{entity.state}");
+        xLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        xLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        xLabel3.setName(""); // NOI18N
         xLabel3.setOpaque(true);
-        xLabel3.setPreferredSize(new java.awt.Dimension(300, 16));
+        xLabel3.setPreferredSize(new java.awt.Dimension(300, 40));
         xFormPanel2.add(xLabel3);
 
         xHorizontalPanel1.add(xFormPanel2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(xHorizontalPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(xHorizontalPanel1, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -141,6 +154,8 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel3;
     private com.rameses.rcp.control.XLabel xLabel4;
     private com.rameses.rcp.control.XLabel xLabel5;
+    private com.rameses.rcp.control.XLabel xLabel6;
+    private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XTextArea xTextArea1;
     private com.rameses.rcp.control.XTextArea xTextArea2;
     // End of variables declaration//GEN-END:variables

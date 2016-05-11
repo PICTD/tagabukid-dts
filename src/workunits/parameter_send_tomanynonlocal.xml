@@ -1,0 +1,9 @@
+<workunit>
+    <invokers>
+        <invoker type="multiplenonlocal:form" caption="Send Parameters Multiple" action="init" target="popup" > </invoker>
+    </invokers>
+     <code class="tagabukid.dts.SendParametersToManyNonLocalController" />
+    <pages>
+        <page template="tagabukid.dts.SendToManyNonLocalPage" />
+    </pages>
+</workunit>

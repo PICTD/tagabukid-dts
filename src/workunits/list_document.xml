@@ -1,0 +1,10 @@
+<workunit extends="wtemplates/ExplorerViewController.xml" serviceName="TagabukidDTSListService" 
+     allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="dts">
+    <invokers>
+        <!--<invoker folderid="/explorer/txn/bpls" caption="Business Permit List"  index="4" role="LICENSING" />-->
+        <invoker type="home.action" caption="Document List"  index="50"/>
+    </invokers>
+    <pages>
+        <page name="1queryform" template="tagabukid.dts.DocumentListQueryForm"/>
+    </pages>
+</workunit>

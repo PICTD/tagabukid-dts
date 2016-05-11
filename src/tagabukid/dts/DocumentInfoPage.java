@@ -41,7 +41,7 @@ public class DocumentInfoPage extends javax.swing.JPanel {
         xList1.setDynamic(true);
         xList1.setExpression("#{item.caption}");
         xList1.setItems("sections");
-        xList1.setName("currentSelection"); // NOI18N
+        xList1.setName("currentSection"); // NOI18N
         xList1.setPreferredSize(new java.awt.Dimension(40, 100));
         jScrollPane1.setViewportView(xList1);
 

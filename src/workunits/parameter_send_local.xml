@@ -1,0 +1,51 @@
+<workunit>
+    <invokers>
+        <invoker type="local:form" caption="Send Parameters Local" action="init" target="popup" > </invoker>
+    </invokers>
+     <code>
+
+        import com.rameses.rcp.common.*
+        import com.rameses.rcp.annotations.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+
+        class SendParametersLocalController
+        {
+            @Binding
+            def binding;
+         
+            def entity;
+            
+            void init(){
+              entity.org = null;
+              entity.assignee = null;
+            }
+         
+            void refresh() {
+                if(binding) binding.refresh();
+            } 
+         
+            def getLookupOrg(){
+                return Inv.lookupOpener('hrisorg:lookup',[
+                        onselect :{
+                            entity.org = it;
+                        },
+                ])
+            }
+            
+            def getLookupAssignee(){
+                return Inv.lookupOpener('etracsuserorg:lookup',[
+                        onselect :{
+                            entity.assignee = it;
+                        },
+                ])
+            }
+
+           
+        }  
+
+    </code>
+    <pages>
+        <page template="tagabukid.dts.SendLocalPage" />
+    </pages>
+</workunit>

@@ -133,8 +133,9 @@ public class DocumentTitleVerificationPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             })
         });
-        xDataTable1.setHandler("verifyList.listModel");
-        xDataTable1.setName("selectedItem"); // NOI18N
+        xDataTable1.setHandler("verificationListModel");
+        xDataTable1.setId("verificationListModel");
+        xDataTable1.setName("verificationSelectedItem"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

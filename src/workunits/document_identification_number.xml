@@ -1,0 +1,34 @@
+<workunit extends="wtemplates/SimpleReportController.xml" >
+    <invokers>
+        <invoker type="dts:din" caption="Print DIN" action="preview" index="1"/>
+    </invokers>
+    
+    <code>
+    <![CDATA[    
+import com.rameses.rcp.annotations.*;
+import com.rameses.rcp.common.*;
+import com.rameses.osiris2.client.*;
+import com.rameses.osiris2.common.*;
+import com.rameses.osiris2.reports.*;
+
+class DTSDinPrintoutController extends ReportController {
+    
+    @FormId
+    String formId;
+    
+    @FormTitle
+    String formTitle;
+
+    def entity;
+    def title = "Document Identification Number";
+
+    final String REPORT_PATH = "tagabukid/dts/reports/"; 
+    String reportName = REPORT_PATH + 'main.jasper'; 
+
+    def getReportData() { 
+        return [din:entity.din,barcode:"71007:"+entity.din]; 
+    } 
+    } 
+    ]]>
+    </code>
+</workunit>

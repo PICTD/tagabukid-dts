@@ -1,0 +1,11 @@
+<workunit>
+    
+    <invokers>
+        <invoker type="documentchild:form" caption="Document Child" action="init" target="popup" > </invoker>
+    </invokers>
+     <code class="tagabukid.dts.view.DocumentChildController" />
+
+    <pages>
+        <page template="tagabukid.dts.view.DocumentChildPage" />
+    </pages>
+</workunit>

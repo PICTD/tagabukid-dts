@@ -17,17 +17,17 @@ public class Main {
         
             Map profile = new HashMap();
             profile.put("CLIENTTYPE", "desktop");
-            profile.put("USERID", "ADMIN");
+            profile.put("USERID", "USR23bf1d10:14e9bbd2583:-7d5a");
             profile.put("USER", "ADMIN");
             profile.put("FULLNAME", "ADMINISTRATOR");
             profile.put("ORGID", "059");
             profile.put("ORGCODE", "059");
             profile.put("ORGNAME", "BUKIDNON");
             profile.put("ORGCLASS", "PROVINCE");
-            
+            profile.put("MACADDRESS", "6C-3B-E5-7F-F6-E7");
             Map roles = new HashMap();
             roles.put("LEGISLATIVE.MASTER",null);
-            
+          
             OsirisTestPlatform.runTest(env, roles, profile);
         }
         catch(Exception e){

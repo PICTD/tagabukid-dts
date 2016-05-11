@@ -1,0 +1,5 @@
+<workunit extends="wtemplates/ListController.xml" serviceName="TagabukidDocumentTypeService" entityName="documenttype" formName="documenttype:list">
+    <invokers>
+        <invoker type="home.action" caption="Document Type" target="window" index="1" />
+    </invokers>
+</workunit>

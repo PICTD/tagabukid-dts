@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workunit>
+    <invokers>
+        <invoker type="userorg:create" action="init" caption="Ordinance Entity" />
+        <invoker type="userorg:open" action="open" caption="Ordinance Entity" />
+    </invokers>
+        
+    <code lang="groovy">
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import com.rameses.osiris2.common.*;
+        
+        public class OrdinanceEntityController extends CRUDController
+        {
+            String serviceName = 'TagabukidUserOrgService'
+            String entityName  = 'userorg'
+            String prefixId    = 'OC'
+            
+            public void afterOpen(Object entity){
+                println entity
+            }
+            def getLookupUser(){
+                return Inv.lookupOpener('etracsuser:lookup',[
+                        onselect :{
+                            entity = it;
+                        },
+                ])
+            }
+        
+            def getLookupOrg(){
+                return Inv.lookupOpener('hrisorg:lookup',[
+                        onselect :{
+                            entity.organizationid = it.OrgUnitId.toString();
+                            entity.orgname = it.Entity.Name;
+                            entity.orgcode = it.Entity.AcronymAbbreviation;
+
+                        },
+                ])
+            }
+            
+        }
+    </code>
+    
+    <pages>
+        <page template="tagabukid.dts.master.UserOrganizationPage" />
+    </pages>
+</workunit>

@@ -5,10 +5,14 @@
  */
 package tagabukid.dts.master;
 
+import com.rameses.osiris2.themes.FormPage;
+import com.rameses.rcp.ui.annotations.Template;
+
 /**
  *
  * @author rufino
  */
+@Template({FormPage.class})
 public class DocumentTypePage extends javax.swing.JPanel {
 
     /**
@@ -27,19 +31,70 @@ public class DocumentTypePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
+        xTextField4 = new com.rameses.rcp.control.XTextField();
+        xTextField3 = new com.rameses.rcp.control.XTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        xTextArea1 = new com.rameses.rcp.control.XTextArea();
+        xCheckBox1 = new com.rameses.rcp.control.XCheckBox();
+        xCheckBox2 = new com.rameses.rcp.control.XCheckBox();
+
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder1.setTitle("Document Type");
+        xFormPanel1.setBorder(xTitledBorder1);
+
+        xTextField4.setCaption("Name");
+        xTextField4.setName("entity.name"); // NOI18N
+        xTextField4.setPreferredSize(new java.awt.Dimension(300, 20));
+        xFormPanel1.add(xTextField4);
+
+        xTextField3.setCaption("Code");
+        xTextField3.setName("entity.code"); // NOI18N
+        xFormPanel1.add(xTextField3);
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 63));
+
+        xTextArea1.setName("entity.description"); // NOI18N
+        jScrollPane1.setViewportView(xTextArea1);
+
+        xFormPanel1.add(jScrollPane1);
+
+        xCheckBox1.setCaption("");
+        xCheckBox1.setName("entity.haschild"); // NOI18N
+        xCheckBox1.setText("Has Child");
+        xFormPanel1.add(xCheckBox1);
+
+        xCheckBox2.setCaption("");
+        xCheckBox2.setName("entity.issendtomany"); // NOI18N
+        xCheckBox2.setText("Send to Many");
+        xFormPanel1.add(xCheckBox2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private com.rameses.rcp.control.XCheckBox xCheckBox1;
+    private com.rameses.rcp.control.XCheckBox xCheckBox2;
+    private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.rcp.control.XTextArea xTextArea1;
+    private com.rameses.rcp.control.XTextField xTextField3;
+    private com.rameses.rcp.control.XTextField xTextField4;
     // End of variables declaration//GEN-END:variables
 }
