@@ -73,7 +73,7 @@ public class DTSProcessingPage extends javax.swing.JPanel {
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "receordlog.datecreated"}
+                new Object[]{"name", "recordlog.datecreated"}
                 , new Object[]{"caption", "Date Created"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
