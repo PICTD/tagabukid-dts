@@ -93,19 +93,27 @@ public class DTSProcessController {
     void receive (){
         mode = "receive"
         title= "RECEIVING"
+        binding.refresh('din');
+        binding.focus('din');
     }
     void outgoing (){
         mode = "outgoing"
         title= "OUTGOING"
+        binding.refresh('din');
+        binding.focus('din');
     }
     void send (){
         mode = "send"
         title= "SENDING"
         entity.sendtype = 'local'
+        binding.refresh('din');
+        binding.focus('din');
     }
     void archive (){
         mode = "archive"
         title= "ARCHIVING"
+        binding.refresh('din');
+        binding.focus('din');
     }
    
     def getHandler(){
