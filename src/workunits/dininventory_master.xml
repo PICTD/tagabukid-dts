@@ -16,7 +16,26 @@
             String serviceName = 'TagabukidDINInventoryService'
             String entityName  = 'din'
             String prefixId    = 'OC'
-            
+        
+            def startseries;
+            def endseries;
+            Map createEntity(){
+                return [dincount:0]
+            }
+        
+            @PropertyChangeListener
+            def listener = [
+                'entity.dincount':{
+                    generateDIN();
+                },
+            ]   
+        
+            void generateDIN(){
+                def currentsequence = service.getNextSequence();
+                binding.refresh('startseries,endseries');
+            }
+
+        
         }
     </code>
     

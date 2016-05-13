@@ -5,10 +5,14 @@
  */
 package tagabukid.dts.master;
 
+import com.rameses.osiris2.themes.FormPage;
+import com.rameses.rcp.ui.annotations.Template;
+
 /**
  *
  * @author rufino
  */
+@Template({FormPage.class})
 public class DINInventoryPage extends javax.swing.JPanel {
 
     /**
@@ -28,56 +32,57 @@ public class DINInventoryPage extends javax.swing.JPanel {
     private void initComponents() {
 
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
-        xNumberField1 = new com.rameses.rcp.control.XNumberField();
-        xTextField1 = new com.rameses.rcp.control.XTextField();
-        xTextField2 = new com.rameses.rcp.control.XTextField();
+        xNumberField2 = new com.rameses.rcp.control.XNumberField();
+        xLabel1 = new com.rameses.rcp.control.XLabel();
+        xLabel2 = new com.rameses.rcp.control.XLabel();
 
-        xNumberField1.setCaption("No. of DIN to Generate");
-        xNumberField1.setCaptionWidth(130);
-        xNumberField1.setName("entity.dincount"); // NOI18N
-        xFormPanel1.add(xNumberField1);
+        xNumberField2.setCaption("No. of DIN");
+        xNumberField2.setCaptionWidth(130);
+        xNumberField2.setName("entity.dincount"); // NOI18N
+        xFormPanel1.add(xNumberField2);
 
-        xTextField1.setCaption("Start series");
-        xTextField1.setCaptionWidth(130);
-        xTextField1.setDepends(new String[] {"entity.dincount"});
-        xTextField1.setName("startseries"); // NOI18N
-        xTextField1.setReadonly(true);
-        xFormPanel1.add(xTextField1);
+        xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel1.setCaption("Start Series");
+        xLabel1.setCaptionWidth(130);
+        xLabel1.setDepends(new String[] {"entity.dincount"});
+        xLabel1.setExpression("#{startseries}");
+        xLabel1.setOpaque(true);
+        xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel1.add(xLabel1);
 
-        xTextField2.setCaption("End series");
-        xTextField2.setCaptionWidth(130);
-        xTextField2.setDepends(new String[] {"entity.dincount"});
-        xTextField2.setName("endseries"); // NOI18N
-        xTextField2.setReadonly(true);
-        xFormPanel1.add(xTextField2);
+        xLabel2.setBorder(new com.rameses.rcp.control.border.XLineBorder());
+        xLabel2.setCaption("End Series");
+        xLabel2.setCaptionWidth(130);
+        xLabel2.setDepends(new String[] {"entity.dincount"});
+        xLabel2.setExpression("#{endseries}");
+        xLabel2.setFontStyle("");
+        xLabel2.setOpaque(true);
+        xLabel2.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel1.add(xLabel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(211, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(211, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
-    private com.rameses.rcp.control.XNumberField xNumberField1;
-    private com.rameses.rcp.control.XTextField xTextField1;
-    private com.rameses.rcp.control.XTextField xTextField2;
+    private com.rameses.rcp.control.XLabel xLabel1;
+    private com.rameses.rcp.control.XLabel xLabel2;
+    private com.rameses.rcp.control.XNumberField xNumberField2;
     // End of variables declaration//GEN-END:variables
 }
