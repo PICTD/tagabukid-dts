@@ -25,8 +25,11 @@ class SendParametersToManyLocalController
     def getLookupOrg(){
         return Inv.lookupOpener('hrisorg:lookup',[
                 onselect :{
-                    entity.destinations << it;
-                    listHandler.reload(); 
+//                    entity.destinations << it;
+//                    listHandler.reload(); 
+                    selectedItem.OrgUnitId = it.OrgUnitId
+                    selectedItem.name = it.Entity.Name
+                    selectedItem.code = it.Entity.AcronymAbbreviation
                 }
             ])
     }
@@ -46,6 +49,9 @@ class SendParametersToManyLocalController
                 return true;
             }
             return false;
+        },
+        onAddItem : {
+            entity.destinations << it;
         },
         validate:{li->
             def item=li.item;

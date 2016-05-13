@@ -41,12 +41,14 @@ public class DINInventoryPage extends javax.swing.JPanel {
         xTextField1.setCaptionWidth(130);
         xTextField1.setDepends(new String[] {"entity.dincount"});
         xTextField1.setName("startseries"); // NOI18N
+        xTextField1.setReadonly(true);
         xFormPanel1.add(xTextField1);
 
         xTextField2.setCaption("End series");
         xTextField2.setCaptionWidth(130);
         xTextField2.setDepends(new String[] {"entity.dincount"});
         xTextField2.setName("endseries"); // NOI18N
+        xTextField2.setReadonly(true);
         xFormPanel1.add(xTextField2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

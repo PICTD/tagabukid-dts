@@ -40,7 +40,7 @@ public class SendToManyLocalPage extends javax.swing.JPanel {
 
         xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "Entity.Name"}
+                new Object[]{"name", "name"}
                 , new Object[]{"caption", "Name"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
@@ -51,10 +51,10 @@ public class SendToManyLocalPage extends javax.swing.JPanel {
                 , new Object[]{"editable", true}
                 , new Object[]{"editableWhen", null}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.Entity.Name}", "lookupOrg")}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.name}", "lookupOrg")}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "Entity.AcronymAbbreviation"}
+                new Object[]{"name", "code"}
                 , new Object[]{"caption", "Code"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
