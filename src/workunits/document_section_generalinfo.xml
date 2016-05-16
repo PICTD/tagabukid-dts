@@ -2,8 +2,8 @@
     <invokers>
         <invoker type="dts:section" caption="General Info" action="init" index="-100" />
         
-        <invoker type="extActions" caption="Print"  icon="images/toolbars/printer.png" 
-            action="print"/>
+<!--        <invoker type="extActions" caption="Print"  icon="images/toolbars/printer.png" 
+            action="print"/>-->
 
     </invokers>
     

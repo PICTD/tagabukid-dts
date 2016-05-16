@@ -5,29 +5,34 @@
     
     <code>
     <![CDATA[    
-import com.rameses.rcp.annotations.*;
-import com.rameses.rcp.common.*;
-import com.rameses.osiris2.client.*;
-import com.rameses.osiris2.common.*;
-import com.rameses.osiris2.reports.*;
+    import com.rameses.rcp.annotations.*;
+    import com.rameses.rcp.common.*;
+    import com.rameses.osiris2.client.*;
+    import com.rameses.osiris2.common.*;
+    import com.rameses.osiris2.reports.*;
 
-class DTSDinPrintoutController extends ReportController {
-    
-    @FormId
-    String formId;
-    
-    @FormTitle
-    String formTitle;
+    class DTSDinPrintoutController extends ReportController {
 
-    def entity;
-    def title = "Document Identification Number";
+        @FormId
+        String formId;
 
-    final String REPORT_PATH = "tagabukid/dts/reports/"; 
-    String reportName = REPORT_PATH + 'main.jasper'; 
+        @FormTitle
+        String formTitle;
+        
+        
+        @Service("TagabukidDINInventoryService")
+        def svc;
 
-    def getReportData() { 
-        return [din:entity.din,barcode:"71007:"+entity.din]; 
-    } 
+        def entity;
+        def title = "Document Identification Number";
+
+        final String REPORT_PATH = "tagabukid/dts/reports/"; 
+        String reportName = REPORT_PATH + 'dinmain.jasper'; 
+
+        def getReportData() { 
+            //return [[din:entity.din,barcode:"71007:"+entity.din],[din:entity.din,barcode:"71007:"+entity.din]]; 
+            return svc.getDINs(entity.objid);
+        } 
     } 
     ]]>
     </code>

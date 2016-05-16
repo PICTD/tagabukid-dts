@@ -38,14 +38,14 @@ public class DINInventoryPage extends javax.swing.JPanel {
 
         xNumberField2.setCaption("No. of DIN");
         xNumberField2.setCaptionWidth(130);
-        xNumberField2.setName("entity.dincount"); // NOI18N
+        xNumberField2.setName("entity.qty"); // NOI18N
         xFormPanel1.add(xNumberField2);
 
         xLabel1.setBorder(new com.rameses.rcp.control.border.XLineBorder());
         xLabel1.setCaption("Start Series");
         xLabel1.setCaptionWidth(130);
         xLabel1.setDepends(new String[] {"entity.dincount"});
-        xLabel1.setExpression("#{startseries}");
+        xLabel1.setExpression("${entity.startseries}");
         xLabel1.setOpaque(true);
         xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
         xFormPanel1.add(xLabel1);
@@ -54,7 +54,7 @@ public class DINInventoryPage extends javax.swing.JPanel {
         xLabel2.setCaption("End Series");
         xLabel2.setCaptionWidth(130);
         xLabel2.setDepends(new String[] {"entity.dincount"});
-        xLabel2.setExpression("#{endseries}");
+        xLabel2.setExpression("${entity.endseries}");
         xLabel2.setFontStyle("");
         xLabel2.setOpaque(true);
         xLabel2.setPreferredSize(new java.awt.Dimension(0, 16));
@@ -66,8 +66,8 @@ public class DINInventoryPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
