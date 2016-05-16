@@ -39,6 +39,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         xTextArea2 = new com.rameses.rcp.control.XTextArea();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
+        xTextField3 = new com.rameses.rcp.control.XTextField();
         xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
@@ -87,6 +88,13 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         xLookupField1.setRequired(true);
         xFormPanel1.add(xLookupField1);
 
+        xTextField3.setCaption("DIN");
+        xTextField3.setCaptionWidth(120);
+        xTextField3.setName("entity.din"); // NOI18N
+        xTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
+        xTextField3.setRequired(true);
+        xFormPanel1.add(xTextField3);
+
         xSubFormPanel1.setDepends(new String[] {"entity.documenttype"});
         xSubFormPanel1.setDynamic(true);
         xSubFormPanel1.setHandler("detailHandler");
@@ -106,9 +114,9 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -124,5 +132,6 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XTextArea xTextArea2;
     private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField2;
+    private com.rameses.rcp.control.XTextField xTextField3;
     // End of variables declaration//GEN-END:variables
 }

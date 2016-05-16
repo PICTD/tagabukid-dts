@@ -22,8 +22,13 @@
         </start>
 
         <page name="edit-generalinfo" title="Document Information">
-            <transition to="check-title" caption="Next" name="next" mnemonic="N" immediate="false" />
+            <transition to="check-din" caption="Next" name="next" mnemonic="N" immediate="false" />
         </page>
+        
+        <process name="check-din" action="checkdin">
+            <transition to="edit-generalinfo" cond="#{pass==false}"/>
+            <transition to="check-title" cond="#{pass==true}"/>
+        </process>
         
         <process name="check-title" action="check">
             <transition to="verify-documentname" cond="#{pass==false}"/>

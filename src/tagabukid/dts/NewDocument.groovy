@@ -38,6 +38,12 @@ public class NewDocument extends PageFlowController {
             pass = true;
         }
     }
+    
+    void checkdin() {
+        entity.din = service.verifydin(entity.din); 
+        binding.refresh('entity.din');
+        pass = true
+    }
 
     def verificationListModel = [
         fetchList: { o-> return searchList;}

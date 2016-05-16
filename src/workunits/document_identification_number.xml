@@ -27,7 +27,7 @@
         def title = "Document Identification Number";
 
         final String REPORT_PATH = "tagabukid/dts/reports/"; 
-        String reportName = REPORT_PATH + 'dinmain.jasper'; 
+        String reportName = REPORT_PATH + 'dinmain5.jasper'; 
 
         def getReportData() { 
             //return [[din:entity.din,barcode:"71007:"+entity.din],[din:entity.din,barcode:"71007:"+entity.din]]; 
