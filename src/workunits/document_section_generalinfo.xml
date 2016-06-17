@@ -2,8 +2,7 @@
     <invokers>
         <invoker type="dts:section" caption="General Info" action="init" index="-100" />
         
-<!--        <invoker type="extActions" caption="Print"  icon="images/toolbars/printer.png" 
-            action="print"/>-->
+        <invoker type="extActions" caption="Open Child" action="showChild" visibleWhen="#{selectedItem!=null}"/>
 
     </invokers>
     
@@ -29,6 +28,7 @@
             
             def entity;
             def attachmentSelectedItem;
+            def selectedItem;
             
             def attachmentListHandler = [
                 fetchList : { return entity.attachments },
@@ -82,6 +82,14 @@
                 def op = Inv.lookupOpener( "dts:din", [entity: entity] );
                 op.target = 'self';
                 return op;
+            }
+
+            def showChild() {
+                if( !selectedItem.objid )
+                    throw new Exception("No parent document");
+                def child = [:]
+                child.objid = selectedItem.objid   
+                return Inv.lookupOpener( "dts:open", [entity: child] ); 
             }
         }
         ]]>

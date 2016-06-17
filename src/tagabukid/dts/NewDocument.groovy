@@ -40,7 +40,9 @@ public class NewDocument extends PageFlowController {
     }
     
     void checkdin() {
-        entity.din = service.verifydin(entity.din); 
+        def dininv = service.verifydin(entity.din); 
+        entity.din = dininv.din
+        entity.dininventoryid = dininv.inv.objid
         binding.refresh('entity.din');
         pass = true
     }
@@ -134,6 +136,25 @@ public class NewDocument extends PageFlowController {
                 ])
         }
     }
+    
+    def listHandler = [
+        fetchList : { return entity.child },
+        onRemoveItem : {
+            if (MsgBox.confirm('Delete item?')){                
+                entity.child.remove(it)
+                listHandler?.load();
+                return true;
+            }
+            return false;
+        },
+        onColumnUpdate:{item,colName ->
+            entity.child.each{y ->
+                if (item.din == y.din){
+                    y.message = item.remarks
+                }
+            }
+        }
+    ] as EditorListModel
             
           
 }

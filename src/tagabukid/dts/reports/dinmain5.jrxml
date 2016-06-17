@@ -58,9 +58,9 @@
 				<image  scaleImage="FillFrame" vAlign="Top" hAlign="Center" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
 					<reportElement
 						mode="Opaque"
-						x="4"
+						x="28"
 						y="80"
-						width="257"
+						width="211"
 						height="37"
 						forecolor="#000000"
 						backcolor="#FFFFFF"

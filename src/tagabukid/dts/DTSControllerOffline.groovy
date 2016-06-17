@@ -5,7 +5,7 @@ import com.rameses.osiris2.common.*
 import java.rmi.server.*;
 import com.rameses.util.*;
         
-public class DTSProcessController {
+public class DTSProcessOfflineController {
     @Binding
     def binding;
     
@@ -81,9 +81,9 @@ public class DTSProcessController {
     }
 
     public def barcodesearch(){
-//        if (!din){
-//            throw new Exception("Invalid DIN");
-//        }
+        //        if (!din){
+        //            throw new Exception("Invalid DIN");
+        //        }
         entity.searchtext = din
         entity.mode = mode
         searchdocument()
@@ -120,18 +120,16 @@ public class DTSProcessController {
         if(mode!="INIT"){
             if(mode=="send"){
                 return InvokerUtil.lookupOpener(entity.sendtype+':form',[
-                    entity: entity
-                ]) 
+                        entity: entity
+                    ]) 
             }else{
                 return InvokerUtil.lookupOpener(mode+':form',[
-                    entity: entity
-                ])  
+                        entity: entity
+                    ])  
             }
             
         }
     }
-    
-    
     
     void save(){
         
@@ -146,12 +144,18 @@ public class DTSProcessController {
         
         entity.document = document
         entity.mode = mode
-        def result = svc.processDocument(entity)
-        
-        if(result){
+        try{
+            svc.processDocument(entity)
             MsgBox.alert("Transcation Successfull")
             init()
+        } catch(Warning w) {
+            Modal.show( 'document_redflag:warning', [list: w.info.list] );
+            throw new BreakException();
+        } catch(e) {
+            throw e;
         }
+       
+        
     }
     
     void checkDuplicate(listtofilter,item){

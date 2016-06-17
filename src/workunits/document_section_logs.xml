@@ -1,6 +1,7 @@
 <workunit>
     <invokers>
         <invoker type="dts:section" caption="Logs" index="-100" />
+        <invoker type="formActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
     </invokers>
     
    <code>
@@ -32,7 +33,7 @@
             def listModel = [
                 fetchList: {
                     String processname = (String) controller.workunit.workunit.properties.processname;
-                    tasks = service.getList( [processname:processname, refid: entity.objid] );
+                    tasks = service.getList( [processname:processname, refid: entity.objid, taskid: entity.taskid] );
                     computeDurations();
                     return tasks;
                 }
@@ -83,6 +84,15 @@
                 if (enddate == null) 
                     enddate = currdate 
                 return ( ( enddate.time - startdate.time) / 1000.0 / 60.0 ) as int;
+            }
+            
+            def offlineReconciliation() {
+                if(!selectedItem) throw new Exception('Please select an item');
+                def h = {
+                    listModel.reload();
+                }
+                def rf = [documentid: entity.objid,task:selectedItem];
+                return Inv.lookupOpener( "document_offlinereconciliation:create", [entity: rf, handler: h] );
             }
         }
     ]]>

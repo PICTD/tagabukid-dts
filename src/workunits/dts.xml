@@ -11,7 +11,7 @@
         
         <invoker type="formActions" caption="Close" action="_close" />
         <!--<invoker type="formActions" caption="Edit" action="showEditMenu" icon="images/toolbars/edit.png"/>--> 
-        <!--<invoker type="formActions" caption="View Owner" action="showOwner" immediate="true" />--> 
+        <invoker type="formActions" caption="View Parent" action="showParent" immediate="true" visibleWhen="#{entity.parentid!=null}"/> 
         <!--<invoker type="formActions" caption="Send SMS" action="createSMS" immediate="true" />--> 
     </invokers>
     
@@ -54,7 +54,7 @@
             }
             
             void open() {
-                entity = service.open( [objid: entity?.objid,barcodeid: barcodeid ] );
+                entity = service.open( [objid: entity?.objid,barcodeid: barcodeid,taskid:entity?.taskid ] );
                 title = entity.title + ' (' + entity.din + ')';
                 loadSections();
                 formId = entity.objid;
@@ -77,6 +77,15 @@
             void reloadCurrentSection() {
                 MsgBox.alert( currentSection.name );
             }
+                
+            def showParent() {
+                if( !entity.parentid )
+                    throw new Exception("No parent document");
+                def parent = [:]
+                parent.objid = entity.parentid   
+                return Inv.lookupOpener( "dts:open", [entity: parent] ); 
+            }
+
         }
     ]]>
     </code>

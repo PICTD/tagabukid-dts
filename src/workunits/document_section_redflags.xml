@@ -1,6 +1,9 @@
 <workunit>
     <invokers>
-        <invoker type="xdts:section" caption="Red Flags" index="-100" />
+        <invoker type="dts:section" caption="Red Flags" index="-100" />
+        <invoker type="formActions" caption="Add Red Flag" action="addRedflag"/>
+        <invoker type="formActions" caption="Open Red Flag" action="openRedflag" />
+        <invoker type="formActions" caption="Resolve" action="resolveRedflag"/>
     </invokers>
     
     <code>
@@ -9,60 +12,57 @@
         import com.rameses.rcp.common.*
         import com.rameses.osiris2.client.*
         import com.rameses.osiris2.common.*
-        import java.rmi.server.*
-        import tagabukid.utils.*;
+        import java.rmi.server.*;
+        import com.rameses.osiris2.reports.*;
         
-        class  DocumentGeneralInfoController  {
+        class  DocumentredflagController  {
         
-            @Binding
-            def binding;
-
-            @Service("TagbukidDTSService")
-            def svc;
-            
-            String title = "General Info";
-            String entityName = "dts:generalinfo";
-            
             def entity;
-            def attcachmentSelectedItem;
+            def title = "Red Flags"
             
-            def attachmentListHandler = [
-                fetchList : { return entity.attachments },
-            ] as BasicListModel
+            @Service("TagaBukidRedflagService")
+            def service;
             
-            void loadAttachments(){
-                entity.attachments = [];
-                try{
-                    entity.attachments = TagabukidDBImageUtil.getInstance().getImages(entity?.objid);
+            def selectedItem;
+            
+            def redflagListModel = [
+                fetchList: { o->
+                    return service.getList( entity );
                 }
-                catch(e){
-                    println 'Load Attachment error ============';
-                    e.printStackTrace();
+            ] as BasicListModel;
+            
+            def addRedflag() {
+                def h = {
+                    redflagListModel.reload();
                 }
-                attachmentListHandler?.load();
+                def rf = [documentid: entity.objid];
+                return Inv.lookupOpener( "document_redflag:create", [entity: rf, handler: h] );
             }
-
-            def viewAttachment(){
-                if (!attachmentSelectedItem) return null;
-
-                if (attachmentSelectedItem.extension.contains("pdf")){
-                   return InvokerUtil.lookupOpener('attachmentpdf:view', [
-                        entity : attachmentSelectedItem,
-                    ]); 
-                }else{
-                    return InvokerUtil.lookupOpener('attachment:view', [
-                        entity : attachmentSelectedItem,
-                    ]); 
+            
+            def openRedflag() {
+                if(!selectedItem) throw new Exception('Please select an item');
+                if(!service.isallowedtoopen(OsirisContext.env.USERID,selectedItem.filedby.objid)) throw new Exception('You are not allowed to edit this red flag.');
+                
+                def h = {
+                    redflagListModel.reload();
                 }
-
+                return Inv.lookupOpener( "document_redflag:open", [entity:selectedItem, handler: h] );
             }
+            
+            def resolveRedflag() {
+                if(!selectedItem) throw new Exception('Please select an item');
+                def h = {
+                    redflagListModel.reload();
+                }
+                return Inv.lookupOpener( "document_redflag:resolve", [entity:selectedItem, handler: h] );
+            }
+            
         }
         ]]>
     </code>
-
     
     <pages>
-        <page  template="tagabukid.dts.view.DocumentGeneralInfo"/>
+        <page template="com.rameses.gov.etracs.bpls.business.RedflagListPage"/>
     </pages>
     
 </workunit>

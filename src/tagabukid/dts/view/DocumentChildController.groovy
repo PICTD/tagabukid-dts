@@ -20,7 +20,7 @@ class DocumentChildController
     //]
          
     void init(){
-        entity.child =[];
+        //entity.child =[];
         din = "";
         listHandler?.load();
     }
