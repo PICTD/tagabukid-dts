@@ -8,9 +8,9 @@
         <invoker type="formActions" caption="Save" action="save" visibleWhen="#{mode!='INIT' }" name="save" index="2004"/>
         <invoker type="formActions" caption="Reset" mnemonic="r" shortcut="F5" action="init" visibleWhen="#{mode!='INIT'}" index="2005" />
     </invokers>
-    <code class="tagabukid.dts.DTSControllerOnline"/>
+    <code class="tagabukid.dts.DTSController"/>
     <pages>
-        <page template="tagabukid.dts.DTSProcessingOnlinePage"/>
+        <page template="tagabukid.dts.DTSProcessingPage"/>
     </pages>
     
 </workunit>
