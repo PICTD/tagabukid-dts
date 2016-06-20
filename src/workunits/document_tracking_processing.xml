@@ -10,7 +10,7 @@
     </invokers>
     <code class="tagabukid.dts.DTSController"/>
     <pages>
-        <page template="tagabukid.dts.DTSProcessingPage"/>
+        <page template="tagabukid.dts.DTSProcessingOnlinePage"/>
     </pages>
     
 </workunit>

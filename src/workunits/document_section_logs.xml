@@ -45,10 +45,18 @@
                 tasks.each{
                     it.mins = timeDiffInMinutes( it.enddate, it.startdate, currdate)
                     it.duration = durationToStr(it.mins)
+                    if(it.state == "offline"){
+                        it.offlinemins = timeDiffInMinutes( it.enddate, it.startdate, currdate)
+                    }else{
+                        it.offlinemins = 0
+                    }
                 }
                 duration = '';
-                if (tasks)
-                    duration = durationToStr( tasks.mins.sum());
+                if (tasks){
+                    duration = durationToStr(tasks.mins.sum() - tasks.offlinemins.sum());
+                    //duration = durationToStr(tasks.offlinemins.sum());
+                    //println tasks
+                }
             }
             
            def durationToStr(totalduration){

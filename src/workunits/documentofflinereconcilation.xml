@@ -34,14 +34,14 @@
             
             void init() {
                 mode = 'create'
-                entity.objid = "DRF"+new UID();
                 entity.din = caller?.entity.din;
                 entity.title = caller?.entity.title;
                 entity.author = caller?.entity.author;
                 entity.description = caller?.entity.description;
                 entity.documenttype = [name:caller?.entity.documenttype.name];
                 entity.recordlog = [datecreated:caller?.entity.recordlog.datecreated,createdbyuser:caller?.entity.recordlog.createdbyuser];
-                entity.state = entity.task.state;
+                entity.prevtask = caller?.entity;
+                entity.state = caller?.entity.state;
                 entity.refid = caller?.entity.objid;
                 entity.org = null;
             }
