@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workunit>
+    <invokers>
+        <invoker type="btacsapprover:create" action="init" caption="BTACS Approver" />
+        <invoker type="btacsapprover:open" action="open" caption="BTACS Approver" />
+    </invokers>
+        
+    <code lang="groovy">
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import com.rameses.osiris2.common.*;
+        
+        public class BTACSApproverController extends CRUDController
+        {
+            String serviceName = 'TagabukidBTACSApproverService'
+            String entityName  = 'btacsapprover'
+            String prefixId    = 'BA'
+
+          
+            def getLookupBTACSApprover(){
+                return Inv.lookupOpener('btacsapprover:lookup',[
+                        onselect :{
+                            it.fullname = it.Name.FirstName + " " + it.Name.MiddleName + " " + it.Name.LastName
+                            entity.hrmisprofile = it;
+                        },
+
+                        onempty: {
+                            //
+                        }
+                ])
+            }
+            
+        }
+    </code>
+    
+    <pages>
+        <page template="tagabukid.dts.doctype.btacsreconciliation.BTACSApproverPage" />
+    </pages>
+</workunit>

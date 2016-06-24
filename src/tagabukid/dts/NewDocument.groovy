@@ -10,7 +10,7 @@ import tagabukid.utils.*;
 public class NewDocument extends PageFlowController {
             
     @Script("DocumentInfoUtil")
-    def document
+    def docinfo
             
     @Service("TagabukidDTSService")
     def service
@@ -157,4 +157,13 @@ public class NewDocument extends PageFlowController {
     ] as EditorListModel
             
           
+     void updateInfo() {
+        boolean test = false;
+        docinfo.handler = {
+            test = true;
+        }
+        Modal.show(docinfo.update());
+        if(!test) throw new BreakException();
+        docinfo.verify();
+    }
 }

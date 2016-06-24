@@ -1,0 +1,36 @@
+<workunit extends="wtemplates/LookupController.xml">
+    
+    <invokers>
+        
+        <invoker type="btacsapprover:lookup" caption="BTACS Approver" target="popup" > </invoker>
+        
+    </invokers>
+     <code>
+
+        import com.rameses.rcp.common.*
+        import com.rameses.rcp.annotations.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+
+        class BTACSApproverLookupController extends LookupController
+        {
+            @Service("TagabukidDTSLookupService")
+            def svc
+
+            def state;
+
+            Column[] getColumns() {
+                return [
+                    new Column(name:"Name.LastName", caption:"Code", width:250),
+                    new Column(name:"Name.FirstName", caption:"Name", width:250),
+                    new Column(name:"Name.MiddleName", caption:"Address", width:250),
+                ]
+            }
+
+            List fetchList( Map params ) { 
+                return svc.lookupBTACSApprover(params)
+            }
+        }  
+
+    </code>
+</workunit>

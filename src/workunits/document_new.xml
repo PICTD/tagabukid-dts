@@ -42,7 +42,7 @@
 
         <page name="edit-attachments" title="Document Attachments">
             <transition to="edit-generalinfo" caption="Back" mnemonic="B" name="back" />
-            <transition to="confirm" caption="Next" name="next" mnemonic="N"/>
+            <transition to="confirm" caption="Next" name="next" mnemonic="N" action="updateInfo"/>
         </page>
 
         <page name="confirm" title="Confirm New Document">

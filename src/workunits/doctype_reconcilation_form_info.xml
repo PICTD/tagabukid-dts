@@ -1,0 +1,49 @@
+<workunit>
+    
+    <invokers>
+        <invoker type="RF:app" caption="Edit Document Info" action="start" target="popup"/>
+    </invokers>
+    
+    <code>
+        <![CDATA[    
+        import com.rameses.rcp.annotations.*
+        import com.rameses.rcp.common.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+        import java.rmi.server.*;
+        
+        public class RFEditInfoController {
+        @Binding
+        def binding;
+        
+        def entity;
+        def existingInfos = [];
+        
+        @FormTitle
+        def title;
+        
+         def getLookupOrg(){
+                return Inv.lookupOpener('hrisorg:lookup',[
+                        onselect :{
+                            entity.docinfo.org = it;
+                        },
+                ])
+        }
+
+        def getLookupApprover(){
+            return Inv.lookupOpener('etracsuserorg:lookup',[
+                    onselect :{
+                        entity.docinfo.signatory = it;
+                    },
+            ])
+        }
+        }
+        ]]>
+        
+    </code>
+    
+    <pages>
+        <page template="tagabukid.btacs.reconcilation.ReconcilationPage"/>
+    </pages>
+    
+</workunit>
