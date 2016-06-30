@@ -1,7 +1,7 @@
 <workunit>
     
     <invokers>
-        <invoker type="RF:app" caption="Edit Document Info" action="start" target="popup"/>
+        <invoker type="RF:app" caption="Edit Document Info" action="init" target="popup"/>
     </invokers>
     
     <code>
@@ -11,31 +11,185 @@
         import com.rameses.osiris2.client.*
         import com.rameses.osiris2.common.*
         import java.rmi.server.*;
+        import com.rameses.util.*;
+        import tagabukid.utils.*;
         
-        public class RFEditInfoController {
+        public class RFEditInfoController{
         @Binding
         def binding;
         
-        def entity;
-        def existingInfos = [];
+        @Service("TagabukidBTACSRFEditInfoService")
+        def svc
         
+        def entity;
+        def handler;
+        def docinfo = [:];
+        def selectedPersonnel;
+        def selectedReconciliationItem;
         @FormTitle
         def title;
+      
+        void init(){
+            //docinfo.putAll(entity)
+            docinfo.personnels = []
+            docinfo.state = null
+            docinfo.recordlog = [:]
+        }
         
-         def getLookupOrg(){
+        void entityChanged(){
+            personnelHandler.reload();
+            reconciliationItemHandler.reload();
+
+        }
+        def personnelHandler = [
+            getRows : {docinfo.personnels.size() + 1 },
+            fetchList: {docinfo.personnels },
+            createItem : {
+                return[
+                    objid : 'P' + new java.rmi.server.UID(),
+                    items: [],
+                ]
+            },
+            onRemoveItem : {
+                if (MsgBox.confirm('Delete item?')){              
+                    docinfo.personnels.remove(it)
+                    entityChanged()
+                    return true;
+                }
+                return false;
+            },
+            onAddItem : {
+                docinfo.personnels << it;
+            }
+        ] as EditorListModel; 
+        
+                
+        def reconciliationItemHandler = [
+            fetchList: { return selectedPersonnel?.items },
+            createItem : {
+                return[
+                    objid : 'RI' + new java.rmi.server.UID(),
+                    state : false,
+                    remarks : null,
+                ]
+            },
+            onRemoveItem : {
+                if (MsgBox.confirm('Delete item?')){              
+                    selectedPersonnel.items.remove(it)
+                    entityChanged()
+                    return true;
+                }
+                return false;
+            },
+            onAddItem : {
+                selectedPersonnel.items << it
+            },
+            validate:{li->
+            }
+        ] as EditorListModel; 
+        
+        def getLookupOrg(){
                 return Inv.lookupOpener('hrisorg:lookup',[
                         onselect :{
-                            entity.docinfo.org = it;
+                            docinfo.organizationid = it.OrgUnitId.toString();
+                            docinfo.organizationname = it.Entity.Name;
+                            docinfo.organizationcode = it.Entity.AcronymAbbreviation;
                         },
                 ])
         }
 
-        def getLookupApprover(){
-            return Inv.lookupOpener('etracsuserorg:lookup',[
+        def getLookupSignatory(){
+            return Inv.lookupOpener('btacssignatory:lookup',[
                     onselect :{
-                        entity.docinfo.signatory = it;
+                        docinfo.signatoryname = it.NAME;
+                        docinfo.signatoryposition = it.POSITION;
                     },
             ])
+        }
+        
+        def getLookupHrisProfile(){
+            return Inv.lookupOpener('btacspersonnel:lookup',[
+                    onselect :{
+                        selectedPersonnel.personnelid = it.PersonId.toString()
+                        selectedPersonnel.fullname = it.fullname
+                    }
+                ])
+        }
+        
+        def getLookupReconciliationType(){
+            return Inv.lookupOpener('btacsleaveclass:lookup',[
+                    onselect :{
+                        selectedReconciliationItem.leaveclassid = it.LeaveId
+                        selectedReconciliationItem.LeaveName = it.LeaveName
+                        selectedReconciliationItem.AttachmentRequired = it.AttachmentRequired
+                    }
+                ])
+        }
+       
+        def attachmentListHandler = [
+            fetchList : { return selectedReconciliationItem?.attachments },
+        ] as BasicListModel
+
+        void loadAttachments(){
+            selectedReconciliationItem.attachments = [];
+            try{
+                selectedReconciliationItem.attachments = TagabukidDBImageUtil.getInstance().getImages(selectedReconciliationItem?.objid);
+            }
+            catch(e){
+                println 'Load Attachment error ============';
+                e.printStackTrace();
+            }
+            attachmentListHandler?.load();
+        }
+
+        def addAttachment(){
+            return InvokerUtil.lookupOpener('upload:attachment', [
+                    entity : selectedReconciliationItem,
+                    afterupload: {
+                        loadAttachments();
+                    }
+                ]);
+        }
+
+        void deleteAttachment(){
+            if (!attachmentSelectedItem) return;
+            if (MsgBox.confirm('Delete selected Attachment?')){
+                TagabukidDBImageUtil.getInstance().deleteImage(attachmentSelectedItem.objid);
+                loadAttachments();
+            }
+        }
+
+
+        def viewAttachment(){
+            if (!attachmentSelectedItem) return null;
+
+            if (attachmentSelectedItem.extension.contains("pdf")){
+                return InvokerUtil.lookupOpener('attachmentpdf:view', [
+                        entity : attachmentSelectedItem,
+                    ]); 
+            }else{
+                return InvokerUtil.lookupOpener('attachment:view', [
+                        entity : attachmentSelectedItem,
+                    ]); 
+            }
+
+        }
+        def saveinfo(){
+            if (docinfo.personnels.size == 0) 
+            throw new Exception("At least one(1) personnel is required");
+            
+            docinfo.personnels.each{
+                if (it.items.size == 0) 
+                throw new Exception("At least one(1) reconciliation items for " + it.fullname + " is required");
+                
+                it.items.each{
+                    if (it.AttachmentRequired == true && it.attachments.size == 0)
+                    throw new Exception("At least one(1) attachment for " + it.LeaveName + " is required");
+                }
+            }
+            
+            if(handler) handler( docinfo );
+            return '_close';
         }
         }
         ]]>
@@ -43,7 +197,7 @@
     </code>
     
     <pages>
-        <page template="tagabukid.btacs.reconcilation.ReconcilationPage"/>
+        <page template="tagabukid.dts.doctype.btacsreconciliation.ReconcilationPage"/>
     </pages>
     
 </workunit>

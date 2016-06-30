@@ -162,8 +162,13 @@ public class NewDocument extends PageFlowController {
         docinfo.handler = {
             test = true;
         }
+        try{
         Modal.show(docinfo.update());
         if(!test) throw new BreakException();
-        docinfo.verify();
+        }catch(e){
+            
+        }
+    
+        //docinfo.verify();
     }
 }
