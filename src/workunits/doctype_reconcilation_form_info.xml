@@ -23,17 +23,22 @@
         
         def entity;
         def handler;
-        def docinfo = [:];
+        //def docinfo = [:];
         def selectedPersonnel;
         def selectedReconciliationItem;
         @FormTitle
         def title;
+        def mode = "INIT";
       
         void init(){
-            //docinfo.putAll(entity)
-            docinfo.personnels = []
-            docinfo.state = null
-            docinfo.recordlog = [:]
+            if(!entity.docinfo.objid){
+                entity.docinfo.personnels = []
+                entity.docinfo.state = null
+                entity.docinfo.recordlog = [:]
+                mode = "INIT";
+            }else{
+                mode = "READ";
+            }
         }
         
         void entityChanged(){
@@ -42,8 +47,8 @@
 
         }
         def personnelHandler = [
-            getRows : {docinfo.personnels.size() + 1 },
-            fetchList: {docinfo.personnels },
+            getRows : {entity.docinfo.personnels.size() + 1 },
+            fetchList: {entity.docinfo.personnels },
             createItem : {
                 return[
                     objid : 'P' + new java.rmi.server.UID(),
@@ -52,14 +57,14 @@
             },
             onRemoveItem : {
                 if (MsgBox.confirm('Delete item?')){              
-                    docinfo.personnels.remove(it)
+                    entity.docinfo.personnels.remove(it)
                     entityChanged()
                     return true;
                 }
                 return false;
             },
             onAddItem : {
-                docinfo.personnels << it;
+                entity.docinfo.personnels << it;
             }
         ] as EditorListModel; 
         
@@ -91,9 +96,9 @@
         def getLookupOrg(){
                 return Inv.lookupOpener('hrisorg:lookup',[
                         onselect :{
-                            docinfo.organizationid = it.OrgUnitId.toString();
-                            docinfo.organizationname = it.Entity.Name;
-                            docinfo.organizationcode = it.Entity.AcronymAbbreviation;
+                            entity.docinfo.organizationid = it.OrgUnitId.toString();
+                            entity.docinfo.organizationname = it.Entity.Name;
+                            entity.docinfo.organizationcode = it.Entity.AcronymAbbreviation;
                         },
                 ])
         }
@@ -101,8 +106,8 @@
         def getLookupSignatory(){
             return Inv.lookupOpener('btacssignatory:lookup',[
                     onselect :{
-                        docinfo.signatoryname = it.NAME;
-                        docinfo.signatoryposition = it.POSITION;
+                        entity.docinfo.signatoryname = it.NAME;
+                        entity.docinfo.signatoryposition = it.POSITION;
                     },
             ])
         }
@@ -120,7 +125,7 @@
             return Inv.lookupOpener('btacsleaveclass:lookup',[
                     onselect :{
                         selectedReconciliationItem.leaveclassid = it.LeaveId
-                        selectedReconciliationItem.LeaveName = it.LeaveName
+                        selectedReconciliationItem.leavename = it.LeaveName
                         selectedReconciliationItem.AttachmentRequired = it.AttachmentRequired
                     }
                 ])
@@ -175,10 +180,10 @@
 
         }
         def saveinfo(){
-            if (docinfo.personnels.size == 0) 
+            if (entity.docinfo.personnels.size == 0) 
             throw new Exception("At least one(1) personnel is required");
             
-            docinfo.personnels.each{
+            entity.docinfo.personnels.each{
                 if (it.items.size == 0) 
                 throw new Exception("At least one(1) reconciliation items for " + it.fullname + " is required");
                 
@@ -188,7 +193,7 @@
                 }
             }
             
-            if(handler) handler( docinfo );
+            if(handler) handler( entity.docinfo );
             return '_close';
         }
         }

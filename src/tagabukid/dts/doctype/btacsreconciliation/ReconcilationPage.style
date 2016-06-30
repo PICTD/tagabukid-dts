@@ -1,0 +1,17 @@
+"entity.docinfo.organizationname|entity.docinfo.signatoryname|selectedPersonnel|attachmentSelectedItem" [mode == "READ"] {
+    readonly:true;
+}
+"entity.docinfo.organizationname|entity.docinfo.signatoryname|selectedPersonnel|attachmentSelectedItem" [mode != "READ"] {
+    readonly:false;
+}
+
+"addAttachment|deleteAttachment" [mode != "READ"] {
+    enabled:true;
+}
+
+"addAttachment|deleteAttachment" [mode == "READ"] {
+    enabled:false;
+}
+
+
+

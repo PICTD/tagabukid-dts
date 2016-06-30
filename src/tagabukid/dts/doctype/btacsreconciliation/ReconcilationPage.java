@@ -5,10 +5,13 @@
  */
 package tagabukid.dts.doctype.btacsreconciliation;
 
+import com.rameses.rcp.ui.annotations.StyleSheet;
+
 /**
  *
  * @author rufino
  */
+@StyleSheet
 public class ReconcilationPage extends javax.swing.JPanel {
 
     /**
@@ -44,18 +47,18 @@ public class ReconcilationPage extends javax.swing.JPanel {
         xFormPanel1.setCaptionWidth(100);
 
         xLookupField1.setCaption("Office/ Division");
-        xLookupField1.setExpression("#{docinfo.organizationname}");
+        xLookupField1.setExpression("#{entity.docinfo.organizationname}");
         xLookupField1.setHandler("lookupOrg");
-        xLookupField1.setName("docinfo.organizationname"); // NOI18N
+        xLookupField1.setName("entity.docinfo.organizationname"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xLookupField1.setRequired(true);
         xFormPanel1.add(xLookupField1);
 
         xLookupField2.setCaption("Approved By");
-        xLookupField2.setExpression("#{docinfo.signatoryname}");
+        xLookupField2.setExpression("#{entity.docinfo.signatoryname}");
         xLookupField2.setFontStyle("");
         xLookupField2.setHandler("lookupSignatory");
-        xLookupField2.setName("docinfo.signatoryname"); // NOI18N
+        xLookupField2.setName("entity.docinfo.signatoryname"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xLookupField2.setRequired(true);
         xFormPanel1.add(xLookupField2);
@@ -96,9 +99,9 @@ public class ReconcilationPage extends javax.swing.JPanel {
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
                 , new Object[]{"editable", true}
-                , new Object[]{"editableWhen", null}
+                , new Object[]{"editableWhen", "#{mode == 'INIT'} "}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
-                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler(null, "lookupReconciliationType")}
+                , new Object[]{"typeHandler", new com.rameses.rcp.common.LookupColumnHandler("#{item.LeaveName}", "lookupReconciliationType")}
             }),
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "reconciliationdate"}
@@ -110,7 +113,7 @@ public class ReconcilationPage extends javax.swing.JPanel {
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
                 , new Object[]{"editable", true}
-                , new Object[]{"editableWhen", null}
+                , new Object[]{"editableWhen", "#{mode == 'INIT'}"}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.DateColumnHandler(null, null, null)}
             }),
@@ -124,7 +127,7 @@ public class ReconcilationPage extends javax.swing.JPanel {
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
                 , new Object[]{"editable", true}
-                , new Object[]{"editableWhen", null}
+                , new Object[]{"editableWhen", "#{mode == 'INIT'}"}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.TextColumnHandler()}
             }),
@@ -137,7 +140,8 @@ public class ReconcilationPage extends javax.swing.JPanel {
                 , new Object[]{"required", false}
                 , new Object[]{"resizable", true}
                 , new Object[]{"nullWhenEmpty", true}
-                , new Object[]{"editable", false}
+                , new Object[]{"editable", true}
+                , new Object[]{"editableWhen", "#{mode == 'READ' && item.LeaveName != null}"}
                 , new Object[]{"textCase", com.rameses.rcp.constant.TextCase.NONE}
                 , new Object[]{"typeHandler", new com.rameses.rcp.common.CheckBoxColumnHandler(java.lang.Boolean.class, "draft", "approved")}
             })
@@ -149,7 +153,7 @@ public class ReconcilationPage extends javax.swing.JPanel {
         xDataTable2.setName("selectedReconciliationItem"); // NOI18N
 
         xButton1.setName("saveinfo"); // NOI18N
-        xButton1.setText("OK");
+        xButton1.setText("Save");
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder4 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder4.setTitle("Attachments");

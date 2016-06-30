@@ -16,7 +16,6 @@
         import tagabukid.utils.*;
         
         class  DocumentGeneralInfoController  {
-        
             @Binding
             def binding;
 
@@ -91,6 +90,8 @@
                 child.objid = selectedItem.objid   
                 return Inv.lookupOpener( "dts:open", [entity: child] ); 
             }
+            
+            
         }
         ]]>
     </code>

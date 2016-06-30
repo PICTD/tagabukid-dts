@@ -1,7 +1,7 @@
 <workunit>
     <invokers>
         <invoker type="dts:section" caption="Logs" index="-100" />
-        <invoker type="formActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
+        <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
     </invokers>
     
    <code>
