@@ -1,5 +1,6 @@
 <workunit extends="wtemplates/ListController.xml" serviceName="TagabukidBTACSApproverService" entityName="btacsapprover" formName="btacsapprover:list">
     <invokers>
-        <invoker type="home.action" caption="BTACS Approver" target="window" index="1"/>
+        <invoker folderid="/explorer/master/dtsuserorganization" caption="BTACS Approver" target="window" index="4"/>
+        <invoker folderid="/home/dts/master" caption="BTACS Approver" target="window" index="4"/>
     </invokers>
 </workunit>

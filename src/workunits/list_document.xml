@@ -2,7 +2,8 @@
      allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="dts">
     <invokers>
         <!--<invoker folderid="/explorer/txn/bpls" caption="Business Permit List"  index="4" role="LICENSING" />-->
-        <invoker type="home.action" caption="Document List"  index="50"/>
+        <invoker folderid="/explorer/txn/dtsdocumentlist" caption="Document List"  index="3"/>
+        <invoker folderid="/home/dts" caption="Document List"  index="3"/>
     </invokers>
     <pages>
         <page name="1queryform" template="tagabukid.dts.DocumentListQueryForm"/>

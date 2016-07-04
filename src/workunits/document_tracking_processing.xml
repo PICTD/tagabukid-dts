@@ -1,6 +1,7 @@
 <workunit>
     <invokers>
-        <invoker type="home.action" caption="DTS" action="init" target="window"  index="1" />
+        <invoker folderid="/explorer/txn/dtstransaction" caption="DTS Transaction" action="init" target="window"  index="2" />        
+        <invoker folderid="/home/dts" caption="DTS Transaction" action="init" target="window"  index="2" />
         <invoker type="formActions" caption="Outgoing" mnemonic="o" shortcut="F1" action="outgoing" visibleWhen="#{mode=='INIT'}" name="outgoing" index="2001"/>
         <invoker type="formActions" caption="Send Document" mnemonic="s" shortcut="F2" action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002"/>
         <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003"/>

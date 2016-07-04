@@ -12,7 +12,7 @@
         <invoker type="formActions" caption="Close" action="_close" />
         <!--<invoker type="formActions" caption="Edit" action="showEditMenu" icon="images/toolbars/edit.png"/>--> 
         <invoker type="formActions" caption="View Parent" action="showParent" immediate="true" visibleWhen="#{entity.parentid!=null}"/> 
-        <invoker type="formActions" caption="Show Document Info" action="showDocInfo" immediate="true" /> 
+        <invoker type="formActions" caption="Show Document Info" action="showDocInfo" immediate="true" visibleWhen="#{entity.docinfo.objid != null}"/> 
         <!--<invoker type="formActions" caption="Send SMS" action="createSMS" immediate="true" />--> 
     </invokers>
     

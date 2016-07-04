@@ -26,8 +26,10 @@ public class Main {
             profile.put("ORGCLASS", "PROVINCE");
             profile.put("MACADDRESS", "6C-3B-E5-7F-F6-E7");
             Map roles = new HashMap();
-            roles.put("LEGISLATIVE.MASTER",null);
-          
+            roles.put("DTS.MASTER",null);
+            roles.put("DTS.SHARED",null);
+            roles.put("DTS.BTACS",null);
+            
             OsirisTestPlatform.runTest(env, roles, profile);
         }
         catch(Exception e){

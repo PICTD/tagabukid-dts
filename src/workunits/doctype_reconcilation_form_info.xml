@@ -2,6 +2,8 @@
     
     <invokers>
         <invoker type="RF:app" caption="Edit Document Info" action="init" target="popup"/>
+        <invoker type="formActions" caption="Save" action="saveinfo" visibleWhen="#{mode == 'INIT'}"/>
+        <invoker type="formActions" caption="Approve" action="approveitems" role="BTACS" visibleWhen="#{mode == 'READ'}"/>
     </invokers>
     
     <code>
@@ -179,6 +181,13 @@
             }
 
         }
+        def approveitems(){
+            svc.approveitems(entity.docinfo);
+            
+            if(handler) handler( entity.docinfo );
+            return '_close';
+        }
+        
         def saveinfo(){
             if (entity.docinfo.personnels.size == 0) 
             throw new Exception("At least one(1) personnel is required");

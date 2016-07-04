@@ -1,5 +1,6 @@
 <workunit extends="wtemplates/ListController.xml" serviceName="TagabukidUserOrgService" entityName="userorg" formName="userorg:list">
     <invokers>
-        <invoker type="home.action" caption="User Organization" target="window" index="1" />
+        <invoker folderid="/explorer/master/dtsuserorganization" caption="User Organization" target="window" index="3" />
+        <invoker folderid="/home/dts/master" caption="User Organization" target="window" index="3" />
     </invokers>
 </workunit>
