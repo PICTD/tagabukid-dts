@@ -1,6 +1,6 @@
 <workunit extends="wtemplates/ListController.xml" serviceName="TagabukidDINInventoryService" entityName="din" formName="din:list">
     <invokers>
-        <invoker folderid="/explorer/master/dtsdininventory" caption="DIN Inventory" target="window" index="1" />
-        <invoker folderid="/home/dts/master" caption="DIN Inventory" target="window" index="1" />
+        <invoker folderid="/explorer/txn/subaytransaction" caption="DIN Inventory" target="window" index="1" role="SHARED" />
+        <invoker folderid="/home/dts" caption="DIN Inventory" target="window" index="1" role="SHARED"/>
     </invokers>
 </workunit>

@@ -17,7 +17,7 @@
             def entity;
             
             void init(){
-              entity.org = null;
+              entity.org = [:];
               entity.assignee = null;
             }
          
@@ -28,7 +28,9 @@
             def getLookupOrg(){
                 return Inv.lookupOpener('hrisorg:lookup',[
                         onselect :{
-                            entity.org = it;
+                            entity.org.OrgUnitId = it.OrgUnitId
+                            entity.org.name = it.Entity.Name
+                            entity.org.code = it.Entity.AcronymAbbreviation
                         },
                 ])
             }

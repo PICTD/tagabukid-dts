@@ -1,7 +1,9 @@
 <workunit>
     <invokers>
         <invoker type="dts:section" caption="Logs" index="-100" />
+        <invoker type="extActions" caption="Refresh" action="refresh"/>
         <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
+        <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
     </invokers>
     
    <code>
@@ -15,6 +17,9 @@
             
             @Service("TagabukidWorkflowTaskListService")
             def service;
+            
+            @Service("TagabukidDTSService")
+            def svc
             
             @Service('DateService')
             def dtSvc;
@@ -30,6 +35,24 @@
             def tasks;
             def duration;
             
+            def refresh(){
+                //listModel.reload()
+                def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
+                
+                if (newlog.size == 1){
+                    entity = newlog[0]
+                }else if (newlog.size > 1){
+                    return Inv.lookupOpener('node:lookup',[
+                        entity: entity,
+                        onselect :{
+                            entity = it
+                            listModel.reload()
+                        }
+                    ])
+                }
+                listModel.reload()
+                
+            }
             def listModel = [
                 fetchList: {
                     String processname = (String) controller.workunit.workunit.properties.processname;
@@ -102,6 +125,8 @@
                 def rf = [documentid: entity.objid,task:selectedItem];
                 return Inv.lookupOpener( "document_offlinereconciliation:create", [entity: rf, handler: h] );
             }
+            
+            
         }
     ]]>
     </code>

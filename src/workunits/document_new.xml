@@ -1,7 +1,7 @@
 <workunit>
     <invokers>
-        <invoker folderid="/explorer/txn/dtsnew" caption="New Document"  action="start" target="window" />
-        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" />
+        <invoker folderid="/explorer/txn/subaytransaction" caption="New Document"  action="start" target="window" index="2" role="SHARED"/>
+        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="2" role="SHARED"/>
         
 <!--        <invoker type="lobActions" caption="Add" action="lob.add"  immediate="true"/>
         <invoker type="lobActions" caption="Remove" action="lob.remove" immediate="true" 

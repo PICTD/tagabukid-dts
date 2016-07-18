@@ -61,7 +61,6 @@
 
 
             void checkDuplicate(listtofilter,item){
-                MsgBox.alert(listtofilter)
                 def data = listtofilter.find{it.OrgUnitId == item.OrgUnitId }
                 if (data)
                 throw new Exception("Duplicate item is not allowed.")

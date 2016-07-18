@@ -31,7 +31,7 @@ public class SendToManyLocalPage extends javax.swing.JPanel {
         xLookupField2 = new com.rameses.rcp.control.XLookupField();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
 
-        xLookupField2.setCaption("OIC");
+        xLookupField2.setCaption("OIC/Liaison");
         xLookupField2.setExpression("#{entity.assignee.name}");
         xLookupField2.setHandler("lookupAssignee");
         xLookupField2.setName("entity.assignee"); // NOI18N

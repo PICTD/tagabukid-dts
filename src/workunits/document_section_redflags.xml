@@ -1,9 +1,9 @@
 <workunit>
     <invokers>
         <invoker type="dts:section" caption="Red Flags" index="-100" />
-        <invoker type="formActions" caption="Add Red Flag" action="addRedflag"/>
-        <invoker type="formActions" caption="Open Red Flag" action="openRedflag" />
-        <invoker type="formActions" caption="Resolve" action="resolveRedflag"/>
+        <invoker type="formActions" caption="Add Red Flag" action="addRedflag" visibleWhen="#{entity.state=='processing' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
+        <invoker type="formActions" caption="Open Red Flag" action="openRedflag" visibleWhen="#{entity.state=='redflag'}" />
+        <invoker type="formActions" caption="Resolve" action="resolveRedflag" visibleWhen="#{entity.state=='redflag' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
     </invokers>
     
     <code>

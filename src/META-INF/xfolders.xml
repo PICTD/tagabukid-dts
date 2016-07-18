@@ -1,15 +1,10 @@
 <folders>
     <folder id="explorer">
         <folder id="txn">
-            <folder id="dts" caption="New Document" index="1"/>
-            <folder id="dtstransaction" caption="DTS Transaction" index="2"/>
-            <folder id="dtsdocumentlist" caption="Document List" index="2"/>
+            <folder id="subaytransaction" caption="Subay (DTS)" index="1"/>
         </folder>
         <folder id="master">
-            <folder id="dtsdininventory" caption="DIN Inventory" index="1"/>
-            <folder id="dtsdocumenttype" caption="Document Type" index="2"/>
-            <folder id="dtsuserorganization" caption="User Organization Mapping" index="3"/>
-           <folder id="dtsbtacsapprover" caption="BTACS Approver" index="4"/>
+            <folder id="subaymaster" caption="Subay Master" index="1"/>
         </folder>
     </folder> 
     <folder id="home">

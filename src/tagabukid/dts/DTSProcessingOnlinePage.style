@@ -5,4 +5,11 @@
     readonly:false;
 }
 
+"din|selectedItem" [mode == "INIT"] {
+    visible:false;
+}
+"din|selectedItem" [mode != "INIT"] {
+    visible:true;
+}
+
 

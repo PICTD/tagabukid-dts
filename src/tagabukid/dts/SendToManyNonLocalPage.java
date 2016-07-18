@@ -32,7 +32,7 @@ public class SendToManyNonLocalPage extends javax.swing.JPanel {
         xTextField3 = new com.rameses.rcp.control.XTextField();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
 
-        xTextField2.setCaption("OIC");
+        xTextField2.setCaption("OIC/Liaison");
         xTextField2.setName("entity.assignee.name"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel1.add(xTextField2);

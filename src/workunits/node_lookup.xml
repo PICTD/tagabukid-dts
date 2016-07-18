@@ -1,0 +1,41 @@
+<workunit extends="wtemplates/LookupController.xml">
+    <invokers>
+        <invoker type="node:lookup" caption="Multiple nodes detected. Please select a node to trace." target="popup"> </invoker>
+    </invokers>
+     <code>
+
+        import com.rameses.rcp.common.*
+        import com.rameses.rcp.annotations.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+
+        class DINLookupController extends LookupController
+        {
+            @Service("TagabukidDTSService")
+            def svc
+
+            def state;
+            def onselect 
+            def entity;
+         
+            Column[] getColumns() {
+                return [
+                    new Column(name:"din", caption:"DIN", width:250),
+                    new Column(name:"state", caption:"State", width:250),
+                    new Column(name:"name", caption:"Location", width:250),
+                ]
+            }
+            
+            List fetchList( Map params ) { 
+                params.taskid = entity.taskid
+                params.refid = entity.refid
+                return svc.lookupNode(params)
+            }
+           
+        }  
+
+    </code>
+<!--    <pages>
+        <page name="verify-documentname" template="tagabukid.dts.view.DocumentTitleVerificationPage"/>    
+    </pages>-->
+</workunit>

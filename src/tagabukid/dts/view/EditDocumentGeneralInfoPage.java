@@ -36,8 +36,6 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         xTextField2 = new com.rameses.rcp.control.XTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        xTextArea2 = new com.rameses.rcp.control.XTextArea();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
         xTextField3 = new com.rameses.rcp.control.XTextField();
         xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
@@ -68,15 +66,6 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
-
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(500, 63));
-
-        xTextArea2.setCaption("Document Tags");
-        xTextArea2.setCaptionWidth(120);
-        xTextArea2.setName("entity.tags"); // NOI18N
-        jScrollPane2.setViewportView(xTextArea2);
-
-        xFormPanel1.add(jScrollPane2);
 
         xLookupField1.setText("#{entity.documenttype.name}");
         xLookupField1.setCaption("Document Type");
@@ -116,7 +105,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -124,12 +113,10 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XSubFormPanel xSubFormPanel1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
-    private com.rameses.rcp.control.XTextArea xTextArea2;
     private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField2;
     private com.rameses.rcp.control.XTextField xTextField3;

@@ -33,7 +33,7 @@
             def mode = 'create'
             def handler;
 
-            def blockActions = ["outgoing", "send", "receive", "archive"];
+            def blockActions = ["send","archive"];
             def entity = [:];
             
             void init() {
@@ -47,6 +47,7 @@
                 entity.recordlog = [datecreated:caller?.entity.recordlog.datecreated,createdbyuser:caller?.entity.recordlog.createdbyuser];
                 entity.state = caller?.entity.state;
                 entity.refid = caller?.entity.objid;
+                entity.taskid = caller?.entity.taskid;
                 entity.org = null;
             }
             

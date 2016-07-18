@@ -31,7 +31,7 @@ public class SendLocalPage extends javax.swing.JPanel {
         xLookupField2 = new com.rameses.rcp.control.XLookupField();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
 
-        xLookupField2.setCaption("OIC");
+        xLookupField2.setCaption("OIC/Liaison");
         xLookupField2.setExpression("#{entity.assignee.name}");
         xLookupField2.setHandler("lookupAssignee");
         xLookupField2.setName("entity.assignee"); // NOI18N
@@ -39,7 +39,7 @@ public class SendLocalPage extends javax.swing.JPanel {
         xFormPanel1.add(xLookupField2);
 
         xLookupField1.setCaption("Destination");
-        xLookupField1.setExpression("#{entity.org.Entity.Name}");
+        xLookupField1.setExpression("#{entity.org.name}");
         xLookupField1.setHandler("lookupOrg");
         xLookupField1.setName("entity.org"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));

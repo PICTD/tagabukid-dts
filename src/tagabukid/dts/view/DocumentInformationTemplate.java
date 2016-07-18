@@ -40,8 +40,6 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
         xLabel5 = new com.rameses.rcp.control.XLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        xTextArea2 = new com.rameses.rcp.control.XTextArea();
         xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
         xLabel6 = new com.rameses.rcp.control.XLabel();
         xLabel4 = new com.rameses.rcp.control.XLabel();
@@ -55,7 +53,7 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
         xTitledBorder1.setTitle("Document Information");
         xHorizontalPanel1.setBorder(xTitledBorder1);
         xHorizontalPanel1.setBorderSeparator(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 215));
+        xHorizontalPanel1.setPreferredSize(new java.awt.Dimension(1008, 149));
 
         xFormPanel1.setCaptionWidth(120);
         xFormPanel1.setName(""); // NOI18N
@@ -89,15 +87,6 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
-
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(0, 63));
-
-        xTextArea2.setEditable(false);
-        xTextArea2.setCaption("Document Tags");
-        xTextArea2.setName("entity.tags"); // NOI18N
-        jScrollPane2.setViewportView(xTextArea2);
-
-        xFormPanel1.add(jScrollPane2);
 
         xHorizontalPanel1.add(xFormPanel1);
 
@@ -145,7 +134,6 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XHorizontalPanel xHorizontalPanel1;
@@ -157,6 +145,5 @@ public class DocumentInformationTemplate extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel6;
     private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XTextArea xTextArea1;
-    private com.rameses.rcp.control.XTextArea xTextArea2;
     // End of variables declaration//GEN-END:variables
 }
