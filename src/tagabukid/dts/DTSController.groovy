@@ -134,7 +134,7 @@ public class DTSProcessOnlineController {
     
     void save(){
         
-        if (!entity.org && !entity.destinations && mode.matches('send|outgoing|archive')) 
+        if (!entity.org && !entity.destinations && mode.matches('send|archive')) 
         throw new Exception("Destination is Required");
         
         if (!entity.assignee && !entity.oic && mode=='send') 
