@@ -99,6 +99,7 @@ public class DTSProcessOnlineController {
     void outgoing (){
         mode = "outgoing"
         title= "OUTGOING"
+        entity.sendtype = 'localoutgoing'
         binding.refresh('din');
         binding.focus('din');
     }
@@ -118,7 +119,7 @@ public class DTSProcessOnlineController {
    
     def getHandler(){
         if(mode!="INIT"){
-            if(mode=="send"){
+            if(mode=="send" || mode=="outgoing"){
                 return InvokerUtil.lookupOpener(entity.sendtype+':form',[
                         entity: entity
                     ]) 
@@ -133,7 +134,7 @@ public class DTSProcessOnlineController {
     
     void save(){
         
-        if (!entity.org && !entity.destinations && mode.matches('send|archive')) 
+        if (!entity.org && !entity.destinations && mode.matches('send|outgoing|archive')) 
         throw new Exception("Destination is Required");
         
         if (!entity.assignee && !entity.oic && mode=='send') 
