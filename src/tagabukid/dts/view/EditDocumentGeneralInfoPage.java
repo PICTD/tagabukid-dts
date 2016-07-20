@@ -32,17 +32,28 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
     private void initComponents() {
 
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
+        xLookupField1 = new com.rameses.rcp.control.XLookupField();
         xTextField1 = new com.rameses.rcp.control.XTextField();
+        xLabel1 = new com.rameses.rcp.control.XLabel();
         xTextField2 = new com.rameses.rcp.control.XTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
-        xLookupField1 = new com.rameses.rcp.control.XLookupField();
         xTextField3 = new com.rameses.rcp.control.XTextField();
         xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
 
         com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
         xTitledBorder1.setTitle("Document Information");
         xFormPanel1.setBorder(xTitledBorder1);
+
+        xLookupField1.setText("#{entity.documenttype.name}");
+        xLookupField1.setCaption("Document Type");
+        xLookupField1.setCaptionWidth(120);
+        xLookupField1.setExpression("#{entity.documenttype.name}");
+        xLookupField1.setHandler("lookupDocumentType");
+        xLookupField1.setName("entity.documenttype"); // NOI18N
+        xLookupField1.setPreferredSize(new java.awt.Dimension(500, 20));
+        xLookupField1.setRequired(true);
+        xFormPanel1.add(xLookupField1);
 
         xTextField1.setCaption("Document Title");
         xTextField1.setCaptionFontStyle("");
@@ -51,6 +62,14 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         xTextField1.setPreferredSize(new java.awt.Dimension(500, 20));
         xTextField1.setRequired(true);
         xFormPanel1.add(xTextField1);
+
+        xLabel1.setCaption("Title Hint");
+        xLabel1.setCaptionWidth(120);
+        xLabel1.setDepends(new String[] {"entity.documenttype"});
+        xLabel1.setEnabled(false);
+        xLabel1.setExpression("#{entity.documenttype.description}");
+        xLabel1.setPreferredSize(new java.awt.Dimension(0, 16));
+        xFormPanel1.add(xLabel1);
 
         xTextField2.setCaption("Document Author");
         xTextField2.setCaptionWidth(120);
@@ -66,16 +85,6 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
-
-        xLookupField1.setText("#{entity.documenttype.name}");
-        xLookupField1.setCaption("Document Type");
-        xLookupField1.setCaptionWidth(120);
-        xLookupField1.setExpression("#{entity.documenttype.name}");
-        xLookupField1.setHandler("lookupDocumentType");
-        xLookupField1.setName("entity.documenttype"); // NOI18N
-        xLookupField1.setPreferredSize(new java.awt.Dimension(500, 20));
-        xLookupField1.setRequired(true);
-        xFormPanel1.add(xLookupField1);
 
         xTextField3.setCaption("DIN");
         xTextField3.setCaptionWidth(120);
@@ -114,6 +123,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.rcp.control.XLabel xLabel1;
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XSubFormPanel xSubFormPanel1;
     private com.rameses.rcp.control.XTextArea xTextArea1;

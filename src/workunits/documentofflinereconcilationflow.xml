@@ -1,0 +1,117 @@
+<workunit>
+    <invokers>
+        <invoker folderid="/explorer/txn/subaytransaction" caption="Offline Reconciliation" target="popup" index="5" action="start" role="SHARED"/>
+        <invoker folderid="/home/dts" caption="Offline Reconciliation"  action="start" target="popup" index="5" role="SHARED"/>
+    </invokers>
+    
+    <code>
+        <![CDATA[    
+        import com.rameses.rcp.annotations.*
+        import com.rameses.rcp.common.*
+        import com.rameses.osiris2.client.*
+        import com.rameses.osiris2.common.*
+        import com.rameses.common.*;
+        import java.rmi.server.*
+        import com.rameses.util.*;
+        
+        class DocumentOfflineReconciliationFlowController extends PageFlowController {
+        
+             @Caller
+            def caller;
+            
+            @Binding 
+            def binding;
+            
+            @Script("User")
+            def user;
+            
+            @Service("TagabukidDTSService")
+            def service;
+            def mode = 'create'
+            def handler;
+            boolean pass;
+            def reconciliationActions = ["outgoing", "receive", "archive"];
+            def din;
+            def entity = [:];
+            
+            void init() {
+                mode = 'create'
+                entity.din = null;
+                entity.title = null;
+                entity.author = null;
+                entity.description = null;
+                entity.documenttype = [name:null];
+                entity.recordlog = [datecreated:null,createdbyuser:null];
+                entity.state = null;
+                entity.refid = null;
+                entity.org = null;
+            }
+            
+            void confirm(){
+                mode = 'confirm'
+            }
+            public def barcodesearch(){
+                entity.searchtext = din
+                entity.mode = 'offline'
+                searchdocument()
+            }
+            def searchdocument(){
+                def doc = service.lookupDIN(entity)
+                if (!doc){
+                    throw new Exception("Invalid DIN");
+                }
+
+                if (doc.size == 1){
+                    addtolist(doc[0])
+                }
+                else if(doc.size > 1){
+                    return Inv.lookupOpener('din:lookup',[
+                            entity: entity,
+                            onselect :{
+                                entity = it
+                                din = it.din
+                                binding.refresh('entity');
+                            }
+                        ])
+                }else{
+                    throw new Exception("Invalid DIN");
+                }
+            }
+            
+            void save(){
+                if( mode == 'confirm' ) { 
+                    service.createOfflineLog( entity );
+                }
+            }
+        }
+        
+        ]]>
+    </code>
+   <pageflow>
+        <start>
+            <transition to="lookup-barcode"  action="init"/>
+        </start>
+
+        <page name="lookup-barcode" title="Reconciliation Lookup">
+            <transition to="confirm" caption="Next" name="next" mnemonic="N" action="confirm" immediate="false" />
+        </page>
+        
+        <page name="confirm" title="Confirm New Document">
+            <transition to="lookup-barcode" caption="Back" mnemonic="B" name="back"/>
+            <transition to="save-success" caption="Submit" mnemonic="S" name="save" action="save" confirm="You are about to save this transaction. Continue?"/>
+        </page>
+        
+        <page name="save-success" title="Save Success (New Document)">
+            <transition to="lookup-barcode" caption="Add Another" mnemonic="A" action="init"/>
+        </page>
+
+        <end/>
+    </pageflow>
+    
+    <pages>
+        <page name="lookup-barcode" template="tagabukid.dts.view.ReconciliationVerifyDocumentInfoPage"/>
+        <page name="confirm" template="tagabukid.dts.view.ReconciliationConfirmPage"/>
+        <page name="save-success" template="tagabukid.dts.view.ReconciliationSuccessPage"/>
+    </pages>
+    
+</workunit>

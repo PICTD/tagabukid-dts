@@ -1,0 +1,3 @@
+"entity.(message|reconciliationAction)" [mode == 'confirm'] {
+    enabled:false;
+}
