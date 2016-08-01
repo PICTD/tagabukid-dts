@@ -16,6 +16,7 @@ public class DTSProcessOnlineController {
     def entity;
     def document;
     def mode = "INIT"
+    def selectedItem;
     
     @FormTitle
     def title
@@ -86,6 +87,7 @@ public class DTSProcessOnlineController {
         //        }
         entity.searchtext = din
         entity.mode = mode
+        entity.document = document
         searchdocument()
     }
     

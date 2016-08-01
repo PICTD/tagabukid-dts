@@ -5,10 +5,10 @@
     readonly:false;
 }
 
-"din|selectedItem" [mode == "INIT"] {
+"din|selectedItem|documentcount" [mode == "INIT"] {
     visible:false;
 }
-"din|selectedItem" [mode != "INIT"] {
+"din|selectedItem|documentcount" [mode != "INIT"] {
     visible:true;
 }
 

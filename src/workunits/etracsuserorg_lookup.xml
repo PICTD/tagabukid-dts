@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="etracsuserorg:lookup" caption="Assignee" target="popup" > </invoker>
+        <invoker type="etracsuserorg:lookup" caption="OIC/Liaison Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>

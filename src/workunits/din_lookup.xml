@@ -28,6 +28,7 @@
             List fetchList( Map params ) { 
                 params.searchtext = entity.searchtext
                 params.mode = entity.mode
+                params.document = entity.document
                 return svc.lookupDIN(params)
             }
            

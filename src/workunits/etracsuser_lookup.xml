@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="etracsuser:lookup" caption="Ordinance Entity" target="popup" > </invoker>
+        <invoker type="etracsuser:lookup" caption="ETRACS User Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
