@@ -83,6 +83,7 @@ class DocumentChildController
 //        }
         entity.searchtext = din
         entity.mode = 'child'
+        entity.document = document
         searchdocument()
     }
             

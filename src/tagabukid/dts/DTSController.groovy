@@ -17,7 +17,7 @@ public class DTSProcessOnlineController {
     def document;
     def mode = "INIT"
     def selectedItem;
-    
+    def stats;
     @FormTitle
     def title
     
@@ -28,6 +28,7 @@ public class DTSProcessOnlineController {
         din = "";
         entity = [:]
         listHandler.reload();
+        stats = svc.getStats();
     }
     
     def listHandler = [

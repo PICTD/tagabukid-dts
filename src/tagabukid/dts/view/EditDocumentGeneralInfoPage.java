@@ -50,6 +50,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         xLookupField1.setCaptionWidth(120);
         xLookupField1.setExpression("#{entity.documenttype.name}");
         xLookupField1.setHandler("lookupDocumentType");
+        xLookupField1.setHint("Select Documen Type");
         xLookupField1.setName("entity.documenttype"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(500, 20));
         xLookupField1.setRequired(true);
@@ -58,12 +59,13 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
         xTextField1.setCaption("Document Title");
         xTextField1.setCaptionFontStyle("");
         xTextField1.setCaptionWidth(120);
+        xTextField1.setHint("Enter the title of the document (check title hint for sample title)");
         xTextField1.setName("entity.title"); // NOI18N
         xTextField1.setPreferredSize(new java.awt.Dimension(500, 20));
         xTextField1.setRequired(true);
         xFormPanel1.add(xTextField1);
 
-        xLabel1.setCaption("Title Hint");
+        xLabel1.setCaption("Sample Title");
         xLabel1.setCaptionWidth(120);
         xLabel1.setDepends(new String[] {"entity.documenttype"});
         xLabel1.setEnabled(false);
@@ -73,6 +75,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
 
         xTextField2.setCaption("Document Author");
         xTextField2.setCaptionWidth(120);
+        xTextField2.setHint("Name of the document author");
         xTextField2.setName("entity.author"); // NOI18N
         xTextField2.setPreferredSize(new java.awt.Dimension(500, 20));
         xFormPanel1.add(xTextField2);
@@ -81,6 +84,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
 
         xTextArea1.setCaption("Document Description");
         xTextArea1.setCaptionWidth(120);
+        xTextArea1.setHint("Detailed description of the document");
         xTextArea1.setName("entity.description"); // NOI18N
         jScrollPane1.setViewportView(xTextArea1);
 
@@ -88,6 +92,7 @@ public class EditDocumentGeneralInfoPage extends javax.swing.JPanel {
 
         xTextField3.setCaption("DIN");
         xTextField3.setCaptionWidth(120);
+        xTextField3.setHint("Scan or Enter the Document Identification No.");
         xTextField3.setName("entity.din"); // NOI18N
         xTextField3.setPreferredSize(new java.awt.Dimension(300, 20));
         xTextField3.setRequired(true);

@@ -55,6 +55,7 @@
             <Property name="captionWidth" type="int" value="120"/>
             <Property name="expression" type="java.lang.String" value="#{entity.documenttype.name}"/>
             <Property name="handler" type="java.lang.String" value="lookupDocumentType"/>
+            <Property name="hint" type="java.lang.String" value="Select Documen Type"/>
             <Property name="name" type="java.lang.String" value="entity.documenttype" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[500, 20]"/>
@@ -67,6 +68,7 @@
             <Property name="caption" type="java.lang.String" value="Document Title"/>
             <Property name="captionFontStyle" type="java.lang.String" value=""/>
             <Property name="captionWidth" type="int" value="120"/>
+            <Property name="hint" type="java.lang.String" value="Enter the title of the document (check title hint for sample title)"/>
             <Property name="name" type="java.lang.String" value="entity.title" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[500, 20]"/>
@@ -76,7 +78,7 @@
         </Component>
         <Component class="com.rameses.rcp.control.XLabel" name="xLabel1">
           <Properties>
-            <Property name="caption" type="java.lang.String" value="Title Hint"/>
+            <Property name="caption" type="java.lang.String" value="Sample Title"/>
             <Property name="captionWidth" type="int" value="120"/>
             <Property name="depends" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
               <StringArray count="1">
@@ -94,6 +96,7 @@
           <Properties>
             <Property name="caption" type="java.lang.String" value="Document Author"/>
             <Property name="captionWidth" type="int" value="120"/>
+            <Property name="hint" type="java.lang.String" value="Name of the document author"/>
             <Property name="name" type="java.lang.String" value="entity.author" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[500, 20]"/>
@@ -116,6 +119,7 @@
               <Properties>
                 <Property name="caption" type="java.lang.String" value="Document Description"/>
                 <Property name="captionWidth" type="int" value="120"/>
+                <Property name="hint" type="java.lang.String" value="Detailed description of the document"/>
                 <Property name="name" type="java.lang.String" value="entity.description" noResource="true"/>
               </Properties>
             </Component>
@@ -125,6 +129,7 @@
           <Properties>
             <Property name="caption" type="java.lang.String" value="DIN"/>
             <Property name="captionWidth" type="int" value="120"/>
+            <Property name="hint" type="java.lang.String" value="Scan or Enter the Document Identification No."/>
             <Property name="name" type="java.lang.String" value="entity.din" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 20]"/>

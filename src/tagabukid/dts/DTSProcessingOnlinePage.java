@@ -46,9 +46,17 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
         xRadio4 = new com.rameses.rcp.control.XRadio();
         xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
         xLabel3 = new com.rameses.rcp.control.XLabel();
+        xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
+        xLabel4 = new com.rameses.rcp.control.XLabel();
+        xLabel5 = new com.rameses.rcp.control.XLabel();
+        xLabel6 = new com.rameses.rcp.control.XLabel();
+        xLabel7 = new com.rameses.rcp.control.XLabel();
 
         xActionTextField1.setText("xActionTextField1");
 
+        com.rameses.rcp.control.border.XTitledBorder xTitledBorder1 = new com.rameses.rcp.control.border.XTitledBorder();
+        xTitledBorder1.setTitle("Documents to Process");
+        xDataTable1.setBorder(xTitledBorder1);
         xDataTable1.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
                 new Object[]{"name", "din"}
@@ -177,6 +185,55 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
         xLabel3.setPreferredSize(new java.awt.Dimension(100, 23));
         xFormPanel2.add(xLabel3);
 
+        xFormPanel3.setCaptionBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        xFormPanel3.setCaptionFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xFormPanel3.setCaptionWidth(120);
+        xFormPanel3.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
+
+        xLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        xLabel4.setCaption("Outgoing");
+        xLabel4.setDepends(new String[] {"din"});
+        xLabel4.setExpression("#{stats.outgoing}");
+        xLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xLabel4.setForeground(new java.awt.Color(255, 0, 0));
+        xLabel4.setName("stats.outoging"); // NOI18N
+        xLabel4.setOpaque(true);
+        xLabel4.setPreferredSize(new java.awt.Dimension(100, 23));
+        xFormPanel3.add(xLabel4);
+
+        xLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        xLabel5.setCaption("Enroute");
+        xLabel5.setDepends(new String[] {"din"});
+        xLabel5.setExpression("#{stats.enroute}");
+        xLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        xLabel5.setName("stats.enroute"); // NOI18N
+        xLabel5.setOpaque(true);
+        xLabel5.setPreferredSize(new java.awt.Dimension(100, 23));
+        xFormPanel3.add(xLabel5);
+
+        xLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        xLabel6.setCaption("Processing");
+        xLabel6.setDepends(new String[] {"din"});
+        xLabel6.setExpression("#{stats.processing}");
+        xLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xLabel6.setForeground(new java.awt.Color(255, 0, 0));
+        xLabel6.setName("stats.processing"); // NOI18N
+        xLabel6.setOpaque(true);
+        xLabel6.setPreferredSize(new java.awt.Dimension(100, 23));
+        xFormPanel3.add(xLabel6);
+
+        xLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        xLabel7.setCaption("Archived");
+        xLabel7.setDepends(new String[] {"din"});
+        xLabel7.setExpression("#{stats.archive}");
+        xLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xLabel7.setForeground(new java.awt.Color(255, 0, 0));
+        xLabel7.setName("stats.archived"); // NOI18N
+        xLabel7.setOpaque(true);
+        xLabel7.setPreferredSize(new java.awt.Dimension(100, 23));
+        xFormPanel3.add(xLabel7);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -184,6 +241,7 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(xSubFormPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,22 +249,24 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
                         .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(xFormPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE))
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(xFormPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(xFormPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -218,7 +278,12 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XDataTable xDataTable1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
+    private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XLabel xLabel3;
+    private com.rameses.rcp.control.XLabel xLabel4;
+    private com.rameses.rcp.control.XLabel xLabel5;
+    private com.rameses.rcp.control.XLabel xLabel6;
+    private com.rameses.rcp.control.XLabel xLabel7;
     private com.rameses.rcp.control.XRadio xRadio1;
     private com.rameses.rcp.control.XRadio xRadio2;
     private com.rameses.rcp.control.XRadio xRadio3;
