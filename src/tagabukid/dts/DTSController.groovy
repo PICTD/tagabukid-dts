@@ -148,15 +148,17 @@ public class DTSProcessOnlineController {
         
         entity.document = document
         entity.mode = mode
-        try{
-            svc.processDocument(entity)
-            MsgBox.alert("Transcation Successfull")
-            init()
-        } catch(Warning w) {
-            Modal.show( 'document_redflag:warning', [list: w.info.list] );
-            throw new BreakException();
-        } catch(e) {
-            throw e;
+        if( MsgBox.confirm( "You are about to " + mode + " this transaction. Proceed?")) {
+            try{
+                svc.processDocument(entity)
+                MsgBox.alert("Transcation Successfull")
+                init()
+            } catch(Warning w) {
+                Modal.show( 'document_redflag:warning', [list: w.info.list] );
+                throw new BreakException();
+            } catch(e) {
+                throw e;
+            }
         }
        
         

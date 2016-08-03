@@ -126,6 +126,19 @@
                 return Inv.lookupOpener( "document_offlinereconciliation:create", [entity: rf, handler: h] );
             }
             
+            def cancelsend() {
+                if( MsgBox.confirm( "You are about to cancel this transaction. Proceed?")) {
+                    try{
+                        def doc = [objid: entity.objid,taskid:entity.taskid];
+                        svc.cancelSend(doc)
+                        MsgBox.alert("Transaction Cancelled. DIN: " + entity.din + " change state.")
+                    }catch(e){
+                        MsgBox.alert("ERROR IN PROCESSING PLEASE CONTACT PICTD.")
+                    }
+                }
+                
+            }
+            
             
         }
     ]]>
