@@ -20,7 +20,7 @@
             def entity;
             def title = "Red Flags"
             
-            @Service("TagaBukidRedflagService")
+            @Service("TagabukidRedflagService")
             def service;
             
             def selectedItem;
