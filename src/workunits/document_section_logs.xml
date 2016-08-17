@@ -3,7 +3,7 @@
         <invoker type="dts:section" caption="Logs" index="-100" />
         <invoker type="extActions" caption="Refresh" action="refresh"/>
         <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
-        <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
+        <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.senderorg==entity.currentorg}"/>
     </invokers>
     
    <code>

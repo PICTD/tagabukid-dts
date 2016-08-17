@@ -33,7 +33,7 @@ public class ArchiveParametersPage extends javax.swing.JPanel {
         xTextField2 = new com.rameses.rcp.control.XTextField();
 
         xLookupField1.setCaption("Destination");
-        xLookupField1.setExpression("#{entity.org.Entity.Name}");
+        xLookupField1.setExpression("#{entity.org.name}");
         xLookupField1.setHandler("lookupOrg");
         xLookupField1.setName("entity.org"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
@@ -63,7 +63,7 @@ public class ArchiveParametersPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

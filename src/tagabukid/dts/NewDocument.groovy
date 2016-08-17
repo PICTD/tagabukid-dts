@@ -23,6 +23,7 @@ public class NewDocument extends PageFlowController {
     def searchList;
     def verificationSelectedItem;
     def attachmentSelectedItem;
+    
     void init() {
         entity = service.initNew(entity)
         loadAttachments()
@@ -159,6 +160,7 @@ public class NewDocument extends PageFlowController {
           
      void updateInfo() {
         boolean test = false;
+        println entity
         docinfo.handler = {
             test = true;
         }

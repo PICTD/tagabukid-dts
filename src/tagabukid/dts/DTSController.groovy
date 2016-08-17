@@ -151,7 +151,7 @@ public class DTSProcessOnlineController {
         if( MsgBox.confirm( "You are about to " + mode + " this transaction. Proceed?")) {
             try{
                 svc.processDocument(entity)
-                MsgBox.alert("Transcation Successfull")
+                MsgBox.alert("Transaction Successfull")
                 init()
             } catch(Warning w) {
                 Modal.show( 'document_redflag:warning', [list: w.info.list] );

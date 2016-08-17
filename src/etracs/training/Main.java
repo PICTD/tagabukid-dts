@@ -17,7 +17,7 @@ public class Main {
         
             Map profile = new HashMap();
             profile.put("CLIENTTYPE", "desktop");
-            profile.put("USERID", "USR23bf1d10:14e9bbd2583:-7d5a");
+            profile.put("USERID", "USR-30f29625:14e19261370:-79e5");
             profile.put("USER", "ADMIN");
             profile.put("FULLNAME", "ADMINISTRATOR");
             profile.put("ORGID", "059");

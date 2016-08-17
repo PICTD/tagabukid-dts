@@ -13,14 +13,14 @@ class DocumentChildController
          
     def entity;
     def din;
-    
+    def selectedItem;
     //@PropertyChangeListener
     //def listener = [
     //  
     //]
          
     void init(){
-        //entity.child =[];
+        // entity.child =[];
         din = "";
         listHandler?.load();
     }
@@ -83,7 +83,7 @@ class DocumentChildController
 //        }
         entity.searchtext = din
         entity.mode = 'child'
-        entity.document = document
+        entity.document = entity.child
         searchdocument()
     }
             
@@ -92,5 +92,9 @@ class DocumentChildController
         if (data)
         throw new Exception("Duplicate item is not allowed.")
     }
-
+    
+    def allowlink = { item ->
+        if( selectedItem.state != 'attached' ) return true
+        return false
+    } as Map
 } 

@@ -2,7 +2,7 @@
     
     <invokers>
         
-        <invoker type="hrisorg:lookup" caption="ORganization Lookup" target="popup" > </invoker>
+        <invoker type="userorg:lookup" caption="Organization Lookup" target="popup" > </invoker>
         
     </invokers>
      <code>
@@ -12,7 +12,7 @@
         import com.rameses.osiris2.client.*
         import com.rameses.osiris2.common.*
 
-        class HrisOrgLookupController extends LookupController
+        class UserOrgLookupController extends LookupController
         {
             @Service("TagabukidDTSLookupService")
             def svc
@@ -21,13 +21,13 @@
 
             Column[] getColumns() {
                 return [
-                    new Column(name:"Entity.Name", caption:"Name", width:250),
-                    new Column(name:"Entity.AcronymAbbreviation", caption:"Code", width:250),
+                    new Column(name:"orgname", caption:"Name", width:250),
+                    new Column(name:"orgcode", caption:"Code", width:250),
                 ]
             }
 
             List fetchList( Map params ) { 
-                return svc.lookupHrisOrg(params)
+                return svc.lookupUserOrg(params)
             }
         }  
 

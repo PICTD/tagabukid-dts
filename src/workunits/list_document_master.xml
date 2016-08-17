@@ -5,7 +5,4 @@
         <invoker folderid="/explorer/txn/subaytransaction" caption="Document List ALL"  index="3" role="MASTER"/>
         <invoker folderid="/home/dts" caption="Document List ALL"  index="3" role="MASTER"/>
     </invokers>
-    <pages>
-        <page name="1queryform" template="tagabukid.dts.DocumentListQueryForm"/>
-    </pages>
 </workunit>

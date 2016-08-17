@@ -23,15 +23,13 @@ class SendParametersToManyLocalController
     } 
     
     def getLookupOrg(){
-        return Inv.lookupOpener('hrisorg:lookup',[
+        return Inv.lookupOpener('userorg:lookup',[
                 onselect :{
-//                    entity.destinations << it;
-//                    listHandler.reload(); 
-                    selectedItem.OrgUnitId = it.OrgUnitId
-                    selectedItem.name = it.Entity.Name
-                    selectedItem.code = it.Entity.AcronymAbbreviation
-                }
-            ])
+                    entity.org.OrgUnitId = it.organizationid
+                    entity.org.name = it.orgname
+                    entity.org.code = it.orgcode
+                },
+        ])
     }
     def getLookupAssignee(){
         return Inv.lookupOpener('etracsuserorg:lookup',[
