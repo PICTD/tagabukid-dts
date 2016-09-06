@@ -29,6 +29,7 @@ public class NewDocument extends PageFlowController {
         loadAttachments()
         reset();
     }
+    
     void check() {
         searchList  = verifySvc.getList(entity.title); 
         if(searchList) {

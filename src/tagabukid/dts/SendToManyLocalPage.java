@@ -68,7 +68,7 @@ public class SendToManyLocalPage extends javax.swing.JPanel {
             })
         });
         xDataTable1.setHandler("listHandler");
-        xDataTable1.setName("selectedItem"); // NOI18N
+        xDataTable1.setName("entity.org"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
