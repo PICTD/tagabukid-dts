@@ -33,7 +33,7 @@
             def mode = 'create'
             def handler;
 
-            def blockActions = ["send","archive"];
+            def blockActions = ["send","archived"];
             def entity = [:];
             
             void init() {

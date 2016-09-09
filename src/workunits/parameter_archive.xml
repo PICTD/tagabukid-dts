@@ -1,7 +1,7 @@
 <workunit>
     
     <invokers>
-        <invoker type="archive:form" caption="Archive Parameters" action="init" target="popup" > </invoker>
+        <invoker type="archived:form" caption="Archive Parameters" action="init" target="popup" > </invoker>
     </invokers>
      <code>
 

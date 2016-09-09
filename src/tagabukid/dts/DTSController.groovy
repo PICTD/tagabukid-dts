@@ -113,8 +113,8 @@ public class DTSProcessOnlineController {
         binding.refresh('din');
         binding.focus('din');
     }
-    void archive (){
-        mode = "archive"
+    void archived (){
+        mode = "archived"
         title= "ARCHIVING"
         binding.refresh('din');
         binding.focus('din');
@@ -137,7 +137,7 @@ public class DTSProcessOnlineController {
     
     void save(){
         
-        if (!entity.org && !entity.destinations && mode.matches('send|archive')) 
+        if (!entity.org && !entity.destinations && mode.matches('send|archived')) 
         throw new Exception("Destination is Required");
         
         if (!entity.assignee && !entity.oic && mode=='send') 
@@ -172,7 +172,7 @@ public class DTSProcessOnlineController {
     
     
     //    def processDocument(){
-    //        if(mode.matches('send|archive')){
+    //        if(mode.matches('send|archived')){
     //          
     //        }
     //        
@@ -200,14 +200,14 @@ public class DTSProcessOnlineController {
     //        //end prev task
     //        //create new processing task
     //        
-    //        //if archive
-    //        //ask archive destination
+    //        //if archived
+    //        //ask archived destination
     //        //ask cabinet/folder no/catalog
     //        //assignee = current user
     //        //actor = current user
     //        //org = current user org
     //        //end prev task
-    //        //create new archive task
+    //        //create new archived task
     //      
     ////        return Inv.lookupOpener('din:lookup',[
     ////                entity: entity,

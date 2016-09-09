@@ -3,6 +3,8 @@
         <invoker type="dts:section" caption="Logs" index="-100" />
         <invoker type="extActions" caption="Refresh" action="refresh"/>
         <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
+        <invoker type="extActions" caption="View Flow Chart" action="viewFlowChart"/>
+        <invoker type="extActions" caption="Print Logs" action="printlogs"/>
         <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.senderorg==entity.currentorg}"/>
     </invokers>
     
@@ -12,7 +14,7 @@
         import com.rameses.rcp.annotations.*;
         import com.rameses.osiris2.client.*;
         import com.rameses.osiris2.common.*;
-        
+        import tagabukid.utils.*;
         public class TaskListController  {
             
             @Service("TagabukidWorkflowTaskListService")
@@ -124,6 +126,11 @@
                 }
                 def rf = [documentid: entity.objid,task:selectedItem];
                 return Inv.lookupOpener( "document_offlinereconciliation:create", [entity: rf, handler: h] );
+            }
+            
+            def viewFlowChart() {
+                entity.tasks = tasks
+                return InvokerUtil.lookupOpener( "flowchart:view", [entity: entity] );
             }
             
             def cancelsend() {

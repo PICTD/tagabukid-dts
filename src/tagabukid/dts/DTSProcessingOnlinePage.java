@@ -226,7 +226,7 @@ public class DTSProcessingOnlinePage extends javax.swing.JPanel {
         xLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         xLabel7.setCaption("Archived");
         xLabel7.setDepends(new String[] {"din"});
-        xLabel7.setExpression("#{stats.archive}");
+        xLabel7.setExpression("#{stats.archived}");
         xLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         xLabel7.setForeground(new java.awt.Color(255, 0, 0));
         xLabel7.setName("stats.archived"); // NOI18N

@@ -30,7 +30,7 @@
             def mode = 'create'
             def handler;
             boolean pass;
-            def reconciliationActions = ["outgoing", "receive", "archive"];
+            def reconciliationActions = ["outgoing", "receive", "archived"];
             def din;
             def entity = [:];
             

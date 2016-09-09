@@ -29,7 +29,7 @@
             def mode = 'create'
             def handler;
 
-            def reconciliationActions = ["outgoing", "receive", "archive"];
+            def reconciliationActions = ["outgoing", "receive", "archived"];
             def entity = [:];
             
             void init() {

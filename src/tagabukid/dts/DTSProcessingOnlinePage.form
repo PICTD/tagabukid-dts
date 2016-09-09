@@ -294,7 +294,7 @@
                 <StringItem index="0" value="din"/>
               </StringArray>
             </Property>
-            <Property name="expression" type="java.lang.String" value="#{stats.archive}"/>
+            <Property name="expression" type="java.lang.String" value="#{stats.archived}"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="1"/>
             </Property>
