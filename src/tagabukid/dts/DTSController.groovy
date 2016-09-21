@@ -4,13 +4,17 @@ import com.rameses.osiris2.client.*
 import com.rameses.osiris2.common.*
 import java.rmi.server.*;
 import com.rameses.util.*;
-        
+import java.text.*;
+
 public class DTSProcessOnlineController {
     @Binding
     def binding;
     
     @Service("TagabukidDTSService")
     def svc
+    
+    @Service("DateService")
+    def dtsvc
     
     def din;
     def entity;
@@ -19,7 +23,18 @@ public class DTSProcessOnlineController {
     def selectedItem;
     def stats;
     @FormTitle
-    def title
+    def title;
+    def completed;
+    
+    def df = new SimpleDateFormat("yyyy-MM-dd");
+    def formatDate = { o->
+        if(o instanceof java.util.Date) {
+            return df.parse( df.format( o ));
+        }
+        return df.parse( o );     
+    }
+    
+    
     
     void init(){
         mode= "INIT"
@@ -29,6 +44,12 @@ public class DTSProcessOnlineController {
         entity = [:]
         listHandler.reload();
         stats = svc.getStats();
+        entity.txndate = dtsvc.getServerDate();
+        completed = false;
+    }
+    def createnew(){
+        init();
+        return "default";
     }
     
     def listHandler = [
@@ -135,7 +156,7 @@ public class DTSProcessOnlineController {
         }
     }
     
-    void save(){
+    def save(){
         
         if (!entity.org && !entity.destinations && mode.matches('send|archived')) 
         throw new Exception("Destination is Required");
@@ -152,7 +173,8 @@ public class DTSProcessOnlineController {
             try{
                 svc.processDocument(entity)
                 MsgBox.alert("Transaction Successfull")
-                init()
+                completed = true;
+                
             } catch(Warning w) {
                 Modal.show( 'document_redflag:warning', [list: w.info.list] );
                 throw new BreakException();
@@ -160,8 +182,25 @@ public class DTSProcessOnlineController {
                 throw e;
             }
         }
-       
+       return "completed"
         
+    }
+    
+    def getInfoHtml() {
+        return TemplateProvider.instance.getResult( "tagabukid/dts/dtstransaction.gtpl", [entity:entity] );
+    }
+    
+    def findReportOpener( reportData ) { 
+        //check first if form handler exists. 
+        def o = InvokerUtil.lookupOpener( "dtstransaction:report", [reportData:reportData] );
+        if ( !o ) throw new Exception("Handler not found"); 
+
+        return o.handle; 
+    } 
+    void print() {
+        def handle = findReportOpener(entity);
+        handle.viewReport();
+        ReportUtil.print(handle.report,true);
     }
     
     void checkDuplicate(listtofilter,item){
@@ -170,6 +209,9 @@ public class DTSProcessOnlineController {
         throw new Exception("Duplicate item is not allowed.")
     }
     
+    def close(){
+        return '_close'
+    }
     
     //    def processDocument(){
     //        if(mode.matches('send|archived')){
