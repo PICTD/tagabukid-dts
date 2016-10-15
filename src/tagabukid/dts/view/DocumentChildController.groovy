@@ -51,8 +51,8 @@ class DocumentChildController
         checkDuplicate(entity.child,doc);
         entity.child << doc;
         din = ""
-        binding.refresh('din');
-        binding.focus('din');
+//        binding.refresh('din');
+//        binding.focus('din');
         listHandler?.load();
     }
 

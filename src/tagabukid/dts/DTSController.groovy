@@ -34,8 +34,6 @@ public class DTSProcessOnlineController {
         return df.parse( o );     
     }
     
-    
-    
     void init(){
         mode= "INIT"
         title="Select Transaction Mode"
@@ -47,6 +45,7 @@ public class DTSProcessOnlineController {
         entity.txndate = dtsvc.getServerDate();
         completed = false;
     }
+    
     def createnew(){
         init();
         return "default";
@@ -75,8 +74,8 @@ public class DTSProcessOnlineController {
         checkDuplicate(document,doc);
         document << doc;
         din = ""
-        binding.refresh('din');
-        binding.focus('din');
+//        binding.refresh('din');
+//        binding.focus('din');
         listHandler.reload();
     }
     
@@ -99,8 +98,6 @@ public class DTSProcessOnlineController {
         }else{
             throw new Exception("Invalid DIN");
         }
-        
-        
     }
 
     public def barcodesearch(){
