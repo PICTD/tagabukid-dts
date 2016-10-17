@@ -14,7 +14,7 @@
 
         class EtracsUserLookupController extends LookupController
         {
-            @Service("TagabukidDTSLookupService")
+            @Service("TagabukidSubayLookupService")
             def svc
 
             def state;

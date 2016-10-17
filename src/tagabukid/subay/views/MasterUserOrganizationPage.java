@@ -52,9 +52,9 @@ public class MasterUserOrganizationPage extends javax.swing.JPanel {
 
         xLookupField2.setCaption("Organization");
         xLookupField2.setCaptionFontStyle("");
-        xLookupField2.setExpression("#{entity.orgname}");
+        xLookupField2.setExpression("#{entity.org.name}");
         xLookupField2.setHandler("lookupOrg");
-        xLookupField2.setName("entity.orgname"); // NOI18N
+        xLookupField2.setName("entity.org.name"); // NOI18N
         xLookupField2.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel1.add(xLookupField2);
 

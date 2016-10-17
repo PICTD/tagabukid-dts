@@ -63,9 +63,9 @@
           <Properties>
             <Property name="caption" type="java.lang.String" value="Organization"/>
             <Property name="captionFontStyle" type="java.lang.String" value=""/>
-            <Property name="expression" type="java.lang.String" value="#{entity.orgname}"/>
+            <Property name="expression" type="java.lang.String" value="#{entity.org.name}"/>
             <Property name="handler" type="java.lang.String" value="lookupOrg"/>
-            <Property name="name" type="java.lang.String" value="entity.orgname" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="entity.org.name" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 20]"/>
             </Property>

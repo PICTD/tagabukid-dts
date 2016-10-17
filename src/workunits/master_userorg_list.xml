@@ -1,4 +1,4 @@
-<workunit extends="wtemplates/ListController.xml" serviceName="TagabukidUserOrgService" entityName="userorg" formName="userorg:list">
+<workunit extends="wtemplates/ListController.xml" serviceName="TagabukidSubayUserOrgService" entityName="userorg" formName="userorg:list">
     <invokers>
         <invoker folderid="/explorer/master/subaymaster" caption="User Organization" target="window" index="3" role="MASTER"/>
         <invoker folderid="/home/dts/master" caption="User Organization" target="window" index="3" role="MASTER"/>
