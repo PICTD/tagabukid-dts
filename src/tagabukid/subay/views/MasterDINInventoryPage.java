@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tagabukid.dts.master;
+package tagabukid.subay.views;
 
 import com.rameses.osiris2.themes.FormPage;
 import com.rameses.rcp.ui.annotations.Template;
@@ -13,12 +13,12 @@ import com.rameses.rcp.ui.annotations.Template;
  * @author rufino
  */
 @Template({FormPage.class})
-public class DINInventoryPage extends javax.swing.JPanel {
+public class MasterDINInventoryPage extends javax.swing.JPanel {
 
     /**
      * Creates new form DINGenratorPage
      */
-    public DINInventoryPage() {
+    public MasterDINInventoryPage() {
         initComponents();
     }
 

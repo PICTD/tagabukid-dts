@@ -1,0 +1,14 @@
+<workunit>
+    <invokers>
+        <invoker type="din:create" action="init" caption="DIN Inventory" target="window" />
+        <invoker type="din:open" action="open" caption="DIN Invnetory" target="window" />
+        <invoker type="extActions" caption="Print"  icon="images/toolbars/printer.png" visibleWhen="#{mode=='read'}"
+            action="print"/>
+    </invokers>
+    
+    <code class="tagabukid.subay.models.TagabukidSubayDINInventoryModel" />  
+    
+    <pages>
+        <page template="tagabukid.subay.views.MasterDINInventoryPage" />
+    </pages>
+</workunit>
