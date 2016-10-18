@@ -7,7 +7,7 @@ import com.rameses.gov.etracs.bpls.controller.*;
 import com.rameses.util.*;
 import tagabukid.utils.*;
         
-public class NewDocumentModel extends PageFlowController {
+public class TagabukidSubayNewDocumentModel extends PageFlowController {
             
     @Script("TagabukidSubayDocumentInfoUtil")
     def docinfo
