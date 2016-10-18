@@ -6,11 +6,11 @@ import java.rmi.server.*;
 import com.rameses.util.*;
 import java.text.*;
 
-public class DTSProcessOnlineController {
+public class OnlineTransactionController {
     @Binding
     def binding;
     
-    @Service("TagabukidDTSService")
+    @Service("TagabukidSubayTransactionService")
     def svc
     
     @Service("DateService")
@@ -74,8 +74,8 @@ public class DTSProcessOnlineController {
         checkDuplicate(document,doc);
         document << doc;
         din = ""
-//        binding.refresh('din');
-//        binding.focus('din');
+        //        binding.refresh('din');
+        //        binding.focus('din');
         listHandler.reload();
     }
     
@@ -179,7 +179,7 @@ public class DTSProcessOnlineController {
                 throw e;
             }
         }
-       return "completed"
+        return "completed"
         
     }
     
@@ -209,51 +209,4 @@ public class DTSProcessOnlineController {
     def close(){
         return '_close'
     }
-    
-    //    def processDocument(){
-    //        if(mode.matches('send|archived')){
-    //          
-    //        }
-    //        
-    //        println entity
-    //        //createtask(mode)
-    //      
-    //        //if outgoing
-    //        //end prev task
-    //        //create new outgoing task
-    //        //org = current user organization
-    //        //assignee = current user
-    //        //actor = current user
-    //        
-    //        //if sending
-    //        //ask destination/org
-    //        //ask assignee
-    //        //actor = current user
-    //        //end prev task
-    //        //create new enroute task
-    //        
-    //        //if receiving
-    //        //assignee = user
-    //        //actor = user
-    //        //org = current user org
-    //        //end prev task
-    //        //create new processing task
-    //        
-    //        //if archived
-    //        //ask archived destination
-    //        //ask cabinet/folder no/catalog
-    //        //assignee = current user
-    //        //actor = current user
-    //        //org = current user org
-    //        //end prev task
-    //        //create new archived task
-    //      
-    ////        return Inv.lookupOpener('din:lookup',[
-    ////                entity: entity,
-    ////                onselect :{
-    ////                    addtolist(it)
-    ////                }
-    ////            ])
-    //        //svc.processDocument(entity)
-    //    }
 }

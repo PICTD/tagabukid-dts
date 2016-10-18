@@ -1,0 +1,20 @@
+"din|selectedItem" [mode == "INIT"] {
+    readonly:true;
+}
+"din|selectedItem" [mode != "INIT"] {
+    readonly:false;
+}
+"stats.*" [mode == "INIT"] {
+    visible:true;
+}
+"stats.*" [mode != "INIT"] {
+    visible:false;
+}
+"din|selectedItem|documentcount" [mode == "INIT"] {
+    visible:false;
+}
+"din|selectedItem|documentcount" [mode != "INIT"] {
+    visible:true;
+}
+
+
