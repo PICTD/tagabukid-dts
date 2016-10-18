@@ -8,7 +8,7 @@ class DocumentChildController
     @Binding
     def binding;
          
-    @Service("TagabukidDTSService")
+    @Service("TagabukidSubayTransactionService")
     def svc
          
     def entity;

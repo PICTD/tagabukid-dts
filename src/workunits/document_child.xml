@@ -1,11 +1,9 @@
 <workunit>
-    
     <invokers>
         <invoker type="documentchild:form" caption="Document Child" action="init" target="popup" > </invoker>
     </invokers>
-     <code class="tagabukid.dts.view.DocumentChildController" />
-
+    <code class="tagabukid.subay.models.TagabukidSubayDocumentChildController" />
     <pages>
-        <page template="tagabukid.dts.view.DocumentChildPage" />
+        <page template="tagabukid.subay.views.EditDocumentChildPage" />
     </pages>
 </workunit>
