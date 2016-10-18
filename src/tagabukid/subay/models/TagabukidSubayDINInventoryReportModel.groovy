@@ -4,7 +4,7 @@ import com.rameses.osiris2.client.*;
 import com.rameses.osiris2.common.*;
 import com.rameses.osiris2.reports.*;
 
-class TagbukidSubayReportDININventoryModel extends ReportController {
+class TagabukidSubayDINInventoryReportModel extends ReportController {
 
     @FormId
     String formId;
@@ -23,6 +23,7 @@ class TagbukidSubayReportDININventoryModel extends ReportController {
     String reportName = REPORT_PATH + 'dinmain5.jasper'; 
 
     def getReportData() { 
+//        println entity;
         //return [[din:entity.din,barcode:"71007:"+entity.din],[din:entity.din,barcode:"71007:"+entity.din]]; 
         return svc.getDINs(entity.objid);
     } 

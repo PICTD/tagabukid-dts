@@ -39,7 +39,7 @@ public class TagabukidSubayDINInventoryModel extends CRUDController
     }
 
     def print() {
-        def op = Inv.lookupOpener( "dts:din", [entity: entity] );
+        def op = Inv.lookupOpener( "subay:din", [entity: entity] );
         op.target = 'self';
         return op;
     }
