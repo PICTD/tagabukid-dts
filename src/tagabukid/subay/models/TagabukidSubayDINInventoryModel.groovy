@@ -26,7 +26,7 @@ public class TagabukidSubayDINInventoryModel extends CRUDController
 
     @PropertyChangeListener
     def listener = [
-                        'entity.qty':{
+        'entity.qty':{
             generateDIN();
         },
     ]   
