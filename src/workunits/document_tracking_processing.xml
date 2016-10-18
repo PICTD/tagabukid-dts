@@ -14,7 +14,7 @@
         <invoker type="formActions" action="print" caption="Print" mnemonic="p" visibleWhen="#{completed}" />
         <invoker type="formActions" action="createnew" caption="New" visibleWhen="#{completed}" mnemonic="n"/>
     </invokers>
-    <code class="tagabukid.dts.DTSController"/>
+    <code class="tagabukid.subay.TransactionController"/>
     <pages>
         <page template="tagabukid.dts.DTSProcessingOnlinePage"/>
         <page name="completed" template="tagabukid.dts.DTSTranscationInfoPage"/>

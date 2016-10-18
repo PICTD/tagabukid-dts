@@ -5,7 +5,7 @@
         <invoker type="userorg:open" action="open" caption="User Organization" />
     </invokers>
         
-    <code class="tagabukid.subay.models.TagabukidSubayUserOrgModel" />
+    <code class="tagabukid.subay.models.UserOrgModel" />
     
     <pages>
         <page template="tagabukid.subay.views.MasterUserOrganizationPage" />

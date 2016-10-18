@@ -2,7 +2,7 @@
     <invokers>
         <invoker type="documentchild:form" caption="Document Child" action="init" target="popup" > </invoker>
     </invokers>
-    <code class="tagabukid.subay.models.TagabukidSubayDocumentChildController" />
+    <code class="tagabukid.subay.models.DocumentChildController" />
     <pages>
         <page template="tagabukid.subay.views.EditDocumentChildPage" />
     </pages>
