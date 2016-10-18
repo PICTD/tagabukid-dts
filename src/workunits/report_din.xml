@@ -20,7 +20,7 @@
         String formTitle;
         
         
-        @Service("TagabukidDINInventoryService")
+        @Service("TagabukidSubayDINInventoryService")
         def svc;
 
         def entity;

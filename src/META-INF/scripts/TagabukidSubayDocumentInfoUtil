@@ -5,7 +5,7 @@ import com.rameses.osiris2.common.*
 import java.rmi.server.*;
 import com.rameses.util.*;
 
-public class DocumentInfoUtil {
+public class TagabukidSubayDocumentInfoUtil {
      
     @Caller
     def caller;
