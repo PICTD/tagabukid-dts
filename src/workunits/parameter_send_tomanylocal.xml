@@ -2,8 +2,8 @@
     <invokers>
         <invoker type="multiplelocal:form" caption="Send Parameters Multiple" action="init" target="popup" > </invoker>
     </invokers>
-     <code class="tagabukid.dts.SendParametersToManyLocalController" />
+     <code class="tagabukid.subay.models.ParameterSendToManyLocalController" />
     <pages>
-        <page template="tagabukid.dts.SendToManyLocalPage" />
+        <page template="tagabukid.subay.views.ParameterSendToManyLocalPage" />
     </pages>
 </workunit>

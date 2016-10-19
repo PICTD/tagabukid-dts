@@ -7,7 +7,7 @@
 
     </invokers>
     
-    <code class="tagabukid.subay.models.NewDocumentModel" />   
+    <code class="tagabukid.subay.models.NewDocumentController" />   
     
     <pageflow>
         <start>

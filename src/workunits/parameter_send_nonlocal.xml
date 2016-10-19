@@ -2,33 +2,8 @@
     <invokers>
         <invoker type="nonlocal:form" caption="Send Parameters Nonlocal" action="init" target="popup" > </invoker>
     </invokers>
-     <code>
-    <![CDATA[    
-        import com.rameses.rcp.common.*
-        import com.rameses.rcp.annotations.*
-        import com.rameses.osiris2.client.*
-        import com.rameses.osiris2.common.*
-
-        class SendParametersNonlocalController
-        {
-            @Binding
-            def binding;
-         
-            def entity;
-            
-            void init(){
-                entity.org = [OrgUnitId:"",Entity:[Name:""],address:""]
-                entity.assignee = [name:"",jobtitle:""]
-            }
-         
-            void refresh() {
-                if(binding) binding.refresh();
-            } 
-           
-        }  
-   ]]>
-    </code>
+    <code class="tagabukid.subay.models.ParameterSendNonLocalController" />
     <pages>
-        <page template="tagabukid.dts.SendNonLocalPage" />
+        <page template="tagabukid.subay.views.ParameterSendNonLocalPage" />
     </pages>
 </workunit>

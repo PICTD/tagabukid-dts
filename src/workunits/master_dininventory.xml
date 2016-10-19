@@ -6,7 +6,7 @@
             action="print"/>
     </invokers>
     
-    <code class="tagabukid.subay.models.DINInventoryModel" />  
+    <code class="tagabukid.subay.models.DINInventoryController" />  
     
     <pages>
         <page template="tagabukid.subay.views.MasterDINInventoryPage" />

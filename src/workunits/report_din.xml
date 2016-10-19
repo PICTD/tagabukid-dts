@@ -3,5 +3,5 @@
         <invoker type="subay:din" caption="Print DIN" action="preview" index="1"/>
     </invokers>
     
-    <code class="tagabukid.subay.models.DINInventoryReportModel" />
+    <code class="tagabukid.subay.models.DINInventoryReportController" />
 </workunit>

@@ -14,7 +14,7 @@
         <invoker type="formActions" action="print" caption="Print" mnemonic="p" visibleWhen="#{completed}" />
         <invoker type="formActions" action="createnew" caption="New" visibleWhen="#{completed}" mnemonic="n"/>
     </invokers>
-    <code class="tagabukid.subay.models.TransactionController"/>
+    <code class="tagabukid.subay.models.OnlineTransactionController"/>
     <pages>
         <page template="tagabukid.subay.views.OnlineTransactionPage"/>
         <page name="completed" template="tagabukid.subay.views.OnlineTransactionInfoPage"/>

@@ -5,7 +5,7 @@
         <invoker type="documenttype:open" action="open" caption="Document Type" />
     </invokers>
         
-    <code class="tagabukid.subay.models.DocumentTypeModel" />  
+    <code class="tagabukid.subay.models.DocumentTypeController" />  
     
     <pages>
         <page template="tagabukid.subay.views.MasterDocumentTypePage" />
