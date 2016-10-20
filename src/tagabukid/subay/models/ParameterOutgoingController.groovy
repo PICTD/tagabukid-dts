@@ -21,9 +21,7 @@ class ParameterOutgoingController
     def getLookupOrg(){
         return Inv.lookupOpener('userorg:lookup',[
                 onselect :{
-                    entity.org.OrgUnitId = it.organizationid
-                    entity.org.name = it.orgname
-                    entity.org.code = it.orgcode
+                    entity.org = it.org
                 },
             ])
     }

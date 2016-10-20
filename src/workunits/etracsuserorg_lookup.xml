@@ -14,7 +14,7 @@
 
         class AssigneeLookupController extends LookupController
         {
-            @Service("TagabukidUserOrgLookupService")
+            @Service("TagabukidSubayUserOrgLookupService")
             def svc
 
             def state;

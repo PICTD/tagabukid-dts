@@ -155,7 +155,7 @@ public class OnlineTransactionController {
     
     def save(){
         
-        if (!entity.org && !entity.destinations && mode.matches('send|archived')) 
+        if (!entity.org && mode.matches('send|archived')) 
         throw new Exception("Destination is Required");
         
         if (!entity.assignee && !entity.oic && mode=='send') 

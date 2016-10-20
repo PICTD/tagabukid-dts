@@ -2,7 +2,7 @@
     <invokers>
         <invoker type="local:form" caption="Send Parameters Local" action="init" target="popup" > </invoker>
     </invokers>
-    <code class="tagabukid.subay.models.ParamterSendLocalController" />
+    <code class="tagabukid.subay.models.ParameterSendLocalController" />
     <pages>
         <page template="tagabukid.subay.views.ParameterSendLocalPage" />
     </pages>

@@ -25,9 +25,7 @@ class ParameterSendToManyLocalController
     def getLookupOrg(){
         return Inv.lookupOpener('userorg:lookup',[
                 onselect :{
-                    entity.org.OrgUnitId = it.organizationid
-                    entity.org.name = it.orgname
-                    entity.org.code = it.orgcode
+                    entity.org = it.org
                 },
         ])
     }
@@ -59,7 +57,7 @@ class ParameterSendToManyLocalController
     
     
     void checkDuplicate(listtofilter,item){
-        def data = listtofilter.find{it.OrgUnitId == item.OrgUnitId }
+        def data = listtofilter.find{it.org.objid == item.org.objid }
         if (data)
         throw new Exception("Duplicate item is not allowed.")
     }   

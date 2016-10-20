@@ -14,15 +14,15 @@
 
         class UserOrgLookupController extends LookupController
         {
-            @Service("TagabukidDTSLookupService")
+            @Service("TagabukidSubayLookupService")
             def svc
 
             def state;
 
             Column[] getColumns() {
                 return [
-                    new Column(name:"orgname", caption:"Name", width:250),
-                    new Column(name:"orgcode", caption:"Code", width:250),
+                    new Column(name:"org.name", caption:"Name", width:250),
+                    new Column(name:"org.code", caption:"Code", width:250),
                 ]
             }
 
