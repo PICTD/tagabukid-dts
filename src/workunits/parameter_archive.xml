@@ -3,7 +3,7 @@
     <invokers>
         <invoker type="archived:form" caption="Archive Parameters" action="init" target="popup" > </invoker>
     </invokers>
-     <code class="tagabukid.subay.models.ParamterArchiveController" />
+     <code class="tagabukid.subay.models.ParameterArchiveController" />
     <pages>
         <page template="tagabukid.subay.views.ParameterArchivePage" />
     </pages>
