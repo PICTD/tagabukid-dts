@@ -13,6 +13,7 @@ class ParameterSendToManyLocalController
     def item;
     def selectedItem;
     void init(){
+        entity.org = null;
         entity.destinations = []
         entity.assignee = [name:"",jobtitle:""]
     }
@@ -32,6 +33,7 @@ class ParameterSendToManyLocalController
             return false;
         },
         onAddItem : {
+            it.objid = 'NONLOCAL';
             entity.destinations << it; 
         },
         validate:{li->

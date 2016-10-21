@@ -12,6 +12,7 @@ class ParamterSendLocalController
             
     void init(){
         entity.org = [:];
+        entity.destinations = null;
         entity.assignee = null;
     }
          

@@ -14,8 +14,10 @@ class ParameterSendToManyLocalController
     def selectedItem;
     
     void init(){
-        entity.destinations = []
-        entity.assignee = [:]
+        entity.org = null;
+        entity.destinations = [];
+        entity.assignee = [:];
+        
     }
     
     void refresh() {
@@ -25,7 +27,9 @@ class ParameterSendToManyLocalController
     def getLookupOrg(){
         return Inv.lookupOpener('userorg:lookup',[
                 onselect :{
-                    entity.org = it.org
+                    selectedItem.objid = it.org.objid;
+                    selectedItem.name = it.org.name;
+                    selectedItem.code = it.org.code;
                 },
         ])
     }
@@ -57,7 +61,7 @@ class ParameterSendToManyLocalController
     
     
     void checkDuplicate(listtofilter,item){
-        def data = listtofilter.find{it.org.objid == item.org.objid }
+        def data = listtofilter.find{it.objid == item.objid }
         if (data)
         throw new Exception("Duplicate item is not allowed.")
     }   

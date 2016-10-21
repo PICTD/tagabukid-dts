@@ -5,14 +5,20 @@ import com.rameses.osiris2.common.*
 
 class ParameterSendNonLocalController
 {
-    @Binding
+    @Binding						
+
     def binding;
          
     def entity;
             
     void init(){
-        entity.org = [OrgUnitId:"",Entity:[Name:""],address:""]
-        entity.assignee = [name:"",jobtitle:""]
+        entity.org = [
+            objid : "NONLOCAL",
+            name  : "",
+            code  : ""
+        ];
+        entity.destinations = null;
+        entity.assignee = [name:"",jobtitle:""];
     }
          
     void refresh() {

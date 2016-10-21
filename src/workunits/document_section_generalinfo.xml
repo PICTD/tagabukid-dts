@@ -89,7 +89,7 @@
                 def child = [:]
                 child.objid = selectedItem.objid
                 child.taskid = selectedItem.taskid   
-                return Inv.lookupOpener( "dts:open", [entity: child] ); 
+                return Inv.lookupOpener( "subaydocument:open", [entity: child] ); 
             }
             
             

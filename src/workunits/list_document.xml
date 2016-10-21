@@ -1,7 +1,6 @@
-<workunit extends="wtemplates/ExplorerViewController.xml" serviceName="TagabukidDTSListService" 
-     allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="dts">
+<workunit extends="wtemplates/ExplorerViewController.xml" serviceName="TagabukidSubayListService" 
+     allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="subaydocument">
     <invokers>
-        <!--<invoker folderid="/explorer/txn/bpls" caption="Business Permit List"  index="4" role="LICENSING" />-->
         <invoker folderid="/explorer/txn/subaytransaction" caption="Document List"  index="3" role="SHARED"/>
         <invoker folderid="/home/dts" caption="Document List"  index="3" role="SHARED"/>
     </invokers>

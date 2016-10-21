@@ -45,7 +45,7 @@ public class ParameterSendNonLocalPage extends javax.swing.JPanel {
         xFormPanel1.add(xTextField3);
 
         xTextField1.setCaption("Destination");
-        xTextField1.setName("entity.org.Entity.Name"); // NOI18N
+        xTextField1.setName("entity.org.name"); // NOI18N
         xTextField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel1.add(xTextField1);
 
