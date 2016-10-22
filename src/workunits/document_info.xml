@@ -12,7 +12,7 @@
         <invoker type="formActions" caption="Show Document Info" action="showDocInfo" immediate="true" visibleWhen="#{entity.docinfo!=null}"/> 
         <!--<invoker type="formActions" caption="Send SMS" action="createSMS" immediate="true" />--> 
     </invokers>
-    <code class="tagabukid.subay.models.SubayDocumentInfoController"/>
+    <code class="tagabukid.subay.models.DocumentInfoController"/>
     <pages>
         <page template="tagabukid.subay.views.DocumentInfoPage"/>
     </pages>

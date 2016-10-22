@@ -7,7 +7,7 @@ import java.rmi.server.*
 import com.rameses.util.*;
 import com.rameses.gov.etracs.bpls.business.*;
 
-class  SubayDocumentInfoController {
+class  DocumentInfoController {
     @Script("TagabukidSubayDocumentInfoUtil")
     def docinfo
     
@@ -51,7 +51,7 @@ class  SubayDocumentInfoController {
     }
 
     void loadSections() {
-        sections = InvokerUtil.lookupOpeners( "dts:section", [entity: entity ] ).findAll {
+        sections = InvokerUtil.lookupOpeners( "subaydocument:section", [entity: entity ] ).findAll {
             def vw = it.properties.visibleWhen;
             return  ((!vw)  ||  ExpressionResolver.getInstance().evalBoolean( vw, [entity:entity] ));
         }
