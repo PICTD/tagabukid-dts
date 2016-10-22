@@ -2,13 +2,13 @@
     <invokers>
         <invoker type="subaydocument:section" caption="Logs" index="-100" />
         <invoker type="extActions" caption="Refresh" action="refresh"/>
-        <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation"/>
+        <invoker type="extActions" caption="Offline Reconcilation" action="offlineReconciliation" visibleWhen="#{entity.state.matches('idle','enroute','outgoing','processing')}"/>
         <invoker type="extActions" caption="View Flow Chart" action="viewFlowChart"/>
         <invoker type="extActions" caption="Print Logs" action="printlogs"/>
-        <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.senderorg==entity.currentorg}"/>
+        <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.senderorg.objid==entity.currentorg}"/>
     </invokers>
     
-   <code class="tagabukid.subay.models.DocumentTaskListSectionController" />
+    <code class="tagabukid.subay.models.DocumentTaskListSectionController" />
 
     <pages>
         <page template="tagabukid.subay.views.DocumentTaskListSectionPage"/>

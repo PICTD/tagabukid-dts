@@ -24,7 +24,7 @@ public class DocumentTaskListSectionController  {
             
     def tasks;
     def duration;
-            
+    
     def refresh(){
         //listModel.reload()
         def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
