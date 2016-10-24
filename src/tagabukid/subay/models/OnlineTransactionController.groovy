@@ -167,9 +167,10 @@ public class OnlineTransactionController {
         entity.mode = mode
         if( MsgBox.confirm( "You are about to " + mode + " this transaction. Proceed?")) {
             try{
-                svc.processDocument(entity)
-                MsgBox.alert("Transaction Successfull")
+                svc.processDocument(entity);
                 completed = true;
+                MsgBox.alert("Transaction Successfull");
+                
                 
             } catch(Warning w) {
                 Modal.show( 'document_redflag:warning', [list: w.info.list] );
@@ -178,7 +179,7 @@ public class OnlineTransactionController {
                 throw e;
             }
         }
-        return "completed"
+        return "completed";
         
     }
     

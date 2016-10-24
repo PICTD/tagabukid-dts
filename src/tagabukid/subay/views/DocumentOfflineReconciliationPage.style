@@ -1,0 +1,19 @@
+"entity.(message|effectivedate|blockaction|org)" [mode == 'create'] {
+    enabled:true;
+}
+
+"entity.(postedby|resolvedby|remarks)" [mode != 'resolve'] {
+    visible:false;
+}
+
+"assigntome" [mode != 'update'] {
+    visible:false;
+}
+
+"entity.(message|effectivedate|blockaction|org)" [mode == 'resolve'] {
+    enabled:false;
+}
+
+"entity.(postedby|resolvedby|remarks)" [mode == 'resolve'] {
+    visible:true;
+}

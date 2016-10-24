@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tagabukid.dts.view;
+package tagabukid.subay.views;
 
 import com.rameses.osiris2.themes.OKCancelPage;
 import com.rameses.rcp.ui.annotations.StyleSheet;
@@ -15,12 +15,12 @@ import com.rameses.rcp.ui.annotations.Template;
  */
 @Template({OKCancelPage.class})
 @StyleSheet
-public class DocumentOfflineReconciliation extends javax.swing.JPanel {
+public class DocumentOfflineReconciliationPage extends javax.swing.JPanel {
 
     /**
      * Creates new form DocumentRedFlag
      */
-    public DocumentOfflineReconciliation() {
+    public DocumentOfflineReconciliationPage() {
         initComponents();
     }
 

@@ -108,12 +108,12 @@ public class DocumentTaskListSectionController  {
     }
             
     def offlineReconciliation() {
-        if(!selectedItem) throw new Exception('Please select an item');
+//        if(!selectedItem) throw new Exception('Please select an item');
         def h = {
             listModel.reload();
         }
-        def rf = [documentid: entity.objid,task:selectedItem];
-        return Inv.lookupOpener( "document_offlinereconciliation:create", [entity: rf, handler: h] );
+//        def rf = [documentid: entity.objid,task:selectedItem];
+        return Inv.lookupOpener( "subaydocument_offlinereconciliation:create", [entity: entity, handler: h] );
     }
             
     def viewFlowChart() {
