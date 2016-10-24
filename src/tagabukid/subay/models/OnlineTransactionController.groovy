@@ -72,6 +72,7 @@ public class OnlineTransactionController {
     
     def addtolist(def doc){
         checkDuplicate(document,doc);
+        doc.message = "";
         document << doc;
         din = ""
         //        binding.refresh('din');

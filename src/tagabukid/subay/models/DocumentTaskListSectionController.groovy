@@ -7,6 +7,9 @@ public class DocumentTaskListSectionController  {
             
     @Service("TagabukidSubayTaskListService")
     def service;
+    
+    @Service("TagabukidSubayTransactionService")
+    def svctransaction;
             
     @Service("TagabukidSubayDocumentService")
     def svc
@@ -125,7 +128,7 @@ public class DocumentTaskListSectionController  {
         if( MsgBox.confirm( "You are about to cancel this transaction. Proceed?")) {
             try{
                 def doc = [objid: entity.objid,taskid:entity.taskid];
-                svc.cancelSend(doc)
+                svctransaction.cancelSend(doc)
                 MsgBox.alert("Transaction Cancelled. DIN: " + entity.din + " change state.")
             }catch(e){
                 MsgBox.alert("ERROR IN PROCESSING PLEASE CONTACT PICTD.")
