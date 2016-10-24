@@ -5,7 +5,7 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.view.*;
+
 import com.rameses.rcp.ui.annotations.StyleSheet;
 import com.rameses.rcp.ui.annotations.Template;
 
@@ -13,7 +13,7 @@ import com.rameses.rcp.ui.annotations.Template;
  *
  * @author rufino
  */
-@Template({DocumentInformationTemplate.class})
+@Template({DocumentGeneralInfoSectionTemplate.class})
 @StyleSheet
 public class EditDocumentAttachmentPage extends javax.swing.JPanel {
 

@@ -5,7 +5,7 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.view.*;
+
 import com.rameses.osiris2.themes.FormPage;
 import com.rameses.rcp.ui.annotations.Template;
 

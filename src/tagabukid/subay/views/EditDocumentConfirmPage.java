@@ -5,14 +5,14 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.view.*;
+
 import com.rameses.rcp.ui.annotations.Template;
 
 /**
  *
  * @author rufino
  */
-@Template({DocumentInformationTemplate.class})
+@Template({DocumentGeneralInfoSectionTemplate.class})
 public class EditDocumentConfirmPage extends javax.swing.JPanel {
 
     /**

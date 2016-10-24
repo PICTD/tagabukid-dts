@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tagabukid.dts.user;
+package tagabukid.subay.views;
+
+
 
 /**
  *
  * @author rufino
  */
-public class UserOrganizationPage extends javax.swing.JPanel {
+public class ViewFlowChart extends javax.swing.JPanel {
 
     /**
-     * Creates new form UserOrganizationPage
+     * Creates new form ViewFlowChart
      */
-    public UserOrganizationPage() {
+    public ViewFlowChart() {
         initComponents();
     }
 
