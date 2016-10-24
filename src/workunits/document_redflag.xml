@@ -7,100 +7,10 @@
         <invoker type="document_redflag_resolve:open" caption="Resolve Red Flag" target="popup" action="resolve"/>
     </invokers>
     
-    <code>
-        <![CDATA[    
-        import com.rameses.rcp.annotations.*
-        import com.rameses.rcp.common.*
-        import com.rameses.osiris2.client.*
-        import com.rameses.osiris2.common.*
-        import com.rameses.common.*;
-        import java.rmi.server.*
-        import com.rameses.util.*;
-        
-        class DocumentRedflagController {
-        
-            @Caller
-            def caller;
-            
-            @Binding 
-            def binding;
-            
-            @Script("User")
-            def user;
-            
-            @Service("TagabukidRedflagService")
-            def service;
-            def mode = 'create'
-            def handler;
+    <code class="tagabukid.subay.models.DocumentRedFlagController" />
 
-            def blockActions = ["send","archived"];
-            def entity = [:];
-            
-            void init() {
-                mode = 'create'
-                entity.objid = "DRF"+new UID();
-                entity.din = caller?.entity.din;
-                entity.title = caller?.entity.title;
-                entity.author = caller?.entity.author;
-                entity.description = caller?.entity.description;
-                entity.documenttype = [name:caller?.entity.documenttype.name];
-                entity.recordlog = [datecreated:caller?.entity.recordlog.datecreated,createdbyuser:caller?.entity.recordlog.createdbyuser];
-                entity.state = caller?.entity.state;
-                entity.refid = caller?.entity.objid;
-                entity.taskid = caller?.entity.taskid;
-                entity.org = null;
-            }
-            
-            void open() {
-                mode = 'update'
-                entity = service.open( entity );
-            }
-            
-            void resolve() {
-                mode = 'resolve'
-                entity = service.open( entity );
-            }
-            
-            void assigntome(){
-                entity.filedby.objid = OsirisContext.env.USERID
-                entity.filedby.name = OsirisContext.env.FULLNAME
-            }
-            
-            def doOk() {
-                if( mode == 'create' ) { 
-                    service.create( entity );
-                }
-                else if( mode == 'update' ) {
-                    service.update( entity );
-                }
-                else {
-                    if( OsirisContext.env.USERID != entity.filedby.objid )
-                        throw new Exception("You are not allowed to resolve this issue");
-                    service.resolve( entity );
-                }
-                if(handler) handler();
-                return "_close";
-            }
-            
-            def doCancel() {
-                return "_close";
-            }
-            
-            def getLookupOrg(){
-                return Inv.lookupOpener('hrisorg:lookup',[
-                        onselect :{
-                            entity.org = it;
-                        },
-                ])
-            }
-            
-        }
-        
-        ]]>
-    </code>
-    
     <pages>
-        <page template="tagabukid.dts.view.DocumentRedFlag"/>
+        <page template="tagabukid.subay.views.DocumentRedFlag"/>
     </pages>
     
 </workunit>
