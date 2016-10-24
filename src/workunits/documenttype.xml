@@ -1,6 +1,0 @@
-<workunit extends="wtemplates/ListController.xml" serviceName="TagabukidDocumentTypeService" entityName="documenttype" formName="documenttype:list">
-    <invokers>
-        <invoker folderid="/explorer/master/subaymaster" caption="Document Type" target="window" index="2" role="MASTER"/>
-        <invoker folderid="/home/dts/master" caption="Document Type" target="window" index="2" role="MASTER"/>
-    </invokers>
-</workunit>

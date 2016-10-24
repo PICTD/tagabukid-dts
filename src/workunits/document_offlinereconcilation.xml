@@ -1,0 +1,12 @@
+<workunit>
+    <invokers>
+        <invoker type="subaydocument_offlinereconciliation:create" caption="Offline Reconciliation" target="popup" action="init"/>
+    </invokers>
+    
+    <code class="tagabukid.subay.models.DocumentOfflineReconciliationController" />
+    
+    <pages>
+        <page template="tagabukid.subay.views.DocumentOfflineReconciliationPage"/>
+    </pages>
+    
+</workunit>

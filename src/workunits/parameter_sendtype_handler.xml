@@ -1,0 +1,9 @@
+<workunit>
+    <invokers>
+        <invoker type="send:form" caption="Send Parameters" action="init" target="popup" > </invoker>
+    </invokers>
+    <code class="tagabukid.subay.models.ParameterSendTypeController" />
+    <pages>
+        <page template="tagabukid.subay.views.SendParametersPage" />
+    </pages>
+</workunit>
