@@ -1,6 +1,6 @@
 <workunit extends="wtemplates/SimpleReportController.xml" >
     <invokers>
-        <invoker type="transaction:receipt" caption="Print DIN" action="preview" index="1"/>
+        <invoker type="subaytransaction:receipt" caption="Transaction Receipt" index="1"/>
     </invokers>
     
     <code>
@@ -11,27 +11,37 @@
     import com.rameses.osiris2.common.*;
     import com.rameses.osiris2.reports.*;
 
-    class DTSDinPrintoutController extends ReportController {
-
+    class SubayTransactionReceiptController extends ReportModel {
+        
+        @Service("ReportParameterService")
+        def paramSvc;
+    
         @FormId
         String formId;
 
         @FormTitle
         String formTitle;
         
+        def reportData;
         
-        @Service("TagabukidDINInventoryService")
-        def svc;
+        def title = "Transaction Receipt";
 
-        def entity;
-        def title = "Document Identification Number";
+        final String REPORT_PATH = "tagabukid/dts/reports/transaction/"; 
+        String reportName = REPORT_PATH + 'subaytransactionreceipt.jasper'; 
 
-        final String REPORT_PATH = "tagabukid/dts/reports/"; 
-        String reportName = REPORT_PATH + 'dinmain5.jasper'; 
-
+        public Map getParameters() {
+            def params = paramSvc.getStandardParameter(); 
+            params.REPORTTITLE = title;
+            params.TXNDATE = reportData.txndate;
+            params.PREPAREDBYNAME = OsirisContext.env.FULLNAME;           
+            params.PREPAREDBYTITLE = OsirisContext.env.JOBTITLE;
+            params.MODE = reportData.mode;
+            return params;
+        }
+    
         def getReportData() { 
-            //return [[din:entity.din,barcode:"71007:"+entity.din],[din:entity.din,barcode:"71007:"+entity.din]]; 
-            return svc.getDINs(entity.objid);
+          
+            return reportData.document;
         } 
     } 
     ]]>

@@ -18,7 +18,7 @@
     <tr>
         <td><font size="5"><b>Transaction Mode</b></font></td>
         <td>:</td>
-        <td><font size="6"><b>${entity.mode}</b></font></td>
+        <td><font size="6"><b style="text-transform: uppercase;">${entity.mode}</b></font></td>
     </tr>
     <tr>
         <td><font size="5"><b>Transaction Date</b></font></td>

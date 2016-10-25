@@ -4,6 +4,7 @@ import com.rameses.osiris2.client.*
 import com.rameses.osiris2.common.*
 import java.rmi.server.*;
 import com.rameses.util.*;
+import com.rameses.osiris2.reports.*;
 import java.text.*;
 
 public class OnlineTransactionController {
@@ -44,6 +45,7 @@ public class OnlineTransactionController {
         stats = svc.getStats();
         entity.txndate = dtsvc.getServerDate();
         completed = false;
+        entity.preparedbyname = OsirisContext.env.FULLNAME;
     }
     
     def createnew(){
@@ -185,12 +187,12 @@ public class OnlineTransactionController {
     }
     
     def getInfoHtml() {
-        return TemplateProvider.instance.getResult( "tagabukid/dts/dtstransaction.gtpl", [entity:entity] );
+        return TemplateProvider.instance.getResult( "tagabukid/subay/views/dtstransaction.gtpl", [entity:entity] );
     }
     
     def findReportOpener( reportData ) { 
         //check first if form handler exists. 
-        def o = InvokerUtil.lookupOpener( "dtstransaction:report", [reportData:reportData] );
+        def o = InvokerUtil.lookupOpener( "subaytransaction:receipt", [reportData:reportData] );
         if ( !o ) throw new Exception("Handler not found"); 
 
         return o.handle; 
