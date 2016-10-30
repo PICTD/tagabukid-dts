@@ -1,0 +1,6 @@
+<workunit extends="com/rameses/seti2/templates/CrudLookup.xml" schemaName="subaydocumentvariable" 
+          createAllowed="true">
+    <invokers>
+        <invoker type="subaydocvariable:lookup" caption="Document Info" action="init" />
+    </invokers>
+</workunit>

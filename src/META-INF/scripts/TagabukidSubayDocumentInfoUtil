@@ -25,8 +25,8 @@ public class TagabukidSubayDocumentInfoUtil {
     def update() {
         def e = [:];
         e.putAll( entity );
-     
-        return InvokerUtil.lookupOpener( entity.documenttype.code + ":app", [
+        
+        return InvokerUtil.lookupOpener( "default:docinfo", [
             entity: e,
             handler:{ result ->
                 entity.docinfo = result;
