@@ -30,8 +30,8 @@ public abstract class DefaultDocumentInfoEditUtil extends PageFlowController {
 
     def start() {
         query.putAll( entity );
-//        initialInfos?.each { it.level = -1 }; 
-//        query.infos = initialInfos;
+        initialInfos?.each { it.level = -1 }; 
+        query.infos = initialInfos;
 //        query.taxfees = [];
 //        query.requirements = [];
         completed = false;
@@ -130,6 +130,7 @@ public abstract class DefaultDocumentInfoEditUtil extends PageFlowController {
         def result = execute();
         //phase 0 is the looping phase.  
         if( result.phase > 1 ) {
+            println result.infos
             query.infos.addAll(result.infos);
             if( !query.infos )
                 throw new Exception("There must be at least one value for infos");

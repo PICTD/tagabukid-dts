@@ -47,7 +47,7 @@
     </pageflow>
     
     <pages>
-        <page name="specify-info" template="tagabukid.subay.views.DefaultDocumentInfoPage"/>
+        <page name="specify-info" template="tagabukid.subay.views.DefaultDocumentInfoEditPage"/>
     </pages>
     
 </workunit>
