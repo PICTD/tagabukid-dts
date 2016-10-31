@@ -64,7 +64,9 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
     }
             
     def save(){
-        entity = service.create(entity)
+//        println entity
+//        throw new Exception("TEST");
+        entity = service.create(entity);
         return entity
     }
             
@@ -156,7 +158,7 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
                 }
             }
         }
-    ] as EditorListModel
+    ] as BasicListModel
             
 //    void updateInfo() {
 //        boolean test = false;

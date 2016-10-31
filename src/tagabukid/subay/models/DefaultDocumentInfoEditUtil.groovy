@@ -46,6 +46,15 @@ public abstract class DefaultDocumentInfoEditUtil extends PageFlowController {
         },
         updateBean: {name,value,item->
             item.bean.value = value;
+//            def f = entity.infos.find{ it.fieldid == name };
+           
+            if( item.type == 'text' ) item.bean.stringvalue = value;
+            else if( item.type == 'date' ) item.bean.datevalue = value;
+            else if( item.type == 'decimal' ) item.bean.decimalvalue = value;
+            else if( item.type == 'integer' ) item.bean.intvalue = value;
+            else if( item.type == 'lookup' && item.handler == 'revenueitem:lookup' ) {
+                item.bean.lookup = [objid: value.objid, title: value.title ];
+            }
         },
         getControlList: {
             return formInfos;
