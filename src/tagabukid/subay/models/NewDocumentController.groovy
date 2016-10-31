@@ -64,8 +64,6 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
     }
             
     def save(){
-//        println entity
-//        throw new Exception("TEST");
         entity = service.create(entity);
         return entity
     }
