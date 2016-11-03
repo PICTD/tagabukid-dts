@@ -44,6 +44,7 @@ class  DocumentInfoController {
         title = entity.title + ' (' + entity.din + ')';
         loadSections();
         formId = entity.objid;
+        println entity
     }
 
     void reloadSection() {
