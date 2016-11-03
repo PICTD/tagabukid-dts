@@ -158,27 +158,17 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
         }
     ] as BasicListModel
             
-//    void updateInfo() {
-//        boolean test = false;
-//        appinfo.handler = {
-//            test = true;
-//        }
-//        Modal.show(appinfo.update());
-//        if(!test) throw new BreakException();
-//        appinfo.verify();
-//    }  
-        void updateInfo() {
-            boolean test = false;
-            docinfo.handler = {
-                test = true;
-            }
-//            try{
+    void updateInfo() {
+        boolean test = false;
+        docinfo.handler = {
+            test = true;
+        }
+        println entity
+        if(entity.documenttype.handler ){
             Modal.show(docinfo.update());
             if(!test) throw new BreakException();
-//            }catch(e){
-//                
-//            }
-        
-            //docinfo.verify();
         }
+        //check if info is valid
+        //docinfo.verify();
+    }
 }

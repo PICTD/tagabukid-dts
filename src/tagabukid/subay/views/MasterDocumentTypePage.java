@@ -38,6 +38,7 @@ public class MasterDocumentTypePage extends javax.swing.JPanel {
         xTextField3 = new com.rameses.rcp.control.XTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         xTextArea1 = new com.rameses.rcp.control.XTextArea();
+        xTextField1 = new com.rameses.rcp.control.XTextField();
         xCheckBox1 = new com.rameses.rcp.control.XCheckBox();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
 
@@ -48,10 +49,12 @@ public class MasterDocumentTypePage extends javax.swing.JPanel {
         xTextField4.setCaption("Name");
         xTextField4.setName("entity.name"); // NOI18N
         xTextField4.setPreferredSize(new java.awt.Dimension(300, 20));
+        xTextField4.setRequired(true);
         xFormPanel1.add(xTextField4);
 
         xTextField3.setCaption("Code");
         xTextField3.setName("entity.code"); // NOI18N
+        xTextField3.setRequired(true);
         xFormPanel1.add(xTextField3);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 63));
@@ -61,6 +64,10 @@ public class MasterDocumentTypePage extends javax.swing.JPanel {
         jScrollPane1.setViewportView(xTextArea1);
 
         xFormPanel1.add(jScrollPane1);
+
+        xTextField1.setCaption("Handler");
+        xTextField1.setName("entity.handler"); // NOI18N
+        xFormPanel1.add(xTextField1);
 
         xCheckBox1.setCaption("");
         xCheckBox1.setName("entity.haschild"); // NOI18N
@@ -121,7 +128,7 @@ public class MasterDocumentTypePage extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -133,6 +140,7 @@ public class MasterDocumentTypePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XDataTable xDataTable1;
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XTextArea xTextArea1;
+    private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField3;
     private com.rameses.rcp.control.XTextField xTextField4;
     // End of variables declaration//GEN-END:variables
