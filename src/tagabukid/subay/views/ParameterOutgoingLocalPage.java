@@ -5,12 +5,13 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.*;
+
 
 /**
  *
  * @author rufino
  */
+
 public class ParameterOutgoingLocalPage extends javax.swing.JPanel {
 
     /**

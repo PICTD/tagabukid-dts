@@ -26,6 +26,7 @@ public class OnlineTransactionController {
     @FormTitle
     def title;
     def completed;
+    def destination;
     def test;
     
     def df = new SimpleDateFormat("yyyy-MM-dd");
@@ -46,6 +47,7 @@ public class OnlineTransactionController {
         stats = svc.getStats();
         entity.txndate = dtsvc.getServerDate();
         completed = false;
+        destination = false;
         entity.preparedbyname = OsirisContext.env.FULLNAME;
     }
     
@@ -77,6 +79,9 @@ public class OnlineTransactionController {
         checkDuplicate(document,doc);
         doc.message = "";
         document << doc;
+        din = "";
+        binding.refresh('din');
+        binding.focus('din');
         listHandler.reload();
         
     }
@@ -110,9 +115,7 @@ public class OnlineTransactionController {
         entity.mode = mode
         entity.document = document
         searchdocument()
-        din = "";
-        binding.refresh('din');
-        binding.focus('din');
+      
     }
     
 
@@ -159,14 +162,19 @@ public class OnlineTransactionController {
     }
     
     def save(){
-        if ((!entity.org && !entity.destinations) && mode.matches('send|archived')) 
-        return 'parameter';
+        if (document.size == 0)
+        throw new Exception("Please add at least 1 document to process");
+        
+        if ((!entity.org && !entity.destinations) && mode.matches('send|archived|outgoing') && !destination){
+             destination = true;
+             return 'paramter';
+        } else if((!entity.org && !entity.destinations) && mode.matches('send|archived') && destination){
+             throw new Exception("Destination is Required");
+             return 'paramter';
+        }
         
         if (!entity.assignee && !entity.oic && mode=='send') 
         throw new Exception("OIC is Required");
-        
-        if (document.size == 0)
-        throw new Exception("Please add at least 1 document to process");
         
         entity.document = document
         entity.mode = mode
