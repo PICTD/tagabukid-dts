@@ -19,8 +19,6 @@
     <pages>
         <page template="tagabukid.subay.views.OnlineTransactionPage"/>
         <page name="paramter" template="tagabukid.subay.views.SendParametersPage"/>
-<!--        <page name="localoutgoing" template="tagabukid.subay.views.ParameterOutgoingLocalPage" />
-        <page name="archived" template="tagabukid.subay.views.ParameterArchivePage" />-->
         <page name="completed" template="tagabukid.subay.views.OnlineTransactionInfoPage"/>
     </pages>
     
