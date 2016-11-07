@@ -7,7 +7,7 @@ class ParamterSendLocalController
 {
     @Binding
     def binding;
-         
+    
     def entity;
             
     void init(){

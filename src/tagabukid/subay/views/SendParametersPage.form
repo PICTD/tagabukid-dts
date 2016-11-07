@@ -16,33 +16,100 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="xSubControl1" pref="720" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="xSubFormPanel1" pref="720" max="32767" attributes="0"/>
+                  <Component id="xFormPanel1" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="xSubControl1" pref="178" max="32767" attributes="0"/>
+              <Component id="xFormPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="xSubFormPanel1" pref="156" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="com.rameses.rcp.control.XSubControl" name="xSubControl1">
+    <Container class="com.rameses.rcp.control.XFormPanel" name="xFormPanel1">
+      <Properties>
+        <Property name="captionBorder" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+            <EmptyBorder/>
+          </Border>
+        </Property>
+        <Property name="captionFont" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="captionWidth" type="int" value="150"/>
+        <Property name="orientation" type="java.lang.String" value="HORIZONTAL"/>
+        <Property name="padding" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
+          <Insets value="[0, 0, 0, 0]"/>
+        </Property>
+        <Property name="showCaption" type="boolean" value="false"/>
+        <Property name="visibleWhen" type="java.lang.String" value="#{mode == &apos;send&apos;}"/>
+      </Properties>
+      <SubComponents>
+        <Component class="com.rameses.rcp.control.XRadio" name="xRadio1">
+          <Properties>
+            <Property name="caption" type="java.lang.String" value="Send Type"/>
+            <Property name="name" type="java.lang.String" value="entity.sendtype" noResource="true"/>
+            <Property name="optionValue" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;local&quot;" type="code"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Local"/>
+          </Properties>
+        </Component>
+        <Component class="com.rameses.rcp.control.XRadio" name="xRadio2">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="entity.sendtype" noResource="true"/>
+            <Property name="optionValue" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;nonlocal&quot;" type="code"/>
+            </Property>
+            <Property name="showCaption" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Nonlocal"/>
+          </Properties>
+        </Component>
+        <Component class="com.rameses.rcp.control.XRadio" name="xRadio3">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="entity.sendtype" noResource="true"/>
+            <Property name="optionValue" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;multiplelocal&quot;" type="code"/>
+            </Property>
+            <Property name="showCaption" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Multiple(Local)"/>
+          </Properties>
+        </Component>
+        <Component class="com.rameses.rcp.control.XRadio" name="xRadio4">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="entity.sendtype" noResource="true"/>
+            <Property name="optionValue" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="&quot;multiplenonlocal&quot;" type="code"/>
+            </Property>
+            <Property name="showCaption" type="boolean" value="false"/>
+            <Property name="text" type="java.lang.String" value="Multiple(Nonlocal)"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Container class="com.rameses.rcp.control.XSubFormPanel" name="xSubFormPanel1">
       <Properties>
         <Property name="depends" type="[Ljava.lang.String;" editor="org.netbeans.beaninfo.editors.StringArrayEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="entity.sendtype"/>
+          <StringArray count="2">
+            <StringItem index="0" value="mode"/>
+            <StringItem index="1" value="entity.sendtype"/>
           </StringArray>
         </Property>
         <Property name="dynamic" type="boolean" value="true"/>
-        <Property name="handler" type="java.lang.String" value="sendtypeHandler"/>
+        <Property name="handler" type="java.lang.String" value="handler"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>

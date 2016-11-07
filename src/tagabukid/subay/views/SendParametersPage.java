@@ -5,12 +5,14 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.*;
+import com.rameses.osiris2.themes.FormPage;
+import com.rameses.rcp.ui.annotations.Template;
 
 /**
  *
  * @author rufino
  */
+@Template({FormPage.class})
 public class SendParametersPage extends javax.swing.JPanel {
 
     /**
@@ -29,11 +31,48 @@ public class SendParametersPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        xSubControl1 = new com.rameses.rcp.control.XSubControl();
+        xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
+        xRadio1 = new com.rameses.rcp.control.XRadio();
+        xRadio2 = new com.rameses.rcp.control.XRadio();
+        xRadio3 = new com.rameses.rcp.control.XRadio();
+        xRadio4 = new com.rameses.rcp.control.XRadio();
+        xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
 
-        xSubControl1.setDepends(new String[] {"entity.sendtype"});
-        xSubControl1.setDynamic(true);
-        xSubControl1.setHandler("sendtypeHandler");
+        xFormPanel1.setCaptionBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        xFormPanel1.setCaptionFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        xFormPanel1.setCaptionWidth(150);
+        xFormPanel1.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
+        xFormPanel1.setPadding(new java.awt.Insets(0, 0, 0, 0));
+        xFormPanel1.setShowCaption(false);
+        xFormPanel1.setVisibleWhen("#{mode == 'send'}");
+
+        xRadio1.setCaption("Send Type");
+        xRadio1.setName("entity.sendtype"); // NOI18N
+        xRadio1.setOptionValue("local");
+        xRadio1.setText("Local");
+        xFormPanel1.add(xRadio1);
+
+        xRadio2.setName("entity.sendtype"); // NOI18N
+        xRadio2.setOptionValue("nonlocal");
+        xRadio2.setShowCaption(false);
+        xRadio2.setText("Nonlocal");
+        xFormPanel1.add(xRadio2);
+
+        xRadio3.setName("entity.sendtype"); // NOI18N
+        xRadio3.setOptionValue("multiplelocal");
+        xRadio3.setShowCaption(false);
+        xRadio3.setText("Multiple(Local)");
+        xFormPanel1.add(xRadio3);
+
+        xRadio4.setName("entity.sendtype"); // NOI18N
+        xRadio4.setOptionValue("multiplenonlocal");
+        xRadio4.setShowCaption(false);
+        xRadio4.setText("Multiple(Nonlocal)");
+        xFormPanel1.add(xRadio4);
+
+        xSubFormPanel1.setDepends(new String[] {"mode", "entity.sendtype"});
+        xSubFormPanel1.setDynamic(true);
+        xSubFormPanel1.setHandler("handler");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -41,20 +80,29 @@ public class SendParametersPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xSubControl1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                    .addComponent(xFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(xSubControl1, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.rameses.rcp.control.XSubControl xSubControl1;
+    private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.rcp.control.XRadio xRadio1;
+    private com.rameses.rcp.control.XRadio xRadio2;
+    private com.rameses.rcp.control.XRadio xRadio3;
+    private com.rameses.rcp.control.XRadio xRadio4;
+    private com.rameses.rcp.control.XSubFormPanel xSubFormPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,8 +5,6 @@
  */
 package tagabukid.subay.views;
 
-import tagabukid.dts.*;
-
 /**
  *
  * @author rufino

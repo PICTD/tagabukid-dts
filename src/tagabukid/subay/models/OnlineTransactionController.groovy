@@ -26,6 +26,7 @@ public class OnlineTransactionController {
     @FormTitle
     def title;
     def completed;
+    def test;
     
     def df = new SimpleDateFormat("yyyy-MM-dd");
     def formatDate = { o->
@@ -36,8 +37,8 @@ public class OnlineTransactionController {
     }
     
     void init(){
-        mode= "INIT"
-        title="Select Transaction Mode"
+        mode= "INIT";
+        title="Select Transaction Mode";
         document =[];
         din = "";
         entity = [:]
@@ -76,10 +77,8 @@ public class OnlineTransactionController {
         checkDuplicate(document,doc);
         doc.message = "";
         document << doc;
-        din = ""
-        //        binding.refresh('din');
-        //        binding.focus('din');
         listHandler.reload();
+        
     }
     
     def searchdocument(){
@@ -111,6 +110,9 @@ public class OnlineTransactionController {
         entity.mode = mode
         entity.document = document
         searchdocument()
+        din = "";
+        binding.refresh('din');
+        binding.focus('din');
     }
     
 
@@ -130,7 +132,7 @@ public class OnlineTransactionController {
     void send (){
         mode = "send"
         title= "SENDING"
-        entity.sendtype = 'local'
+        entity.sendtype = 'local';
         binding.refresh('din');
         binding.focus('din');
     }
@@ -158,7 +160,7 @@ public class OnlineTransactionController {
     
     def save(){
         if ((!entity.org && !entity.destinations) && mode.matches('send|archived')) 
-        throw new Exception("Destination is Required");
+        return 'parameter';
         
         if (!entity.assignee && !entity.oic && mode=='send') 
         throw new Exception("OIC is Required");

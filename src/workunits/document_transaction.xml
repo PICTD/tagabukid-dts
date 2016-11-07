@@ -7,16 +7,17 @@
         <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003"/>
         <invoker type="formActions" caption="Archive Document" mnemonic="a" shortcut="F4" action="archived" visibleWhen="#{mode=='INIT'}" name="archived" index="2004"/>
         <invoker type="formActions" caption="Send to Outgoing" action="save" visibleWhen="#{mode=='outgoing' }" index="2004"/>
-        <invoker type="formActions" caption="Send" action="save" visibleWhen="#{mode=='send' &amp;&amp; !completed}" index="2004"/>
+        <invoker type="formActions" caption="Send" action="save" visibleWhen="#{mode=='send' &amp;&amp; !completed}" index="2004" />
         <invoker type="formActions" caption="Receive" action="save" visibleWhen="#{mode=='receive' &amp;&amp; !completed}" index="2004"/>
         <invoker type="formActions" caption="Send to Archive" action="save" visibleWhen="#{mode=='archived' &amp;&amp; !completed}" index="2004"/>
-        <invoker type="formActions" caption="Reset" mnemonic="r" shortcut="F5" action="init" visibleWhen="#{mode!='INIT' &amp;&amp; !completed}" index="2005" />
+        <invoker type="formActions" caption="Reset" mnemonic="r" shortcut="F5" action="createnew" visibleWhen="#{mode!='INIT' &amp;&amp; !completed}" index="2005" />
         <invoker type="formActions" action="print" caption="Print" mnemonic="p" visibleWhen="#{completed}" />
         <invoker type="formActions" action="createnew" caption="New" visibleWhen="#{completed}" mnemonic="n"/>
     </invokers>
     <code class="tagabukid.subay.models.OnlineTransactionController"/>
     <pages>
         <page template="tagabukid.subay.views.OnlineTransactionPage"/>
+        <page name="parameter" template="tagabukid.subay.views.SendParametersPage"/>
         <page name="completed" template="tagabukid.subay.views.OnlineTransactionInfoPage"/>
     </pages>
     

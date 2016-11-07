@@ -6,9 +6,9 @@ import com.rameses.osiris2.common.*
 class ParameterSendNonLocalController
 {
     @Binding						
-
     def binding;
-         
+       
+    
     def entity;
             
     void init(){

@@ -35,13 +35,6 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
 
         xActionTextField1 = new com.rameses.rcp.control.XActionTextField();
         xDataTable1 = new com.rameses.rcp.control.XDataTable();
-        xActionTextField2 = new com.rameses.rcp.control.XActionTextField();
-        xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
-        xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
-        xRadio1 = new com.rameses.rcp.control.XRadio();
-        xRadio2 = new com.rameses.rcp.control.XRadio();
-        xRadio3 = new com.rameses.rcp.control.XRadio();
-        xRadio4 = new com.rameses.rcp.control.XRadio();
         xFormPanel2 = new com.rameses.rcp.control.XFormPanel();
         xLabel3 = new com.rameses.rcp.control.XLabel();
         xFormPanel3 = new com.rameses.rcp.control.XFormPanel();
@@ -49,6 +42,7 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
         xLabel5 = new com.rameses.rcp.control.XLabel();
         xLabel6 = new com.rameses.rcp.control.XLabel();
         xLabel7 = new com.rameses.rcp.control.XLabel();
+        xActionTextField2 = new com.rameses.rcp.control.XActionTextField();
 
         xActionTextField1.setText("xActionTextField1");
 
@@ -126,48 +120,6 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
         xDataTable1.setHandler("listHandler");
         xDataTable1.setName("selectedItem"); // NOI18N
 
-        xActionTextField2.setActionCommand("barcodesearch");
-        xActionTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        xActionTextField2.setHint("Search DIN");
-        xActionTextField2.setName("din"); // NOI18N
-        xActionTextField2.setVisibleWhen("");
-
-        xSubFormPanel1.setDepends(new String[] {"mode", "entity.sendtype"});
-        xSubFormPanel1.setDynamic(true);
-        xSubFormPanel1.setHandler("handler");
-
-        xFormPanel1.setCaptionBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        xFormPanel1.setCaptionFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        xFormPanel1.setCaptionWidth(150);
-        xFormPanel1.setOrientation(com.rameses.rcp.constant.UIConstants.HORIZONTAL);
-        xFormPanel1.setPadding(new java.awt.Insets(0, 0, 0, 0));
-        xFormPanel1.setShowCaption(false);
-        xFormPanel1.setVisibleWhen("#{mode == 'send'}");
-
-        xRadio1.setCaption("Send Type");
-        xRadio1.setName("entity.sendtype"); // NOI18N
-        xRadio1.setOptionValue("local");
-        xRadio1.setText("Local");
-        xFormPanel1.add(xRadio1);
-
-        xRadio2.setName("entity.sendtype"); // NOI18N
-        xRadio2.setOptionValue("nonlocal");
-        xRadio2.setShowCaption(false);
-        xRadio2.setText("Nonlocal");
-        xFormPanel1.add(xRadio2);
-
-        xRadio3.setName("entity.sendtype"); // NOI18N
-        xRadio3.setOptionValue("multiplelocal");
-        xRadio3.setShowCaption(false);
-        xRadio3.setText("Multiple(Local)");
-        xFormPanel1.add(xRadio3);
-
-        xRadio4.setName("entity.sendtype"); // NOI18N
-        xRadio4.setOptionValue("multiplenonlocal");
-        xRadio4.setShowCaption(false);
-        xRadio4.setText("Multiple(Nonlocal)");
-        xFormPanel1.add(xRadio4);
-
         xFormPanel2.setCaptionBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         xFormPanel2.setCaptionFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -232,6 +184,13 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
         xLabel7.setPreferredSize(new java.awt.Dimension(100, 23));
         xFormPanel3.add(xLabel7);
 
+        xActionTextField2.setActionCommand("barcodesearch");
+        xActionTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        xActionTextField2.setHint("Search DIN");
+        xActionTextField2.setName("din"); // NOI18N
+        xActionTextField2.setPreferredSize(new java.awt.Dimension(300, 30));
+        xActionTextField2.setShowCaption(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -239,31 +198,25 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xDataTable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(xSubFormPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xFormPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(xDataTable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(xFormPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 534, Short.MAX_VALUE))
-                    .addComponent(xFormPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(500, 500, 500)
+                        .addComponent(xFormPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(141, 141, 141)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(xFormPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(xFormPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(xFormPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(xActionTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(xSubFormPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xDataTable1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
                 .addComponent(xFormPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -274,7 +227,6 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XActionTextField xActionTextField1;
     private com.rameses.rcp.control.XActionTextField xActionTextField2;
     private com.rameses.rcp.control.XDataTable xDataTable1;
-    private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XFormPanel xFormPanel2;
     private com.rameses.rcp.control.XFormPanel xFormPanel3;
     private com.rameses.rcp.control.XLabel xLabel3;
@@ -282,10 +234,5 @@ public class OnlineTransactionPage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLabel xLabel5;
     private com.rameses.rcp.control.XLabel xLabel6;
     private com.rameses.rcp.control.XLabel xLabel7;
-    private com.rameses.rcp.control.XRadio xRadio1;
-    private com.rameses.rcp.control.XRadio xRadio2;
-    private com.rameses.rcp.control.XRadio xRadio3;
-    private com.rameses.rcp.control.XRadio xRadio4;
-    private com.rameses.rcp.control.XSubFormPanel xSubFormPanel1;
     // End of variables declaration//GEN-END:variables
 }

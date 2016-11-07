@@ -17,7 +17,6 @@ class ParameterSendToManyLocalController
         entity.org = null;
         entity.destinations = [];
         entity.assignee = [:];
-        
     }
     
     void refresh() {

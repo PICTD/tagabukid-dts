@@ -14,8 +14,8 @@ class ParameterSendToManyLocalController
     def selectedItem;
     void init(){
         entity.org = null;
-        entity.destinations = []
-        entity.assignee = [name:"",jobtitle:""]
+        entity.destinations = [];
+        entity.assignee = [name:"",jobtitle:""];
     }
     
     void refresh() {
