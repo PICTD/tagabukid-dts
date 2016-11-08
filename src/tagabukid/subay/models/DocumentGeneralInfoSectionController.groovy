@@ -8,7 +8,10 @@ import tagabukid.utils.*;
 class  DocumentGeneralInfoSectionController  {
     @Binding
     def binding;
-
+    
+//    @Script("TagabukidSubayDocumentInfoUtil")
+//    def docinfo
+    
     @Service("TagbukidSubayDocumentService")
     def svc;
             

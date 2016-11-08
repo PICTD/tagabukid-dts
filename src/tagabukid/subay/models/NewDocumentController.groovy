@@ -163,7 +163,6 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
         docinfo.handler = {
             test = true;
         }
-        println entity
         if(entity.documenttype.handler ){
             Modal.show(docinfo.update());
             if(!test) throw new BreakException();
