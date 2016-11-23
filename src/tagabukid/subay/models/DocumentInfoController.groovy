@@ -40,11 +40,11 @@ class  DocumentInfoController {
 //            entity.objid = entity.data.objid;
             entity.taskid = entity.data.taskid;
         }
-        entity = service.open( [barcodeid: barcodeid,taskid:entity?.taskid ] );
+        entity = service.open( [barcodeid: barcodeid,taskid:entity?.taskid,objid:entity?.objid ] );
         title = entity.title + ' (' + entity.din + ')';
         loadSections();
         formId = entity.objid;
-        println entity
+//        println entity
     }
 
     void reloadSection() {
@@ -70,7 +70,7 @@ class  DocumentInfoController {
         throw new Exception("No parent document");
         def parent = [:]
         parent.objid = entity.parentid 
-        return Inv.lookupOpener( "dts:open", [entity: parent] ); 
+        return Inv.lookupOpener( "subaydocument:open", [entity: parent] ); 
     }
             
     def showDocInfo() {
