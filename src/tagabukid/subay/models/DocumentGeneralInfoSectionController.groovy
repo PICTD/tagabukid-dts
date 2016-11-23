@@ -69,7 +69,26 @@ class  DocumentGeneralInfoSectionController  {
     def listHandler = [
         fetchList : { return entity.child },
     ] as EditorListModel
-            
+         
+    def docinfoListHandler = [
+       fetchList: { o->
+            def list = [];
+            if( entity.infos ) {
+                entity.infos.each {
+                    def m = [ name:it.fieldid, caption:it.caption, type:it.fieldtype ];
+                    if( m.type == 'text' ) m.value = it.stringvalue;
+                    else if( m.type == 'date' ) m.value =  it.datevalue;
+                    else if( m.type == 'decimal' ) m.value = it.decimalvalue;
+                    else if( m.type == 'integer' ) m.value = it.intvalue;
+                    else m.value = it.info;
+                    list << m;
+                }
+                return list;
+            }
+            return list;
+        }
+    ] as BasicListModel;
+    
     def print() {
         def op = Inv.lookupOpener( "dts:din", [entity: entity] );
         op.target = 'self';
