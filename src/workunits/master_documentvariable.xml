@@ -1,0 +1,62 @@
+<!--<workunit extends="com/rameses/seti2/templates/CrudList.xml" schemaName="subaydocumentvariable">
+    <invokers>
+        <invoker folderid="/explorer/master/subaymaster" caption="Document Variables" action="init" target="window" index="2" role="MASTER"/>
+        <invoker folderid="/home/dts/master" caption="Document Variables" action="init" target="window" index="2" role="MASTER"/>
+    </invokers>
+</workunit>-->
+
+<workunit>
+    <invokers>
+        <invoker type="documentvariable:open" action="open" caption="Document Variable"/>
+        <invoker type="documentvariable:create" action="init" caption="Document Variable" 
+                role="MASTER" permission="documentvariable.create"/>
+    </invokers>
+    <code>
+    <![CDATA[
+import com.rameses.rcp.common.*;
+import com.rameses.rcp.annotations.*;
+import com.rameses.osiris2.common.*;
+
+class DocumentVariableController extends CRUDController {
+
+    String serviceName = 'TagabukidSubayDocumentVariableService'
+    String entityName = 'documentvariable'
+    String prefixId = 'DV'
+    def arrayvalue
+    def datatypes = LOV.VAR_DATA_TYPES
+    def vartype = 'USER-DEFINED';
+
+    @PropertyChangeListener
+    def listener = [
+        "entity.datatype": {o->
+            entity.arrayvalues = []
+            binding.refresh('arrayvalue')
+        }
+    ]
+
+    Map createEntity() {
+        return [ system:0, arrayvalues:[] ]
+    }
+
+    void addArrayValue() {
+        def value = MsgBox.prompt("Enter value: ")
+        if( !value || value == 'null' ) return
+        if( !entity.arrayvalues.find{ it == value } ) {
+            entity.arrayvalues.add(value.toUpperCase())
+            binding.refresh('arrayvalue')
+        }
+    }
+
+    void removeArrayValue() {
+        if( MsgBox.confirm("Remove selected array value?") ) {
+            entity.arrayvalues.remove(arrayvalue)
+            binding.refresh('arrayvalue')
+        }
+    }
+}
+    ]]>
+    </code>
+    <pages>
+        <page template="com.rameses.gov.etracs.bpls.BusinessVariablePage"/>
+    </pages>
+</workunit>
