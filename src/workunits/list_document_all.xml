@@ -3,6 +3,6 @@
     <invokers>
         <!--<invoker folderid="/explorer/txn/bpls" caption="Business Permit List"  index="4" role="LICENSING" />-->
         <invoker folderid="/explorer/txn/subaytransaction" caption="Document List ALL"  index="3" role="MASTER"/>
-        <invoker folderid="/home/dts" caption="Document List ALL"  index="3" role="MASTER"/>
+        <invoker folderid="/home/dts" caption="Document List ALL"  index="3" role="MASTER" icon="images/toolbars/subaydocumentlist.png"/>
     </invokers>
 </workunit>

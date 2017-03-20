@@ -1,7 +1,7 @@
 <workunit>
     
     <invokers>
-        <invoker type="misc:docinfo" caption="Edit Business Info" action="start" target="popup"/>
+        <invoker type="misc:docinfos" caption="Edit Business Info" action="start" target="popup"/>
     </invokers>
     
     <code>

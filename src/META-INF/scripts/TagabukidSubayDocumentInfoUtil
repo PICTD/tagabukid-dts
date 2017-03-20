@@ -25,10 +25,12 @@ public class TagabukidSubayDocumentInfoUtil {
     def update() {
         def e = [:];
         e.putAll( entity );
-        return InvokerUtil.lookupOpener( entity.documenttype.handler + ":docinfo", [
+        println entity.docinfos
+        if( !entity.docinfos ) entity.docinfos = [];
+        return InvokerUtil.lookupOpener(entity.documenttype.handler + ":docinfos", [
             entity: e,
+            existingInfos: entity.docinfos,
             handler:{ result ->
-               
                 entity.docinfos = result.infos;
                 listModel.reload();
                 if(handler) handler();
@@ -36,7 +38,19 @@ public class TagabukidSubayDocumentInfoUtil {
         ]);
       
     }
-
+    
+    def verify() {
+        if(!entity.docinfos) 
+            throw new Exception("Please specify at least one info for document info");
+        def unedited = entity.docinfos.findAll{ it.value == null };
+        if( unedited ) {
+            def buff = new StringBuffer();
+            unedited.each {
+                buff.append( "\n"+it.attribute.name );
+            }
+            throw new Exception("Please complete the ff. Do not leave blanks" + buff.toString() );  
+        }    
+    }
 
     void reset(){
         listModel.reload();
@@ -45,5 +59,4 @@ public class TagabukidSubayDocumentInfoUtil {
     void refresh(){
         listModel.reload();
     }
-    
 }

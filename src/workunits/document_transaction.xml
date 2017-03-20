@@ -1,16 +1,16 @@
 <workunit>
     <invokers>
         <invoker folderid="/explorer/txn/dtstransaction" caption="DTS Transaction" action="init" target="window"  index="2" role="SHARED"/>        
-        <invoker folderid="/home/dts" caption="DTS Transaction" action="init" target="window"  index="2" role="SHARED"/>
-        <invoker type="formActions" caption="Outgoing" mnemonic="o" shortcut="F1" action="outgoing" visibleWhen="#{mode=='INIT'}" name="outgoing" index="2001"/>
-        <invoker type="formActions" caption="Send Document" mnemonic="s" shortcut="F2" action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002"/>
-        <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003"/>
-        <invoker type="formActions" caption="Archive Document" mnemonic="a" shortcut="F4" action="archived" visibleWhen="#{mode=='INIT'}" name="archived" index="2004"/>
+        <invoker folderid="/home/dts" caption="DTS Transaction" action="init" target="window"  index="2" role="SHARED" icon="images/toolbars/subaytransaction.png"/>
+        <invoker type="formActions" caption="Outgoing" mnemonic="o" shortcut="F1" action="outgoing" visibleWhen="#{mode=='INIT'}" name="outgoing" index="2001" icon="images/toolbars/send.png"/>
+        <invoker type="formActions" caption="Send Document" mnemonic="s" shortcut="F2" action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002" icon="images/toolbars/send.png"/>
+        <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003" icon="images/toolbars/receive.png"/>
+        <invoker type="formActions" caption="Archive Document" mnemonic="a" shortcut="F4" action="archived" visibleWhen="#{mode=='INIT'}" name="archived" index="2004" icon="images/toolbars/subaydocumentlist.png"/>
         <invoker type="formActions" caption="Next" action="save" visibleWhen="#{mode.matches('send|outgoing|archived') &amp;&amp; !destination}" index="2004" />
-        <invoker type="formActions" caption="Send to Outgoing" action="save" visibleWhen="#{mode=='outgoing' &amp;&amp; !completed &amp;&amp; destination}" index="2004"/>
-        <invoker type="formActions" caption="Send" action="save" visibleWhen="#{mode=='send' &amp;&amp; !completed &amp;&amp; destination}" index="2004" />
-        <invoker type="formActions" caption="Receive" action="save" visibleWhen="#{mode=='receive' &amp;&amp; !completed }" index="2004"/>
-        <invoker type="formActions" caption="Send to Archive" action="save" visibleWhen="#{mode=='archived' &amp;&amp; !completed &amp;&amp; destination}" index="2004"/>
+        <invoker type="formActions" caption="Send to Outgoing" action="save" visibleWhen="#{mode=='outgoing' &amp;&amp; !completed &amp;&amp; destination}" index="2004" icon="images/toolbars/send.png"/>
+        <invoker type="formActions" caption="Send" action="save" visibleWhen="#{mode=='send' &amp;&amp; !completed &amp;&amp; destination}" index="2004" icon="images/toolbars/send.png"/>
+        <invoker type="formActions" caption="Receive" action="save" visibleWhen="#{mode=='receive' &amp;&amp; !completed }" index="2004" icon="images/toolbars/receive.png"/>
+        <invoker type="formActions" caption="Send to Archive" action="save" visibleWhen="#{mode=='archived' &amp;&amp; !completed &amp;&amp; destination}" index="2004" icon="images/toolbars/subaydocumentlist.png"/>
         <invoker type="formActions" caption="Reset" mnemonic="r" shortcut="F5" action="createnew" visibleWhen="#{mode!='INIT' &amp;&amp; !completed}" index="2005" />
         <invoker type="formActions" action="print" caption="Print" mnemonic="p" visibleWhen="#{completed}" />
         <invoker type="formActions" action="createnew" caption="New" visibleWhen="#{completed}" mnemonic="n"/>

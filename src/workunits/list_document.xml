@@ -2,7 +2,7 @@
      allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="subaydocument">
     <invokers>
         <invoker folderid="/explorer/txn/subaytransaction" caption="Document List"  index="3" role="SHARED"/>
-        <invoker folderid="/home/dts" caption="Document List"  index="3" role="SHARED"/>
+        <invoker folderid="/home/dts" caption="Document List"  index="3" role="SHARED" icon="images/toolbars/subaydocumentlist.png"/>
     </invokers>
     
 </workunit>

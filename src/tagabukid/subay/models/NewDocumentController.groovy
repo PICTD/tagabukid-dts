@@ -157,7 +157,7 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
             }
         }
     ] as BasicListModel
-            
+    
     void updateInfo() {
         boolean test = false;
         docinfo.handler = {

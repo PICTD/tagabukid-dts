@@ -11,8 +11,8 @@
         </folder>  
     </folder> 
     <folder id="home">
-        <folder id="dts" caption="Subay (DTS)">
-            <folder id="master" caption="Master File" index="5"/>
+        <folder id="dts" caption="Subay (DTS)" icon="images/toolbars/subay.png">
+            <folder id="master" caption="Master File" index="5" icon="images/toolbars/subaymasterfile.png"/>
         </folder>
     </folder>
 </folders>

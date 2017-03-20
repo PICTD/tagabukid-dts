@@ -1,9 +1,8 @@
 <workunit>
     <invokers>
         <invoker folderid="/explorer/txn/subaytransaction" caption="New Document"  action="start" target="window" index="1" role="SHARED"/>
-        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="1" role="SHARED"/>
-        <invoker type="extActions" caption="Print"  icon="images/toolbars/printer.png" 
-            action="print" visibleWhen="#{state=='save-success'}"/>
+        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="1" role="SHARED" icon="images/toolbars/subaynewdocument.png"/>
+        <invoker type="extActions" caption="Print" action="print" visibleWhen="#{state=='save-success'}"/>
 
     </invokers>
     
