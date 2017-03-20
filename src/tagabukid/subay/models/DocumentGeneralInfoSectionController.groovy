@@ -73,17 +73,8 @@ class  DocumentGeneralInfoSectionController  {
     def docinfoListHandler = [
        fetchList: { o->
             def list = [];
-            if( entity.infos ) {
-                entity.infos.each {
-                    def m = [ name:it.fieldid, caption:it.caption, type:it.fieldtype ];
-                    if( m.type == 'text' ) m.value = it.stringvalue;
-                    else if( m.type == 'date' ) m.value =  it.datevalue;
-                    else if( m.type == 'decimal' ) m.value = it.decimalvalue;
-                    else if( m.type == 'integer' ) m.value = it.intvalue;
-                    else m.value = it.info;
-                    list << m;
-                }
-                return list;
+            if( entity.docinfos ) {
+                return entity.docinfos;
             }
             return list;
         }

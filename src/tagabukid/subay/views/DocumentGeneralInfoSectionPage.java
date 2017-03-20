@@ -168,7 +168,7 @@ public class DocumentGeneralInfoSectionPage extends javax.swing.JPanel {
         xDataTable3.setBorder(xTitledBorder3);
         xDataTable3.setColumns(new com.rameses.rcp.common.Column[]{
             new com.rameses.rcp.common.Column(new Object[]{
-                new Object[]{"name", "caption"}
+                new Object[]{"name", "attribute.caption"}
                 , new Object[]{"caption", "Attribute Name"}
                 , new Object[]{"width", 100}
                 , new Object[]{"minWidth", 0}
