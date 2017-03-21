@@ -1,7 +1,7 @@
 <workunit>
     <invokers>
-        <invoker folderid="/explorer/txn/subaytransaction" caption="Offline Reconciliation" target="popup" index="5" action="start" role="SHARED"/>
-        <invoker folderid="/home/dts" caption="Offline Reconciliation"  action="start" target="popup" index="5" role="SHARED"/>
+<!--        <invoker folderid="/explorer/txn/subaytransaction" caption="Offline Reconciliation" target="popup" index="5" action="start" role="SHARED"/>
+        <invoker folderid="/home/dts" caption="Offline Reconciliation"  action="start" target="popup" index="5" role="SHARED"/>-->
     </invokers>
     
     <code>
@@ -16,7 +16,7 @@
         
         class DocumentOfflineReconciliationFlowController extends PageFlowController {
         
-             @Caller
+            @Caller
             def caller;
             
             @Binding 
@@ -109,9 +109,9 @@
     </pageflow>
     
     <pages>
-        <page name="lookup-barcode" template="tagabukid.dts.view.ReconciliationVerifyDocumentInfoPage"/>
-        <page name="confirm" template="tagabukid.dts.view.ReconciliationConfirmPage"/>
-        <page name="save-success" template="tagabukid.dts.view.ReconciliationSuccessPage"/>
+        <page name="lookup-barcode" template="tagabukid.subay.view.ReconciliationVerifyDocumentInfoPage"/>
+        <page name="confirm" template="tagabukid.subay.view.ReconciliationConfirmPage"/>
+        <page name="save-success" template="tagabukid.subay.view.ReconciliationSuccessPage"/>
     </pages>
     
 </workunit>

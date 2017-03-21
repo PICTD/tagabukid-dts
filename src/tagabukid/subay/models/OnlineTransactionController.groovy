@@ -89,13 +89,17 @@ public class OnlineTransactionController {
     def searchdocument(){
         def doc = svc.lookupDIN(entity)
         if (!doc){
-            throw new Exception("Invalid DIN");
+            doc = svc.getDINInventry(entity);
+            if(!doc){
+                throw new Exception("Invalid DIN");
+            }
+            addtolist(doc)
+            return;
         }
         
         if (doc.size == 1){
             addtolist(doc[0])
-        }
-        else if(doc.size > 1){
+        }else if(doc.size > 1){
             return Inv.lookupOpener('din:lookup',[
                     entity: entity,
                     onselect :{
