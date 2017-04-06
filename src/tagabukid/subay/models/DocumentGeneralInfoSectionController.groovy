@@ -4,6 +4,7 @@ import com.rameses.osiris2.client.*
 import com.rameses.osiris2.common.*
 import java.rmi.server.*
 import tagabukid.utils.*;
+import com.rameses.common.*;
         
 class  DocumentGeneralInfoSectionController  {
     @Binding
@@ -12,7 +13,7 @@ class  DocumentGeneralInfoSectionController  {
 //    @Script("TagabukidSubayDocumentInfoUtil")
 //    def docinfo
     
-    @Service("TagbukidSubayDocumentService")
+    @Service("TagabukidSubayDocumentService")
     def svc;
             
     String title = "General Info";
@@ -21,12 +22,16 @@ class  DocumentGeneralInfoSectionController  {
     def entity;
     def attachmentSelectedItem;
     def selectedItem;
-            
+    def isoffline;
+    def isowner;
+    
     def attachmentListHandler = [
         fetchList : { return entity.attachments },
     ] as BasicListModel
             
     void init(){
+        isoffline = (entity.isoffline == 1 ? true : false);
+        isowner = svc.checkDocumentOwner(entity.dininventoryid)
         loadAttachments()
         listHandler?.load();
     }
@@ -87,13 +92,29 @@ class  DocumentGeneralInfoSectionController  {
     }
 
     def showChild() {
-        if( !selectedItem.objid )
+        if( !sezlectedItem.objid )
         throw new Exception("No parent document");
         def child = [:]
         child.objid = selectedItem.objid
         child.taskid = selectedItem.taskid   
         return Inv.lookupOpener( "subaydocument:open", [entity: child] ); 
     }
+    
+    def popupChangeInfo(def inv) {
+        def popupMenu = new PopupMenuOpener();
+        def list = InvokerUtil.lookupOpeners( inv.properties.category).findAll{
+            def vw = it.properties.visibleWhen;
+            return  ((!vw)  ||  ExpressionResolver.getInstance().evalBoolean( vw, [entity:getEntity(), orgid:OsirisContext.env.ORGID] ));
+        }
+        list.each{
+            popupMenu.add( it );
+        }
+        return popupMenu;
+    }
             
-            
+    void refreshForm(){
+        binding.refresh('entity.*');
+        listHandler.reload();
+    }   
+    
 }

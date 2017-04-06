@@ -45,7 +45,6 @@ public class OnlineTransactionController {
         entity = [:]
         listHandler.reload();
         stats = svc.getStats();
-        println stats
         entity.txndate = dtsvc.getServerDate();
         completed = false;
         destination = false;
