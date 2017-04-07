@@ -6,7 +6,7 @@
         <invoker type="formActions" caption="Send Document" mnemonic="s" shortcut="F2" action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002" icon="images/toolbars/send.png"/>
         <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003" icon="images/toolbars/receive.png"/>
         <invoker type="formActions" caption="Archive Document" mnemonic="a" shortcut="F4" action="archived" visibleWhen="#{mode=='INIT'}" name="archived" index="2004" icon="images/toolbars/subaydocumentlist.png"/>
-        <invoker type="formActions" caption="Next" action="save" visibleWhen="#{mode.matches('send|outgoing|archived') &amp;&amp; !destination}" index="2004" />
+        <invoker type="formActions" caption="Next" action="save" mnemonic="n" visibleWhen="#{mode.matches('send|outgoing|archived') &amp;&amp; !destination}" index="2004" />
         <invoker type="formActions" caption="Send to Outgoing" action="save" visibleWhen="#{mode=='outgoing' &amp;&amp; !completed &amp;&amp; destination}" index="2004" icon="images/toolbars/send.png"/>
         <invoker type="formActions" caption="Send" action="save" visibleWhen="#{mode=='send' &amp;&amp; !completed &amp;&amp; destination}" index="2004" icon="images/toolbars/send.png"/>
         <invoker type="formActions" caption="Receive" action="save" visibleWhen="#{mode=='receive' &amp;&amp; !completed }" index="2004" icon="images/toolbars/receive.png"/>

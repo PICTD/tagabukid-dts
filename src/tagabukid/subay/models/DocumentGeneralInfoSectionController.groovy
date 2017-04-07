@@ -113,6 +113,7 @@ class  DocumentGeneralInfoSectionController  {
     }
             
     void refreshForm(){
+        isoffline = false;
         binding.refresh('entity.*');
         listHandler.reload();
     }   

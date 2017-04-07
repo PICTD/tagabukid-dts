@@ -76,7 +76,6 @@ public class ModifyDocumentDetailController
             caller.entity.author = entity.author
             caller.entity.documenttype = entity.documenttype
             caller.entity.child = entity.child
-            caller.isoffline = 0;
             caller?.refreshForm();
             
             MsgBox.alert("Document Information Updated");

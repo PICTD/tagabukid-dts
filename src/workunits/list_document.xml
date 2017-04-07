@@ -1,8 +1,42 @@
 <workunit extends="wtemplates/ExplorerViewController.xml" serviceName="TagabukidSubayListService" 
      allowOpen="true" allowCreate="false" autoSelect="true" defaultFileType="subaydocument">
     <invokers>
-        <invoker folderid="/explorer/txn/subaytransaction" caption="Document List"  index="3" role="SHARED"/>
-        <invoker folderid="/home/dts" caption="Document List"  index="3" role="SHARED" icon="images/toolbars/subaydocumentlist.png"/>
+        <invoker folderid="/explorer/txn/subaytransaction" action="init" caption="Document List"  index="3" role="SHARED"/>
+        <invoker folderid="/home/dts" action="init" caption="Document List"  index="3" role="SHARED" icon="images/toolbars/subaydocumentlist.png"/>
     </invokers>
-    
+     <code>
+    <![CDATA[
+    import com.rameses.rcp.common.*;
+    import com.rameses.rcp.annotations.*;
+    import com.rameses.osiris2.client.*;
+    import com.rameses.osiris2.common.*;
+
+    class TagabukidSubayListController extends ExplorerViewController {
+        
+        def params = [:]; 
+        
+        public void init() {
+            // params.yearcreated = new java.sql.Date(System.currentTimeMillis()).toString().split("-")[0]; 
+            params.dtfrom = new java.sql.Date(System.currentTimeMillis()).toString().split("-")[0] + "-01-01";
+            params.dtto = new java.sql.Date(System.currentTimeMillis());  
+        } 
+        
+        def getLookupDocumentType(){
+            return Inv.lookupOpener('documenttype:lookup',[
+                        onselect :{
+                            params.documenttype = it;
+                        },
+                    ])
+        }
+        
+        public void beforeFetchList( Map qry ) { 
+            if ( params ) qry.putAll( params ); 
+        }
+    }  
+    ]]> 
+    </code>
+
+    <pages>
+        <page name="queryform" template="tagabukid.subay.views.TagabukidSubayListQueryForm"/>
+    </pages>
 </workunit>
