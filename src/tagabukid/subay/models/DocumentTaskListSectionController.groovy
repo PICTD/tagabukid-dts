@@ -4,7 +4,12 @@ import com.rameses.osiris2.client.*;
 import com.rameses.osiris2.common.*;
 import tagabukid.utils.*;
 public class DocumentTaskListSectionController  {
-            
+    @Binding
+    def binding;
+    
+    @Caller
+    def caller
+    
     @Service("TagabukidSubayTaskListService")
     def service;
     
@@ -31,7 +36,7 @@ public class DocumentTaskListSectionController  {
     def refresh(){
         //listModel.reload()
         def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
-                
+               
         if (newlog.size == 1){
             entity = newlog[0]
         }else if (newlog.size > 1){
@@ -43,8 +48,10 @@ public class DocumentTaskListSectionController  {
                     }
                 ])
         }
-        listModel.reload()
-                
+        listModel.reload();
+        caller.entity = entity;
+        caller.reloadSection();
+        binding.refresh();        
     }
     def listModel = [
         fetchList: {
@@ -128,8 +135,11 @@ public class DocumentTaskListSectionController  {
         if( MsgBox.confirm( "You are about to cancel this transaction. Proceed?")) {
             try{
                 def doc = [objid: entity.objid,taskid:entity.taskid];
-                svctransaction.cancelSend(doc)
-                MsgBox.alert("Transaction Cancelled. DIN: " + entity.din + " change state.")
+                def parenttask = svctransaction.cancelSend(doc);
+                entity.objid = parenttask.refid;
+                entity.taskid = parenttask.objid;
+                refresh();
+                MsgBox.alert("Send Transaction Cancelled. DIN: " + entity.din + " change state.")
             }catch(e){
                 MsgBox.alert("ERROR IN PROCESSING PLEASE CONTACT PICTD.")
             }
