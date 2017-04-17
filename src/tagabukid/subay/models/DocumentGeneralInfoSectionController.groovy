@@ -10,6 +10,9 @@ class  DocumentGeneralInfoSectionController  {
     @Binding
     def binding;
     
+    @Caller
+    def caller
+    
 //    @Script("TagabukidSubayDocumentInfoUtil")
 //    def docinfo
     
@@ -114,7 +117,7 @@ class  DocumentGeneralInfoSectionController  {
             
     void refreshForm(){
         isoffline = false;
-//        binding.refresh('entity.*');
+        binding.refresh('entity.*');
         binding.refresh();
         listHandler.reload();
     }   

@@ -7,7 +7,7 @@ import java.rmi.server.*
 import com.rameses.util.*;
 import com.rameses.gov.etracs.bpls.business.*;
 
-class  DocumentInfoController {
+class DocumentInfoController {
     @Script("TagabukidSubayDocumentInfoUtil")
     def docinfo
     
@@ -47,12 +47,27 @@ class  DocumentInfoController {
 //        println entity
     }
 
-    void reloadSection() {
-        binding.refresh("subform");
+    void reloadSections() {
+//        binding.refresh("subform");
+        def handlers = Inv.lookupOpeners("subaydocument:section",[entity:entity]);
+        def selitemid = currentSection?.id; 
+        sections.clear();
+        sections.addAll( 
+            handlers.findAll {
+                def vw = it.properties.visibleWhen;
+                return  ((!vw)  ||  ExpressionResolver.getInstance().evalBoolean( vw, [entity:entity] ));     
+            }
+        ); 
+
+        currentSection = sections.find{ it.id == selitemid } 
+        if ( sections && currentSection==null ) {
+            currentSection = sections.first(); 
+        }
+        binding.refresh();
     }
 
     void loadSections() {
-        sections = InvokerUtil.lookupOpeners( "subaydocument:section", [entity: entity ] ).findAll {
+        sections = InvokerUtil.lookupOpeners( "subaydocument:section",[entity:entity]).findAll {
             def vw = it.properties.visibleWhen;
             return  ((!vw)  ||  ExpressionResolver.getInstance().evalBoolean( vw, [entity:entity] ));
         }

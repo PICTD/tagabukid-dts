@@ -33,6 +33,7 @@ public class DocumentTaskListSectionController  {
     def tasks;
     def duration;
     
+   
     def refresh(){
         //listModel.reload()
         def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
@@ -49,9 +50,9 @@ public class DocumentTaskListSectionController  {
                 ])
         }
         listModel.reload();
+        binding.refresh();  
         caller.entity = entity;
-        caller.reloadSection();
-        binding.refresh();        
+        caller.reloadSections();
     }
     def listModel = [
         fetchList: {
@@ -138,8 +139,8 @@ public class DocumentTaskListSectionController  {
                 def parenttask = svctransaction.cancelSend(doc);
                 entity.objid = parenttask.refid;
                 entity.taskid = parenttask.objid;
+                MsgBox.alert("Send Transaction Cancelled. DIN: " + entity.din + " change state.");
                 refresh();
-                MsgBox.alert("Send Transaction Cancelled. DIN: " + entity.din + " change state.")
             }catch(e){
                 MsgBox.alert("ERROR IN PROCESSING PLEASE CONTACT PICTD.")
             }
