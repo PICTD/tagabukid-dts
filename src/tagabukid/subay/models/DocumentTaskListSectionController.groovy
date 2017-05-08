@@ -36,16 +36,15 @@ public class DocumentTaskListSectionController  {
    
     def refresh(){
         //listModel.reload()
-        def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
-               
-        if (newlog.size == 1){
-            entity = newlog[0]
-        }else if (newlog.size > 1){
+        def newlogs = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
+          
+        if (newlogs.size == 1){
+            entity = svc.open(newlogs[0]);
+        }else if (newlogs.size > 1){
             return Inv.lookupOpener('node:lookup',[
-                    entity: entity,
+                    entity: newlogs,
                     onselect :{
-                        entity = it
-                        listModel.reload()
+                        entity = svc.open(it)
                     }
                 ])
         }
@@ -121,7 +120,7 @@ public class DocumentTaskListSectionController  {
     def offlineReconciliation() {
 //        if(!selectedItem) throw new Exception('Please select an item');
         def h = {
-            listModel.reload();
+            refresh()
         }
 //        def rf = [documentid: entity.objid,task:selectedItem];
         return Inv.lookupOpener( "subaydocument_offlinereconciliation:create", [entity: entity, handler: h] );
@@ -137,10 +136,12 @@ public class DocumentTaskListSectionController  {
             try{
                 def doc = [objid: entity.objid,taskid:entity.taskid];
                 def parenttask = svctransaction.cancelSend(doc);
-                entity.objid = parenttask.refid;
-                entity.taskid = parenttask.objid;
+                entity = parenttask
                 MsgBox.alert("Send Transaction Cancelled. DIN: " + entity.din + " change state.");
-                refresh();
+                listModel.reload();
+                binding.refresh();  
+                caller.entity = entity;
+                caller.reloadSections();
             }catch(e){
                 MsgBox.alert("ERROR IN PROCESSING PLEASE CONTACT PICTD.")
             }

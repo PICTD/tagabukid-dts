@@ -8,7 +8,7 @@
         <invoker type="extActions" caption="Cancel Send" action="cancelsend" visibleWhen="#{entity.state=='enroute' &amp;&amp; entity.senderorg.objid==entity.currentorg}"/>
     </invokers>
     
-    <code class="tagabukid.subay.models.DocumentTaskListSectionController" />
+    <code class="tagabukid.subay.models.DocumentTaskListSectionController"/>                                                                                  " />
 
     <pages>
         <page template="tagabukid.subay.views.DocumentTaskListSectionPage"/>
