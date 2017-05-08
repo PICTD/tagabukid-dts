@@ -11,7 +11,7 @@
 
         class DINLookupController extends LookupController
         {
-            @Service("TagabukidDTSService")
+            @Service("TagabukidSubayDocumentService")
             def svc
 
             def state;
