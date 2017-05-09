@@ -1,7 +1,7 @@
 <folders>
     <folder id="explorer">
         <folder id="txn">
-            <folder id="subaytransaction" caption="Subay (DTS)" index="1"/>
+            <folder id="subaytransaction" caption="Subay" index="1"/>
         </folder>
         <folder id="master">
             <folder id="subaymaster" caption="Subay Master" index="1"/>
@@ -11,7 +11,7 @@
         </folder>  
     </folder> 
     <folder id="home">
-        <folder id="dts" caption="Subay (DTS)" icon="images/toolbars/subay.png">
+        <folder id="dts" caption="Subay" icon="images/toolbars/subay.png">
             <folder id="master" caption="Master File" index="5" icon="images/toolbars/subaymasterfile.png"/>
         </folder>
     </folder>
