@@ -24,20 +24,19 @@ class  DocumentRedFlagSectionController  {
     def selectedItem;
     
     def refresh(){
-        def newlog = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
-           
-        if (newlog.size == 1){
-            entity = newlog[0]
-        }else if (newlog.size > 1){
+        
+        def newlogs = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
+          
+        if (newlogs.size == 1){
+            entity = svc.open(newlogs[0]);
+        }else if (newlogs.size > 1){
             return Inv.lookupOpener('node:lookup',[
-                    entity: entity,
+                    entity: newlogs,
                     onselect :{
-                        entity = it
-                        redflagListModel.reload()
+                        entity = svc.open(it)
                     }
                 ])
         }
-        
        
         redflagListModel.reload();
         binding.refresh();  
@@ -59,6 +58,7 @@ class  DocumentRedFlagSectionController  {
     }
             
     def openRedflag() {
+//        println selectedItem
         if(!selectedItem) throw new Exception('Please select an item');
         if(!service.isallowedtoopen(OsirisContext.env.USERID,selectedItem.filedby.objid)) throw new Exception('You are not allowed to edit this red flag.');
                 

@@ -30,7 +30,8 @@ class DocumentRedflagController {
     }
             
     void open() {
-        mode = 'update'
+        mode = (entity.resolved == 0 ? 'update':'resolved')
+        
         entity = service.open( entity );
         if(handler) handler();        
     }
