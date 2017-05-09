@@ -2,10 +2,6 @@
     enabled:true;
 }
 
-"entity.(postedby|resolvedby|remarks)" [mode != 'resolve'] {
-    visible:false;
-}
-
 "assigntome" [mode != 'update'] {
     visible:false;
 }
@@ -20,4 +16,14 @@ entity.("message|effectivedate|blockaction|org") [mode == 'update'] {
 
 "entity.(postedby|resolvedby|remarks)" [mode == 'resolve'] {
     visible:true;
+}
+
+"entity.remarks" [mode == 'resolved'] {
+    visible:true;
+    enabled:false;
+}
+
+"entity.(message|effectivedate|blockaction|org)" [mode == 'resolved'] {
+    visible:true;
+    enabled:false;
 }

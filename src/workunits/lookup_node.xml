@@ -11,7 +11,7 @@
 
         class DINLookupController extends LookupController
         {
-            @Service("TagabukidDTSService")
+            @Service("TagabukidSubayDocumentService")
             def svc
 
             def state;
@@ -26,10 +26,11 @@
                 ]
             }
             
-            List fetchList( Map params ) { 
-                params.taskid = entity.taskid
-                params.refid = entity.refid
-                return svc.lookupNode(params)
+            List fetchList( def params ) { 
+                //params.taskid = entity.taskid
+                //params.refid = entity.refid
+                //return svc.lookupNode(params)
+                return params
             }
            
         }  

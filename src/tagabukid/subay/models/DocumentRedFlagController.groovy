@@ -8,8 +8,6 @@ import com.rameses.util.*;
         
 class DocumentRedflagController {
         
-    @Caller
-    def caller;
             
     @Binding 
     def binding;
@@ -32,14 +30,17 @@ class DocumentRedflagController {
     }
             
     void open() {
-        mode = 'update'
+        mode = (entity.resolved == 0 ? 'update':'resolved')
+        
         entity = service.open( entity );
+        if(handler) handler();        
     }
             
     void resolve() {
         mode = 'resolve'
         entity = service.open( entity );
         entity.mode = 'receive';
+        if(handler) handler();
     }
             
     void assigntome(){

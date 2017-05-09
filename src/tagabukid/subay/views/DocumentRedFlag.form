@@ -298,7 +298,8 @@
           </PropertyBean>
         </Property>
         <Property name="captionWidth" type="int" value="150"/>
-        <Property name="visibleWhen" type="java.lang.String" value="#{mode==&apos;resolve&apos;}"/>
+        <Property name="viewType" type="java.lang.String" value=""/>
+        <Property name="visibleWhen" type="java.lang.String" value="#{mode.matches(&apos;resolve|resolved&apos;)  }"/>
       </Properties>
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="jScrollPane4">

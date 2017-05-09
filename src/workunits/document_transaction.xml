@@ -1,7 +1,7 @@
 <workunit>
     <invokers>
-        <invoker folderid="/explorer/txn/dtstransaction" caption="DTS Transaction" action="init" target="window"  index="2" role="SHARED"/>        
-        <invoker folderid="/home/dts" caption="DTS Transaction" action="init" target="window"  index="2" role="SHARED" icon="images/toolbars/subaytransaction.png"/>
+        <invoker folderid="/explorer/txn/dtstransaction" caption="Subay Transaction" action="init" target="window"  index="2" role="SHARED"/>        
+        <invoker folderid="/home/dts" caption="Subay Transaction" action="init" target="window"  index="2" role="SHARED" icon="images/toolbars/subaytransaction.png"/>
         <invoker type="formActions" caption="Outgoing" mnemonic="o" shortcut="F1" action="outgoing" visibleWhen="#{mode=='INIT'}" name="outgoing" index="2001" icon="images/toolbars/send.png"/>
         <invoker type="formActions" caption="Send Document" mnemonic="s" shortcut="F2" action="send" visibleWhen="#{mode=='INIT'}" name="send" index="2002" icon="images/toolbars/send.png"/>
         <invoker type="formActions" caption="Receive Document" mnemonic="r" shortcut="F3" action="receive" visibleWhen="#{mode=='INIT'}" name="receive" index="2003" icon="images/toolbars/receive.png"/>

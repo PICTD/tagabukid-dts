@@ -2,8 +2,8 @@
     <invokers>
         <invoker type="subaydocument:section" caption="Red Flags" index="-100" />
         <invoker type="formActions" caption="Add Red Flag" action="addRedflag" visibleWhen="#{entity.state=='processing' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
-        <invoker type="formActions" caption="Open Red Flag" action="openRedflag" visibleWhen="#{entity.state=='redflag'}" />
-        <invoker type="formActions" caption="Resolve" action="resolveRedflag" visibleWhen="#{entity.state=='redflag' &amp;&amp; entity.actor.objid==entity.currentuser}"/>
+        <invoker type="formActions" caption="Open Red Flag" action="openRedflag" visibleWhen="#{entity.state=='redflag' &amp;&amp; selectedItem.resolved == 1 }" depends="selectedItem"/>
+        <invoker type="formActions" caption="Resolve" action="resolveRedflag" visibleWhen="#{entity.state=='redflag' &amp;&amp; entity.actor.objid==entity.currentuser &amp;&amp; selectedItem.resolved == 0 }" depends="selectedItem"/>
     </invokers>
     
     <code class="tagabukid.subay.models.DocumentRedFlagSectionController" />

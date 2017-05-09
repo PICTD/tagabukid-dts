@@ -188,7 +188,8 @@ public class DocumentRedFlag extends javax.swing.JPanel {
         xTitledBorder3.setTitle("Resolution");
         xFormPanel4.setBorder(xTitledBorder3);
         xFormPanel4.setCaptionWidth(150);
-        xFormPanel4.setVisibleWhen("#{mode=='resolve'}");
+        xFormPanel4.setViewType("");
+        xFormPanel4.setVisibleWhen("#{mode.matches('resolve|resolved')  }");
 
         jScrollPane4.setPreferredSize(new java.awt.Dimension(300, 63));
 
