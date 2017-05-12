@@ -1,0 +1,74 @@
+<workunit>
+        
+    <invokers>
+         <invoker type="subaycabinet-folder:open" caption="Cabinet Sub Folder" action="open"/>
+         <invoker type="subaycabinet-folder:create" caption="Cabinet Sub Folder" action="create"/>
+   </invokers>
+   
+   <code>
+       <![CDATA[
+        import com.rameses.osiris2.common.*;
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        import java.rmi.server.*;
+        
+        class TagabukidSubayCabinetDetailController extends CRUDController {
+        
+            @Caller
+            def caller;
+            
+            @Service("TagabukidSubayTransactionService")
+            def subaysvc
+            
+            String entityName = "subaycabinet";
+            def node;
+            
+            public String getServiceName() {
+                return caller.getServiceName();
+            }
+            
+            public String getTitle() {
+                return caller.getTitle();
+            }  
+            
+            public String getPrefixId() {
+                return caller.getPrefixId();
+            }
+            
+            public def getAccountService() {
+                return caller.subaycabinetService;
+            }
+            
+            Map createEntity() {
+                def m = [parentid:node.objid, type:'folder'];
+                m.parent = [code:node.code, title: node.title];
+                m.orgid = subaysvc.getUserOrg(OsirisContext.env.USERID).org.objid
+                caller.refresh();
+                return m;
+            }
+            
+            def transferParent() {
+                return InvokerUtil.lookupOpener( "cabinet:lookup", [
+                    onselect: { o->
+                        if( MsgBox.confirm('You are about to transfer this folder to another cabinet Continue?') ) {
+                            service.changeParent( [parentid:o.objid, objid:entity.objid] );
+                            entity.parentid = o.objid;
+                            entity.parent = o;
+                            caller.refresh();
+                            binding.refresh();
+                        }
+                    }
+                ]);
+            }
+           
+            
+        }      
+       ]]>
+   </code>
+   
+   <pages>
+       <page template="tagabukid.subay.views.CabinetFolderPage"/>
+   </pages>
+   
+</workunit>

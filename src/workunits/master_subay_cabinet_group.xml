@@ -1,0 +1,59 @@
+<workunit>
+        
+    <invokers>
+        <invoker type="subaycabinet-cabinet:open" caption="Cabinet" action="open"/>
+        <invoker type="subaycabinet-cabinet:create" caption="Cabinet" action="create"/>
+    </invokers>
+   
+    <code>
+    <![CDATA[
+        import com.rameses.osiris2.common.*;
+        import com.rameses.rcp.common.*;
+        import com.rameses.rcp.annotations.*;
+        import com.rameses.osiris2.client.*;
+        
+        class TagabukidSubayCabinetGroupController extends CRUDController {
+        
+            @Caller
+            def caller;
+            
+            @Service("TagabukidSubayTransactionService")
+            def subaysvc
+    
+            String entityName = "subaycabinet";
+            def node;
+            boolean showConfirmOnSave = false;
+
+            public String getServiceName() {
+                return caller.getServiceName();
+            }
+            
+            public String getTitle() {
+                return caller.getTitle();
+            }  
+            
+            public String getPrefixId() {
+                return caller.getPrefixId();
+            }
+            
+            public def getAccountService() {
+                return caller.subaycabinetService;
+            }
+
+            Map createEntity() {
+                def m = [parentid:node.objid, type:'cabinet'];
+                m.parent = [code:node.code, title: node.title];
+                m.orgid = subaysvc.getUserOrg(OsirisContext.env.USERID).org.objid
+                caller.refresh();
+                return m;
+            }
+            
+        }      
+       ]]>
+   </code>
+   
+   <pages>
+       <page template="tagabukid.subay.views.CabinetPage"/>
+   </pages>
+   
+</workunit>
