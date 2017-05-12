@@ -1,7 +1,7 @@
 <workunit extends="wtemplates/ExplorerViewController.xml" >
     <invokers>
-         <invoker folderid="/explorer/txn/subaytransaction" caption="Subay Cabinet Management" index="10" action="init"/>
-        <invoker folderid="/home/dts" caption="Subay Cabinet Management" index="10" action="init"/>
+         <invoker folderid="/explorer/txn/subaytransaction" caption="Manage Cabinet" index="10" action="init" icon="images/toolbars/managesubaycabinet.png"/>
+        <invoker folderid="/home/dts/subaycabinet" caption="Manage Cabinet" index="10" action="init" icon="images/toolbars/managesubaycabinet.png"/>
    </invokers>
    <code>
        import com.rameses.rcp.common.*;
