@@ -28,6 +28,7 @@ public class ParameterArchivePage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xTreeTableBeanInfo1 = new com.rameses.rcp.control.XTreeTableBeanInfo();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
         xTextField1 = new com.rameses.rcp.control.XTextField();
@@ -74,5 +75,6 @@ public class ParameterArchivePage extends javax.swing.JPanel {
     private com.rameses.rcp.control.XLookupField xLookupField1;
     private com.rameses.rcp.control.XTextField xTextField1;
     private com.rameses.rcp.control.XTextField xTextField2;
+    private com.rameses.rcp.control.XTreeTableBeanInfo xTreeTableBeanInfo1;
     // End of variables declaration//GEN-END:variables
 }
