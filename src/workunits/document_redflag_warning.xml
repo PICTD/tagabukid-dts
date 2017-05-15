@@ -49,7 +49,7 @@
     </code>
     
     <pages>
-        <page template="tagabukid.subay.view.DocumentRedflagWaringPage"/>
+        <page template="tagabukid.subay.views.DocumentRedflagWaringPage"/>
     </pages>
     
 </workunit>
