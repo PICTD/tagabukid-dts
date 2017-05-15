@@ -49,7 +49,7 @@ public class OnlineTransactionController {
         completed = false;
         destination = false;
         entity.preparedbyname = OsirisContext.env.FULLNAME;
-        entity.currentorg = svc.getuserorg(OsirisContext.env.USERID);
+        entity.currentorg = svc.getUserOrg(OsirisContext.env.USERID).org;
 
     }
     
