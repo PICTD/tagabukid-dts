@@ -31,25 +31,14 @@ public class ParameterArchivePage extends javax.swing.JPanel {
         xTreeTableBeanInfo1 = new com.rameses.rcp.control.XTreeTableBeanInfo();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xLookupField1 = new com.rameses.rcp.control.XLookupField();
-        xTextField1 = new com.rameses.rcp.control.XTextField();
-        xTextField2 = new com.rameses.rcp.control.XTextField();
 
-        xLookupField1.setCaption("Destination");
-        xLookupField1.setExpression("#{entity.org.name}");
-        xLookupField1.setHandler("lookupOrg");
-        xLookupField1.setName("entity.org"); // NOI18N
+        xLookupField1.setCaption("Cabinet/Folder");
+        xLookupField1.setCaptionWidth(100);
+        xLookupField1.setExpression("#{entity.cabinet.title}");
+        xLookupField1.setHandler("lookupCabinet");
+        xLookupField1.setName("entity.cabinet"); // NOI18N
         xLookupField1.setPreferredSize(new java.awt.Dimension(0, 20));
         xFormPanel1.add(xLookupField1);
-
-        xTextField1.setCaption("Cabinet Code");
-        xTextField1.setName("entity.cabinetcode"); // NOI18N
-        xTextField1.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel1.add(xTextField1);
-
-        xTextField2.setCaption("Folder Code");
-        xTextField2.setName("entity.foldercode"); // NOI18N
-        xTextField2.setPreferredSize(new java.awt.Dimension(0, 20));
-        xFormPanel1.add(xTextField2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -65,7 +54,7 @@ public class ParameterArchivePage extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(xFormPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -73,8 +62,6 @@ public class ParameterArchivePage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
     private com.rameses.rcp.control.XLookupField xLookupField1;
-    private com.rameses.rcp.control.XTextField xTextField1;
-    private com.rameses.rcp.control.XTextField xTextField2;
     private com.rameses.rcp.control.XTreeTableBeanInfo xTreeTableBeanInfo1;
     // End of variables declaration//GEN-END:variables
 }

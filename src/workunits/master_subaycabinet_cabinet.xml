@@ -11,7 +11,8 @@
         import com.rameses.rcp.common.*;
         import com.rameses.rcp.annotations.*;
         import com.rameses.osiris2.client.*;
-        
+        import java.rmi.server.*;
+          
         class TagabukidSubayCabinetGroupController extends CRUDController {
         
             @Caller
@@ -46,6 +47,27 @@
                 m.orgid = subaysvc.getUserOrg(OsirisContext.env.USERID).org.objid
                 caller.refresh();
                 return m;
+            }
+            
+            def transferParent() {
+                return InvokerUtil.lookupOpener( "cabinet:lookup", [
+                    onselect: { o->
+                    
+                        if (o.objid == entity.objid){
+                            throw new Exception("Cannot Transfer " + entity.title  + " to " + entity.title);
+                        }
+                        else if(o.type == 'folder' && entity.type == 'cabinet'){
+                             throw new Exception("Cannot Transfer a cabinet to a folder");
+                        }
+                        if( MsgBox.confirm('You are about to transfer this folder to another cabinet Continue?') ) {
+                            service.changeParent( [parentid:o.objid, objid:entity.objid] );
+                            entity.parentid = o.objid;
+                            entity.parent = o;
+                            caller.refresh();
+                            binding.refresh();
+                        }
+                    }
+                ]);
             }
             
         }      

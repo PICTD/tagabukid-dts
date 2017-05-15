@@ -49,6 +49,8 @@ public class OnlineTransactionController {
         completed = false;
         destination = false;
         entity.preparedbyname = OsirisContext.env.FULLNAME;
+        entity.currentorg = svc.getuserorg(OsirisContext.env.USERID);
+
     }
     
     def createnew(){
@@ -164,7 +166,33 @@ public class OnlineTransactionController {
             
         }
     }
-    
+    void checkMessage(){
+        entity.document.each{
+            if (!it.message){
+                switch(mode){
+                    case "receive":
+                        it.message =  "DOCUMENT RECEIVED AT " + entity.currentorg.name.toUpperCase() + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    case "send":
+                        def dest = entity.org;
+                        if(entity.destinations){
+                           dest =  entity.destinations.join(", ");
+                        }
+                        it.message =  "DOCUMENT SENT TO " + dest + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    case "outgoing":
+                        it.message =  "DOCUMENT IS FOR PICKUP AT " + entity.currentorg.name.toUpperCase();
+                    break;
+                    case "archived":
+                        it.message =  "DOCUMENT ARCHIVED AT " + entity.currentorg.name.toUpperCase() + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    default:
+                    break;
+                }
+                
+            }
+        }
+    }
     def save(){
         if (document.size == 0)
         throw new Exception("Please add at least 1 document to process");
@@ -172,7 +200,7 @@ public class OnlineTransactionController {
         if ((!entity.org && !entity.destinations) && mode.matches('send|archived|outgoing') && !destination){
              destination = true;
              return 'paramter';
-        } else if((!entity.org && !entity.destinations) && mode.matches('send|archived') && destination){
+        } else if((!entity.org && !entity.destinations) && mode.matches('send') && destination){
              throw new Exception("Destination is Required");
              return 'paramter';
         }
@@ -184,6 +212,7 @@ public class OnlineTransactionController {
         entity.mode = mode
         if( MsgBox.confirm( "You are about to " + mode + " this transaction. Proceed?")) {
             try{
+                checkMessage();
                 svc.processDocument(entity);
                 completed = true;
                 MsgBox.alert("Transaction Successfull");
