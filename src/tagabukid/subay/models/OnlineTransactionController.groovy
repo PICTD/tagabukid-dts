@@ -50,7 +50,6 @@ public class OnlineTransactionController {
         destination = false;
         entity.preparedbyname = OsirisContext.env.FULLNAME;
         entity.currentorg = svc.getUserOrg(OsirisContext.env.USERID).org;
-
     }
     
     def createnew(){
