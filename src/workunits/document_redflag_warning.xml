@@ -20,16 +20,16 @@
             
             def list;
             
-            @Service("TagabukidRedflagService")
+            @Service("TagabukidSubayRedflagService")
             def svc;
              
             def htmlText; 
              
             void init() {
                 def sb = new StringBuffer();
-                sb.append("There are unresolved issues: <br>")
+                sb.append("THERE ARE UNRESOLVED ISSUES: <br>")
                 list.each {
-                    sb.append( it.caseno +': '+it.message + ". filed by " + it.filedby.name + "<br>");
+                        sb.append( "--------<br>CASE NO: '+ it.caseno +'<br>DIN: ' + it.din + '<br>MESSAGE: ' + it.message + "<br>FILED BY " + it.filedby.name + "<br>--------<br>");
                 }
                 htmlText = sb.toString();
             }
@@ -49,7 +49,7 @@
     </code>
     
     <pages>
-        <page template="tagabukid.dts.view.DocumentRedflagWaringPage"/>
+        <page template="tagabukid.subay.views.DocumentRedflagWaringPage"/>
     </pages>
     
 </workunit>

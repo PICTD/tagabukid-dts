@@ -1,0 +1,5 @@
+<workunit extends="wtemplates/BasicLookupController.xml" serviceName="TagabukidSubayCabinetService" tag='cabinet'>
+    <invokers>
+        <invoker type="cabinet:lookup" caption="Lookup Cabinet" target="popup"/>
+    </invokers>
+</workunit>

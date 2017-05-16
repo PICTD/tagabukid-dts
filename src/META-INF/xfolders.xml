@@ -13,6 +13,7 @@
     <folder id="home">
         <folder id="dts" caption="Subay" icon="images/toolbars/subay.png">
             <folder id="master" caption="Master File" index="5" icon="images/toolbars/subaymasterfile.png"/>
+            <folder id="subaycabinet" caption="Subay Cabinet" index="5" icon="images/toolbars/subaycabinet.png"/>
         </folder>
     </folder>
 </folders>
