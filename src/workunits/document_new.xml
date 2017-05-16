@@ -4,7 +4,7 @@
         <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="1" role="SHARED" icon="images/toolbars/subaynewdocument.png" tag="IDLE"/>
         <invoker type="extActions" caption="Print" action="print" visibleWhen="#{state=='save-success'}"/>
         <invoker type="subaycabinet-document:create" caption="New Document for Arcive" action="start" role="SHARED" target="window" tag="ARCHIVE"/>
-        <invoker folderid="/home/dts/subaycabinet" caption="New Document for Arcive" action="start" role="SHARED" target="window" tag="ARCHIVE" icon="images/toolbars/managesubaycabinet.png"/>
+        <!--<invoker folderid="/home/dts/subaycabinet" caption="New Document for Arcive" action="start" role="SHARED" target="window" tag="ARCHIVE" icon="images/toolbars/managesubaycabinet.png"/>-->
     </invokers>
     
     <code class="tagabukid.subay.models.NewDocumentController" />   
