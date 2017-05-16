@@ -13,12 +13,18 @@ class  DocumentGeneralInfoSectionController  {
     @Caller
     def caller
     
-//    @Script("TagabukidSubayDocumentInfoUtil")
-//    def docinfo
+    @Service("DateService")
+    def dtsvc
     
     @Service("TagabukidSubayDocumentService")
     def svc;
             
+    @Service("TagabukidSubayCabinetService") 
+    def subaycabinetService;
+         
+    @Service("TagabukidSubayTransactionService")
+    def txnsvc;
+    
     String title = "General Info";
     String entityName = "subaydocument:generalinfo";
             
@@ -120,6 +126,67 @@ class  DocumentGeneralInfoSectionController  {
         binding.refresh('entity.*');
         binding.refresh();
         listHandler.reload();
-    }   
+    }  
+    
+    def refresh(){
+        //listModel.reload()
+        def newlogs = svc.lookupNode([refid:entity.objid,taskid:entity.taskid])
+          
+        if (newlogs.size == 1){
+            entity = svc.open(newlogs[0]);
+        }else if (newlogs.size > 1){
+            return Inv.lookupOpener('node:lookup',[
+                    entity: newlogs,
+                    onselect :{
+                        entity = svc.open(it)
+                    }
+                ])
+        }
+        
+        isoffline = (entity.isoffline == 1 ? true : false);
+        isowner = svc.checkDocumentOwner(entity.dininventoryid)
+        loadAttachments()
+        listHandler?.load();
+        binding.refresh();  
+        caller.entity = entity;
+        caller.reloadSections();
+    }
+    
+    def transferParent() {
+        return InvokerUtil.lookupOpener( "cabinet:lookup", [
+            onselect: { o->
+
+                if (o.objid == entity.objid){
+                     throw new Exception("Cannot Transfer " + entity.title  + " to " + entity.title);
+                }
+                else if(o.type == 'folder' && entity.type == 'cabinet'){
+                     throw new Exception("Cannot Transfer a cabinet to a folder");
+                }
+                if( MsgBox.confirm('You are about to transfer this folder to another cabinet Continue?') ) {
+                    subaycabinetService.removeEntity( [objid:entity.objid] );
+//                    entity.parentid = o.objid;
+//                    entity.parent = o;
+                    archiveDocument(o);
+                    refresh();
+                   
+                }
+            }
+        ]);
+    }
+    
+     void archiveDocument(o){
+//        throw new Exception("HERE");
+        def arch = [:];
+        def document = [];
+//        def entity = service.open([barcodeid: entity.din]);
+        arch.cabinet = [objid:o.objid]
+        entity.message =  "DOCUMENT ARCHIVED AT " + txnsvc.getUserOrg(OsirisContext.env.USERID).org.name.toUpperCase() + ". " + o.type.toUpperCase() + " " +  o.title + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+        document << entity;
+        arch.txndate = dtsvc.getServerDate();
+        arch.preparedbyname = OsirisContext.env.FULLNAME;
+        arch.document = document;
+        arch.mode = 'archived';
+        txnsvc.processDocument(arch);
+    }
     
 }
