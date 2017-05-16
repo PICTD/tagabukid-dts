@@ -49,7 +49,8 @@ class DocumentChildController
 
     def addtolist(def doc){
         checkDuplicate(entity.child,doc);
-        entity.child << doc;
+//        entity.child << doc;
+        entity.child.add(0,doc);
         din = ""
 //        binding.refresh('din');
 //        binding.focus('din');
