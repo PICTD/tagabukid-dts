@@ -173,9 +173,9 @@ public class OnlineTransactionController {
                         it.message =  "DOCUMENT RECEIVED AT " + entity.currentorg.name.toUpperCase() + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
                     break;
                     case "send":
-                        def dest = entity.org;
+                        def dest = entity.org.code;
                         if(entity.destinations){
-                           dest =  entity.destinations.name.join(", ");
+                           dest =  entity.destinations.code.join(", ");
                         }
                         it.message =  "DOCUMENT SENT TO " + dest + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
                     break;
