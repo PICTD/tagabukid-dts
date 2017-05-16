@@ -16,7 +16,6 @@ public abstract class CabinetManagementController extends ExplorerViewController
     public String getPrefixId() {
         return "CAB";
     }
-    
     public String getDefaultFileType() {
         return "subaycabinet";
     }

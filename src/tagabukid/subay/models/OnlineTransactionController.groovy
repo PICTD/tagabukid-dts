@@ -175,15 +175,15 @@ public class OnlineTransactionController {
                     case "send":
                         def dest = entity.org;
                         if(entity.destinations){
-                           dest =  entity.destinations.join(", ");
+                           dest =  entity.destinations.name.join(", ");
                         }
                         it.message =  "DOCUMENT SENT TO " + dest + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
                     break;
                     case "outgoing":
-                        it.message =  "DOCUMENT IS FOR PICKUP AT " + entity.currentorg.name.toUpperCase();
+                        it.message =  "DOCUMENT IS FOR PICKUP AT " + entity.currentorg.code.toUpperCase();
                     break;
                     case "archived":
-                        it.message =  "DOCUMENT ARCHIVED AT " + entity.currentorg.name.toUpperCase() + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                        it.message =  "DOCUMENT ARCHIVED AT " + entity.currentorg.name.toUpperCase() + ". " + entity.cabinet.type.toUpperCase() + " " +  entity.cabinet.title + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
                     break;
                     default:
                     break;

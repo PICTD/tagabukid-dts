@@ -1,9 +1,9 @@
 <workunit>
     <invokers>
-        <invoker folderid="/explorer/txn/subaytransaction" caption="New Document"  action="start" target="window" index="1" role="SHARED"/>
-        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="1" role="SHARED" icon="images/toolbars/subaynewdocument.png"/>
+        <invoker folderid="/explorer/txn/subaytransaction" caption="New Document"  action="start" target="window" index="1" role="SHARED" tag="IDLE"/>
+        <invoker folderid="/home/dts" caption="New Document"  action="start" target="window" index="1" role="SHARED" icon="images/toolbars/subaynewdocument.png" tag="IDLE"/>
         <invoker type="extActions" caption="Print" action="print" visibleWhen="#{state=='save-success'}"/>
-
+        <invoker type="subaycabinet-document:create" caption="New Document for Arcive" action="start" target="window" tag="ARCHIVE"/>
     </invokers>
     
     <code class="tagabukid.subay.models.NewDocumentController" />   
@@ -39,8 +39,13 @@
 
         <page name="confirm" title="Confirm New Document">
             <transition to="edit-attachments" caption="Back" mnemonic="B" name="back"/>
-            <transition to="save-success" caption="Submit" mnemonic="S" name="save" action="save" confirm="You are about to save this transaction. Continue?"/>
+            <transition to="check-is-archive" caption="Submit" mnemonic="S" name="save" action="save" confirm="You are about to save this transaction. Continue?" />
         </page>
+        
+        <process name="check-is-archive">
+            <transition to="end" cond="#{entity.state=='ARCHIVE'}"  action="archiveDocument"/>
+            <transition to="save-success" cond="#{entity.state=='IDLE'}"/>
+        </process>
         
         <page name="save-success" title="Save Success (New Document)">
             <transition to="edit-generalinfo" caption="Add Another" mnemonic="A" action="init"/>
