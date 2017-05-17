@@ -31,10 +31,45 @@ public class OnlineTransactionInfoPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xPanel1 = new com.rameses.rcp.control.XPanel();
+        xLabel2 = new com.rameses.rcp.control.XLabel();
+        xLabel3 = new com.rameses.rcp.control.XLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         xLabel1 = new com.rameses.rcp.control.XLabel();
 
         setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        xPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 10, 0));
+        xPanel1.setVisibleWhen("#{mode == 'processing'}");
+
+        xLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        xLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        xLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        xLabel2.setPadding(new java.awt.Insets(1, 5, 1, 1));
+        xLabel2.setPreferredSize(new java.awt.Dimension(150, 20));
+        xLabel2.setText("Processing request please wait...");
+
+        xLabel3.setIconResource("com/rameses/rcp/icons/loading16.gif");
+
+        javax.swing.GroupLayout xPanel1Layout = new javax.swing.GroupLayout(xPanel1);
+        xPanel1.setLayout(xPanel1Layout);
+        xPanel1Layout.setHorizontalGroup(
+            xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(xPanel1Layout.createSequentialGroup()
+                .addComponent(xLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(xLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
+        );
+        xPanel1Layout.setVerticalGroup(
+            xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, xPanel1Layout.createSequentialGroup()
+                .addGroup(xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, xPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(xLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(xLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(499, 499, 499))
+        );
 
         xLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         xLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -50,14 +85,20 @@ public class OnlineTransactionInfoPage extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(xPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                .addComponent(xPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -66,5 +107,8 @@ public class OnlineTransactionInfoPage extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private com.rameses.rcp.control.XLabel xLabel1;
+    private com.rameses.rcp.control.XLabel xLabel2;
+    private com.rameses.rcp.control.XLabel xLabel3;
+    private com.rameses.rcp.control.XPanel xPanel1;
     // End of variables declaration//GEN-END:variables
 }

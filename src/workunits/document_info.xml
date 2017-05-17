@@ -11,6 +11,7 @@
         <invoker type="formActions" caption="View Parent" action="showParent" immediate="true" visibleWhen="#{entity.parentid!=null}"/> 
         <invoker type="formActions" caption="Show Document Info" action="showDocInfo" immediate="true" visibleWhen="#{entity.docinfo!=null}"/> 
         <!--<invoker type="formActions" caption="Send SMS" action="createSMS" immediate="true" />--> 
+        <invoker type="subaycabinet-document:open" caption="Document Info" action="open" target="window"/>
     </invokers>
     <code class="tagabukid.subay.models.DocumentInfoController"/>
     <pages>

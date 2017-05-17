@@ -1,0 +1,36 @@
+<workunit extends="wtemplates/ExplorerViewController.xml" >
+    <invokers>
+         <invoker folderid="/explorer/txn/subaytransaction" caption="Manage Cabinet" role="SHARED" index="10" action="init" icon="images/toolbars/managesubaycabinet.png"/>
+        <invoker folderid="/home/dts/subaycabinet" caption="Manage Cabinet" index="10" role="SHARED" action="init" icon="images/toolbars/managesubaycabinet.png"/>
+   </invokers>
+   <code>
+       import com.rameses.rcp.common.*;
+       import com.rameses.rcp.annotations.*;
+       import com.rameses.osiris2.client.*;
+       import com.rameses.osiris2.common.*;
+       import tagabukid.subay.models.*;
+       
+       class TagabukidSubayCabinetController extends CabinetManagementController {
+       
+         String serviceName = 'TagabukidSubayCabinetService'
+         
+         @Service("TagabukidSubayCabinetService") 
+         def subaycabinetService
+            
+         public String getTitle() {
+            return "Subay Cabinet Management";
+         }
+       
+         public String getPrefixId() {
+            return "SCAB";
+         }
+       
+        void refresh(){
+            listHandler.reload();
+        }
+       
+
+       
+       }
+   </code>
+</workunit>

@@ -31,12 +31,24 @@ public class SendParametersPage extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        xPanel1 = new com.rameses.rcp.control.XPanel();
         xFormPanel1 = new com.rameses.rcp.control.XFormPanel();
         xRadio1 = new com.rameses.rcp.control.XRadio();
         xRadio2 = new com.rameses.rcp.control.XRadio();
         xRadio3 = new com.rameses.rcp.control.XRadio();
         xRadio4 = new com.rameses.rcp.control.XRadio();
         xSubFormPanel1 = new com.rameses.rcp.control.XSubFormPanel();
+
+        javax.swing.GroupLayout xPanel1Layout = new javax.swing.GroupLayout(xPanel1);
+        xPanel1.setLayout(xPanel1Layout);
+        xPanel1Layout.setHorizontalGroup(
+            xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        xPanel1Layout.setVerticalGroup(
+            xPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         xFormPanel1.setCaptionBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         xFormPanel1.setCaptionFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -99,6 +111,7 @@ public class SendParametersPage extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.rameses.rcp.control.XFormPanel xFormPanel1;
+    private com.rameses.rcp.control.XPanel xPanel1;
     private com.rameses.rcp.control.XRadio xRadio1;
     private com.rameses.rcp.control.XRadio xRadio2;
     private com.rameses.rcp.control.XRadio xRadio3;

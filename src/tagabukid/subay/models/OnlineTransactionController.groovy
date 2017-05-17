@@ -6,6 +6,7 @@ import java.rmi.server.*;
 import com.rameses.util.*;
 import com.rameses.osiris2.reports.*;
 import java.text.*;
+import tagabukid.subay.models.*;
 
 public class OnlineTransactionController {
     @Binding
@@ -27,7 +28,9 @@ public class OnlineTransactionController {
     def title;
     def completed;
     def destination;
+    def verified;
     def test;
+    def task;
     
     def df = new SimpleDateFormat("yyyy-MM-dd");
     def formatDate = { o->
@@ -48,7 +51,9 @@ public class OnlineTransactionController {
         entity.txndate = dtsvc.getServerDate();
         completed = false;
         destination = false;
+        verified = false;
         entity.preparedbyname = OsirisContext.env.FULLNAME;
+        entity.currentorg = svc.getUserOrg(OsirisContext.env.USERID).org;
     }
     
     def createnew(){
@@ -78,7 +83,8 @@ public class OnlineTransactionController {
     def addtolist(def doc){
         checkDuplicate(document,doc);
         doc.message = "";
-        document << doc;
+//        document << doc;
+        document.add(0,doc);
         din = "";
         binding.refresh('din');
         binding.focus('din');
@@ -164,15 +170,42 @@ public class OnlineTransactionController {
             
         }
     }
+    void checkMessage(){
+        entity.document.each{
+            if (!it.message){
+                switch(mode){
+                    case "receive":
+                        it.message =  "DOCUMENT RECEIVED AT " + entity.currentorg.name.toUpperCase() + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    case "send":
+                        def dest = entity.org.code;
+                        if(entity.destinations){
+                           dest =  entity.destinations.code.join(", ");
+                        }
+                        it.message =  "DOCUMENT SENT TO " + dest + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    case "outgoing":
+                        it.message =  "DOCUMENT IS FOR PICKUP AT " + entity.currentorg.code.toUpperCase();
+                    break;
+                    case "archived":
+                        it.message =  "DOCUMENT ARCHIVED AT " + entity.currentorg.name.toUpperCase() + ". " + entity.cabinet.type.toUpperCase() + " " +  entity.cabinet.title + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+                    break;
+                    default:
+                    break;
+                }
+                
+            }
+        }
+    }
     
-    def save(){
+    def verify(){
         if (document.size == 0)
         throw new Exception("Please add at least 1 document to process");
         
-        if ((!entity.org && !entity.destinations) && mode.matches('send|archived|outgoing') && !destination){
+         if ((!entity.org && !entity.destinations) && mode.matches('send|archived|outgoing') && !destination){
              destination = true;
              return 'paramter';
-        } else if((!entity.org && !entity.destinations) && mode.matches('send|archived') && destination){
+        } else if((!entity.org && !entity.destinations) && mode.matches('send') && destination){
              throw new Exception("Destination is Required");
              return 'paramter';
         }
@@ -180,25 +213,79 @@ public class OnlineTransactionController {
         if (!entity.assignee && !entity.oic && mode=='send') 
         throw new Exception("OIC is Required");
         
+        verified = true;
+        return "processing"
+    }
+    def save(){
+        if (document.size == 0)
+        throw new Exception("Please add at least 1 document to process");
+        
+         if ((!entity.org && !entity.destinations) && mode.matches('send|archived|outgoing') && !destination){
+             destination = true;
+             return 'paramter';
+        } else if((!entity.org && !entity.destinations) && mode.matches('send') && destination){
+             throw new Exception("Destination is Required");
+             return 'paramter';
+        }
+        
+        if (!entity.assignee && !entity.oic && mode=='send') 
+        throw new Exception("OIC is Required");
+        
+        verified = true;
+        
         entity.document = document
         entity.mode = mode
         if( MsgBox.confirm( "You are about to " + mode + " this transaction. Proceed?")) {
-            try{
-                svc.processDocument(entity);
-                completed = true;
-                MsgBox.alert("Transaction Successfull");
-                
-                
-            } catch(Warning w) {
-                Modal.show( 'document_redflag:warning', [list: w.info.list] );
-                throw new BreakException();
-            } catch(e) {
-                throw e;
-            }
+//            try{
+//                checkMessage();
+//                svc.processDocument(entity);
+//                completed = true;
+//                MsgBox.alert("Transaction Successfull");
+//                
+//                
+//            } catch(Warning w) {
+//                Modal.show( 'document_redflag:warning', [list: w.info.list] );
+//                throw new BreakException();
+//            } catch(e) {
+//                throw e;
+//            }
+
+            task = new OnlineTransactionTask();
+            task.txnModel = this;
+            task.txnSvc   = svc; 
+            task.entity   = entity;
+//            task.updateItem  = updateItem;
+            task.oncomplete  = oncomplete;
+            task.onerror     = onerror;
+            Thread t = new Thread(task);
+            t.start();
+            mode = 'processing';
+            return "completed";
         }
-        return "completed";
+        
         
     }
+    
+//     def updateItem = {updateditem ->
+//        def item = entity.document.find{it.objid == updateditem.objid}
+//        item.putAll(updateditem);
+//        listHandler.reload();
+//    }
+    
+    def oncomplete = {
+        completed = true;
+        mode = 'completed';
+        task = null;
+        binding.refresh();
+        MsgBox.alert('Transaction Successfull');
+    }    
+    
+    def onerror = {errmsg ->
+        
+        task = null;
+        binding.refresh();
+        MsgBox.alert(errmsg);
+    }   
     
     def getInfoHtml() {
         return TemplateProvider.instance.getResult( "tagabukid/subay/views/dtstransaction.gtpl", [entity:entity] );

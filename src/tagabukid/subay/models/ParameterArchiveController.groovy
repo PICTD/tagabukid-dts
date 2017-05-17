@@ -24,10 +24,10 @@ class ParameterArchiveController
         if(binding) binding.refresh();
     } 
          
-    def getLookupOrg(){
-        return Inv.lookupOpener('userorg:lookup',[
+    def getLookupCabinet(){
+        return Inv.lookupOpener('cabinet:lookup',[
                 onselect :{
-                    entity.org = it.org
+                    entity.cabinet = it
                 },
             ])
     }

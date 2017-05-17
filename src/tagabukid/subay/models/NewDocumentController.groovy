@@ -8,6 +8,9 @@ import com.rameses.util.*;
 import tagabukid.utils.*;
         
 public class TagabukidSubayNewDocumentModel extends PageFlowController {
+       
+    @Caller
+    def caller;
             
     @Script("TagabukidSubayDocumentInfoUtil")
     def docinfo
@@ -17,15 +20,25 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
             
     @Service("TagabukidSubayTitleVerificationService")
     def verifySvc
+    
+    @Service("TagabukidSubayTransactionService")
+    def txnsvc
+    
+    @Service("DateService")
+    def dtsvc
             
     def entity;
     boolean pass;
     def searchList;
     def verificationSelectedItem;
     def attachmentSelectedItem;
+    def tag;
+    def node;
     
     void init() {
         entity = service.initNew(entity)
+        entity.state = invoker?.properties?.tag; 
+        entity.docstate = invoker?.properties?.tag;
         loadAttachments()
         reset();
     }
@@ -62,12 +75,27 @@ public class TagabukidSubayNewDocumentModel extends PageFlowController {
         if( searchList.find{ it.weight == 100 } )
         throw new Exception("Exact document title already exists. Please choose another document title");
     }
-            
+     
     def save(){
         entity = service.create(entity);
         return entity
     }
-            
+       
+    void archiveDocument(){
+//        throw new Exception("HERE");
+        def arch = [:];
+        def document = [];
+        def entity = service.open([barcodeid: entity.din]);
+        arch.cabinet = [objid:node.objid]
+        entity.message =  "DOCUMENT ARCHIVED AT " + txnsvc.getUserOrg(OsirisContext.env.USERID).org.name.toUpperCase() + ". " + node.type.toUpperCase() + " " +  node.title + " BY " + OsirisContext.env.FULLNAME.toUpperCase();
+        document << entity;
+        arch.txndate = dtsvc.getServerDate();
+        arch.preparedbyname = OsirisContext.env.FULLNAME;
+        arch.document = document;
+        arch.mode = 'archived';
+        txnsvc.processDocument(arch);
+        caller.refresh();
+    }
     def attachmentListHandler = [
         fetchList : { return entity.attachments },
     ] as BasicListModel
